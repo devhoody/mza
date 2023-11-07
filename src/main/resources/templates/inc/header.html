@@ -14,9 +14,8 @@
 	  <nav class="main-menu content-box">
 					<!-- 모바일 -->
 	    <div class="md:d:none content-box">
-	      <a href="" class="icon icon-size:4 icon-color:base-5 icon-back">뒤로가기</a>
+	      <a class="d:flex" href="../"><img src="/css/image/icon/back.svg"></a>
 	      <h1> 커뮤니티 </h1>
-	      <a></a>
 	    </div>
 	    			<!-- 웹 -->
 	    <a class="mxd:d:none" href="/index"><img src="/css/image/icon/logo.svg" style="height:20%" alt="맛잘알"></a>
@@ -25,14 +24,12 @@
 		  <li class="mxd:d:none"><a href="/celeb/list" >유명인</a></li>
 		  <li class="mxd:d:none"><a href="/user/mypage">마이페이지</a></li>
 		  <li class="mxd:d:none"><a href="/notice/list" >고객센터</a></li>
-			<li sec:authorize="isAnonymous()"><a class="icon icon-person icon-color:base-4	"
-												 href="/stranger/login">로그인</a></li>
-			<li sec:authorize="isAuthenticated()"><a class="icon icon-sign-out icon-color:base-0"
-												href="/user/logout">로그아웃</a></li>
+			<li class="log" sec:authorize="isAnonymous()"><a class="d:flex" href="/stranger/login"><img src="/css/image/icon/person.svg">
+													</a></li>
+			<li class="log" sec:authorize="isAuthenticated()"><a class="d:flex" href="/user/logout"><img src="/css/image/admin-icon/logout.svg"></a></li>
 	    </ul>
 	  </nav>
 	</header>
-<main>
 </body>
 
 </html>
