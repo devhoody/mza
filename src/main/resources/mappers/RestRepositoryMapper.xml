@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.RestRepository">
+	
+	<select id="getList" parameterType="Rest">
+     SELECT r.rest_id                     as    rest_id                 
+          , r.rest_name                   as    rest_name               
+          , r.plain_business_bgn_hours    as    plain_business_bgn_hours
+          , r.plain_business_end_hours    as    plain_business_end_hours
+          , r.end_business_bgn_hours      as    end_business_bgn_hours  
+          , r.end_business_end_hours      as    end_business_end_hours  
+          , r.addr                        as    addr                    
+          , r.location_rest_id            as    location_rest_id        
+          , r.phone                       as    phone                   
+          , r.menu_id                     as    menu_id                 
+          , m.name                        as    name                    
+          , r.rating                      as    rating                  
+          , r.banner_img                  as    banner_img              
+          , r.img1                        as    img1                    
+          , r.img2                        as    img2                    
+          , r.img3                        as    img3                    
+          , r.celeb_rest_id               as    celeb_rest_id           
+          , cr.celeb_id                   as    celeb_id               
+          , c.name                        as    celeb_name                    
+          , r.admin_id                    as    admin_id                
+          , u.alias                       as    alias                   
+          , r.review_id                   as    review_id               
+          , r.created_date                as    created_date            
+          , r.etc                         as    etc                     
+     FROM restaurant r
+     left join menu m
+     on r.rest_id = m.rest_id 
+     and r.menu_id = m.menu_id
+     left join user u
+     on r.admin_id = u.user_id
+     left join celeb_restaurant cr
+     on r.celeb_rest_id = cr.celeb_rest_id
+     left join celeb c
+     on cr.celeb_id = c.celeb_id
+  	</select>
+
+</mapper>
