@@ -1,5 +1,6 @@
 package com.matzalal.web.controller.commu;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -143,12 +145,12 @@ public class CommuController {
 		System.out.println("상세조회 postId: " + postId);
 		System.out.println("상세조회 post: "+ post);
 		System.out.println("상세조회 commentList: "+ commentList);
-		System.out.println("상세조회 commentCount: "+ count);
+//		System.out.println("상세조회 commentCount: "+ count);
 
 
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
-		model.addAttribute("count", count);
+//		model.addAttribute("count", count);
 		return "commu/post/detail";
 	}
 	
