@@ -11,6 +11,7 @@
     border-bottom: 1.5px solid var(--color-base-3);
 	margin-bottom : 50px;
 }
+
 .header
     .content-box{
     /* font-family: 'SBAggro'; */
@@ -18,6 +19,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height : 60px;
+
 }
     
 .header
@@ -35,6 +38,14 @@
         position: relative;
         line-height: 4;
         }
+
+.header
+    .web
+        .log{
+        display: flex;
+        align-items: center;
+
+    }
 
 @media (min-width: 700px) {
 

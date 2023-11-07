@@ -31,28 +31,25 @@
                 </article>
             </div>
         </section>
-            <section class="prev-next-box md:prev-next-box">
+            <section class="prev-next-box md:prev-next-box" th:object="${list}">
                 <div class="prev-box d:flex md:prev-box">
                     <span class="prev-post deco-after icon-upside md:deco-after">이전 글</span>
                     <!--<span class="prev-title" th:text="*{title}" a href="">이전 글이 없습니다.-->
-					<span class="prev-title" th:text="*{title}" 
-						th:onclick="|location.href='@{/notice/detail(prev-notice-id=${notice.prevNoticeId})}'|" 
-						th:if="${noticeId > 1}">
+					<span class="prev-title" th:unless="${notice.createdDate == list.get(0).createdDate}"
+                          th:text="${}">
+<!--						th:onclick="|location.href='@{/notice/detail(prev-notice-id=${notice.prevNoticeId})}'|"-->
 					<!--<a th:href="@{'/notice/detail?notice-id=' + (noticeId-1)}">이전 글 제목과 링크</a>-->
 					</span>
-					<span class="prev-title inactive" th:unless="${noticeId <= 1}">이전 글이 없습니다.</span>
-                    </span>
+					<span class="prev-title inactive" th:if="${notice.createdDate == list.get(0).createdDate}">이전 글이 없습니다.</span>
                 </div>
 
                 <div class="next-box d:flex md:next-box">
                     <span class="next-post deco-after icon-cs-downside md:deco-after">다음 글</span>
-                    <span class="next-title" th:text="*{title}" th:if="${noticeId < 1}">
-						<a th:href="@{'/notice/detail?notice-id=' + (noticeId + 1)}">다음 글 제목과 링크</a>
-					</span>
-					<span class="next-title inactive" th:unless="${noticeId < 1}">다음 글이 없습니다.</span>
-                    </span>
+<!--                    <span class="next-title" th:if="${noticeId < 1}">-->
+<!--						<a th:href="@{'/notice/detail?notice-id=' + (noticeId + 1)}">다음 글 제목과 링크</a>-->
+<!--					</span>-->
+					<span class="next-title inactive" th:if="${notice.createdDate == list.get(#lists.size(list) - 1).createdDate}">다음 글이 없습니다.</span>
                     <!--<span class="next-title" th:text="*{title}" a href="">개인정보 이용내역 안내-->
-                    </span>
                 </div>
             </section>
 
