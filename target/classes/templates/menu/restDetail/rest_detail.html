@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/components/restDetail/rest_detail.css" rel="stylesheet"
+          type="text/css">
+</head>
+<body>
+    <main layout:fragment="main">
+<!-- -----------------------------상단 이미지 및 상호명---------------------------------- -->
+<section class="top" >
+    <h1 style="display : none;">상단</h1>
+    <div>
+        <img class="rest_img" src="" th:src="@{/css/image/{img}(img=${restDetail.bannerImg})}">
+    </div>
+    <div class="head-container" >
+        <a class="rest_name" th:text="${restDetail.restName}">상호명</a>
+        <a class="icon icon-heart heart">찜 아이콘</a>
+    </div>
+    <section class="info" >
+        <h1 style="display : none;">가게 정보</h1>
+        <div class="simple-info">
+            <a class="icon icon-geomarker icon-size:3">위치</a>
+            <a class="icon icon-star icon-size:3 star" >별점  <span th:text="${restDetail.rating}"></span></a>
+            <a class="a1" ><span th:text="${restDetail.name}"></span>'s Pick</a>
+<!--            <a class="a2">풍자's Pick</a>-->
+        </div>
+
+        <div class="rest_info">
+            <p class="addr" >주소<span th:text="${restDetail.addr}"></span></p>
+            <p class="phone-no" >전화번호 <span th:text="${restDetail.phone}"></span></p>
+            <p class="time">
+               영업시간 <span th:text="${restDetail.openTime}"></span>~<span th:text="${restDetail.closeTime}"></span>
+            </p>
+        </div>
+
+        <div class="map-layer">
+            <span class="d:none">지도</span>
+        </div>
+        <!------------------------------ 메뉴 탭 ----------------------------------->
+        <section class="rest_info_img">
+            <h1 class="img-contain">메뉴</h1>
+            <article class="menu_img">
+                <h1 class="d:none">메뉴</h1>
+                <div class="scroll-img">
+                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img1})}">
+                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img2})}">
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">-->
+                </div>
+            </article>
+        </section>
+        <!----------------------------------- 사진 탭 ------------------------------------->
+        <section class="rest_info_img">
+            <h1 class="img-contain">사진</h1>
+            <div class="scroll-img">
+<!--                <div class="menu_img">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img1})}">-->
+<!--                </div>-->
+<!--                <div class="menu_img">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img2})}">-->
+<!--                </div>-->
+                <div class="menu_img">
+                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">
+                </div>
+            </div>
+        </section>
+        <!-- -----------------------------경계선----------------------------- -->
+        <div class="review-btn">
+            <a class="write-review">리뷰 쓰기</a>
+            <a class="more-review" href="" th:href="@{/celeb/detail/review(restId=${restDetail.restId})}">더보기</a>
+        </div>
+        <!--------------------- 후기 탭 ---------------------->
+        <section class="review-area" >
+            <h1 class="d:none">후기</h1>
+            <div class="review-card" th:each="rvv:${reviewView}">
+                <img class="review-img" src="" th:src="@{/css/image/{img} (img=${rvv.img})}">
+                <div class="review-box">
+                    <p class="content" th:text="${rvv.content}">
+                        리뷰 내용
+                    </p>
+                </div>
+                <div class="review-info">
+                    <a class="icon icon-2rank icon-size:1 rank">등급 아이콘</a>
+
+                    <a class="user-id" th:text="${rvv.alias}">ID</a>
+                    <a class="rating" th:text="${rvv.rating}">평점</a>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+    </main>
+</body>
+</html>
