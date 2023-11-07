@@ -8,7 +8,7 @@ import com.matzalal.web.entity.Question;
 public interface QnaService {
 
 	// =============== 문의글(question) 관련 업무로직 =============
-	
+
 	// 문의글 등록
 	Question add(Question question);
 
@@ -26,7 +26,7 @@ public interface QnaService {
 
 	// 문의글 수정
 	void edit(Question question);
-	
+
 	void delete(Long questionId);
 
 	// 문의글 1개 삭제
@@ -35,15 +35,14 @@ public interface QnaService {
 	// 문의글 다중 삭제
 	void deleteQna(List<Long> QnaList);
 
-	
 	// ================= 답변글(answer) 관련 업무로직 ================
-	
+
 	// 문의글&답변글 - 문의글 클릭시 답변글 함께 조회
-	Question getQnA(Long questionId);	
-	
+	Question getQnA(Long questionId);
+
 	// 답변글 목록 조회
 	List<Answer> getAnswerList();
-	
+
 	// 답변글 등록
 	Answer add(Answer answer);
 
@@ -53,5 +52,4 @@ public interface QnaService {
 	// 답변글 유무 조회
 	String hasAnswer(Long questionId);
 
-	
 }

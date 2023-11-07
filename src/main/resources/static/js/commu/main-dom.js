@@ -30,7 +30,7 @@ window.addEventListener("load", function(){
 		
 	        fetch(url,{
 					method: 'DELETE'
-			})
+				})
 			.then(response => response.text())
 		    .then(data => {
 		        if (data === '') {
@@ -141,6 +141,7 @@ window.addEventListener("load", function(){
 
 	locUl.onclick = async (e)=> {
 		e.preventDefault();
+		console.log("하트하트")
 		
 		let el = e.target;
 		
@@ -221,11 +222,12 @@ window.addEventListener("load", function(){
 // ------------- 데이터 요청 후 응답기다리는...! -------------
 
 	function bind(postList){
+		console.log(" --function bind 시작 부분-- ")
 		
         content.innerHTML = ""; // section을 위한 DOM 객체를 직접 생성해서 append 한다.
 
         for (let p of postList){
-            let iconLike = p.isLike ? "icon-commu-likes-fill" : "icon-commu-likes";
+            let iconLike = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
 
             let template = `
 	            

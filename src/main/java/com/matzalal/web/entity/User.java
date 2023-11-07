@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class User {
-	private Long id; 	// userId->id로 변경
+	private Long id; // userId->id로 변경
 	private String pwd;
 	private String alias;
 	private String email;

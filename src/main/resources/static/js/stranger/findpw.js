@@ -59,6 +59,7 @@ sendMail.onclick = async (e)=>{
     }
     request.open("POST", `/api/strangers/findpw?email=${email}&name=${name}`);
     request.setRequestHeader("Content-Type", "application/json");
+
     request.send(user);
 
 

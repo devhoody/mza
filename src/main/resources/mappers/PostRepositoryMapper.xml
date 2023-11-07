@@ -5,6 +5,13 @@
   
 <mapper namespace="com.matzalal.web.repository.PostRepository">
 
+  	<select id="findPostWithIsLike" resultType="PostView"> 
+        select p.*,
+            if(lp.post_id is null, 0, 1) as isliked
+        from post_u_li_co_view p
+        left join (select * from likes_post where user_id=#{currentUserId}) lp on p.post_id = lp.post_id
+        	order by created_date desc
+    </select>
   
    <select id="findPostAll" resultType="PostView">
     select * from post_view
@@ -12,10 +19,12 @@
     
   </select>
   
+  <!-- [포스팅 상세] 포스팅 댓글 총 개수 . -->
   <select id="count" resultType="int">
    select 
-   count(post_id) count
-   from post
+   p.comment_count 
+   from post_u_li_co_view p
+   where post_id =#{postId}
   </select>
   
   <select id="findByLocation" resultType="PostView">

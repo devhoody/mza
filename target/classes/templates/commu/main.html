@@ -108,7 +108,7 @@
 	        <section class = "commu-area md:commu-area">
 <!--	            <h1 class = "d:none"> 🌝 커뮤 공간 🌝 </h1>-->
 				
-		        <!-- ------------------- 피드 1열 ----------------- -->
+	        <!-- ------------------- 피드 1열 ----------------- -->
 	
 	            <section class="post-layout md:post-layout">
 	                <h2 class = "d:none"> 피드 1 </h2>
@@ -123,15 +123,18 @@
 	                            <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
 	
 	                            <div class="badge">
-	                                <img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" /> 
-	                            </div>
+	                                <img 
+	                                th:src="@{'/css/image/icon/badge' + ${p.gradeId} + '.svg'}"
+	                                src="/image/icon/grade2.svg" 
+	                                style="height:20px;" alt="등급2" /> 
 	                                
+	                            </div>
 	                            <div class="nickname" >
 	                                <span th:text="${p.alias}"> 
 	                                    팅클이졸귀임 
 	                                </span>
 	                            </div>
-	                        </section> 	<!-- member_info-->
+	                        </section> 	<!-- member_info-->			
 	
 	                        <section class="date_info md:date_info">
 	                            <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
@@ -142,8 +145,15 @@
 	                                </span> 
 	                            </div>
 	
-	                            <div>
-	                                <a class="icon icon-commu-more icon-size-commu:2 icon-color:va" href=""> 세로 확장</a>
+	                          	<!--  <div>
+	                                <a class="icon icon-commu-more icon-size-commu:2 " href=""> 세로 확장</a>
+	                            </div>-->
+	                            
+	                           <div > 
+                					<a class="" 
+                							th:classappend="${#authentication.principal.id == p.userId} ? 'd:none' : 'icon icon-size:0 icon-color:base-4 icon-commu-report'"
+                							href="/report/post"
+                							type="submit" value="" > </a>
 	                            </div>
 	                            
 	                           <div > 
@@ -155,6 +165,7 @@
 	                            
 	                            <div > 
                 					<button class="commu-delete" 
+                							th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
                 							th:data-post="${p.postId}"
                 							type="submit" value="" > D </button>
 	                            </div>
@@ -191,13 +202,7 @@
 		                                    th:src="@{/css/image/commu/post/{img} (img=${p.img1})}" 
 		                                    		alt="Responsive Image1">
 		                                    		
-		                                    <img src="/image/ranking2.JPG"
-		                                    th:src="@{/css/image/commu/post/{img} (img=${p.img2})}" 
-		                                    		alt="Responsive Image2">
-		                                    		
-		                                    <img src="/image/ranking3.JPG"
-		                                    th:src="@{/css/image/commu/post/{img} (img=${p.img3})}" 
-		                                    		alt="Responsive Image3">
+
 		                                </picture>  
 		                            </section><!-- picture -->
 		                    </section><!-- middle -->
@@ -263,7 +268,6 @@
     </section> <!-- 커뮤니티 공간 끝 -->
 
 
-
     <!-- -----------------  고정버튼:검색,글쓰기 --------------- -->
     <section class="fixed-button md:fixed-button">
         <h1 class="d:none"> 고정버튼: 검색, 글쓰기</h1>
@@ -284,7 +288,7 @@
 
         </div>
         <div>
-            <a href="/commu/post/create " class="icon icon-add icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
+            <a href="/commu/post/create " class="icon icon-commu-add-post icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
         </div>
 
     </section>

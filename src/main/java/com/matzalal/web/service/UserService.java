@@ -1,4 +1,5 @@
 package com.matzalal.web.service;
+
 import java.util.Date;
 import java.util.List;
 
@@ -62,14 +63,14 @@ public interface UserService {
     User getByUser(User user);
 
     boolean hasForFindPwd(User user);
-	
-// 회원 활동 정지
-	void inactiveUser(String email);
-	
-// 회원 정지 해제
-	void activeUser(String email);	
-	
-// 회원 활동정지 기간 조회하기
-	Date getSancTime(String email);
+
+    // 회원 활동 정지
+    void inactiveUser(String email);
+
+    // 회원 정지 해제
+    void activeUser(String email);
+
+    // 회원 활동정지 기간 조회하기
+    Date getSancTime(String email);
 
 }

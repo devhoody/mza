@@ -122,6 +122,7 @@
              , phone
              , name 
              , access_location
+             
       ) values (
                #{email}
              , #{pwd}  

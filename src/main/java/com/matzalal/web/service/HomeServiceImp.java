@@ -12,8 +12,8 @@ import java.util.List;
 @Service
 public class HomeServiceImp implements HomeService {
 
-@Autowired
-private HomeRepository homeRepository;
+    @Autowired
+    private HomeRepository homeRepository;
 
     @Override
     public List<RecomView> getRecomViewList() {

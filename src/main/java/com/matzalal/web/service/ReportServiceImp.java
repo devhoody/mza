@@ -12,14 +12,13 @@ import com.matzalal.web.repository.ReportRepository;
 
 @Service
 public class ReportServiceImp implements ReportService {
-	
+
 	@Autowired
 	private ReportRepository repository;
-	
+
 	@Autowired
 	private ReportReasonRepository reportReasonRepository;
-	
-	
+
 	// 회원 신고목록조회(페이지별)
 	@Override
 	public List<Report> getListByPage(Integer offset, Integer page, Integer size, String query) {
@@ -36,7 +35,7 @@ public class ReportServiceImp implements ReportService {
 	// 신고 사유 조회
 	@Override
 	public List<ReportReason> getReasonList() {
-		
+
 		return reportReasonRepository.findAll();
 	}
 
@@ -71,41 +70,39 @@ public class ReportServiceImp implements ReportService {
 	// 회원 활동 정지 기간 부여
 	@Override
 	public Integer reportProcessMain(Report reportSave) {
-			System.out.println("회원 활동 정지기간 설정중");
-			String result = reportSave.getSanctionTime();
-			System.out.println("회원활동 정지기간" + result + "일");
+		System.out.println("회원 활동 정지기간 설정중");
+		String result = reportSave.getSanctionTime();
+		System.out.println("회원활동 정지기간" + result + "일");
 		return repository.reportProcessMain(reportSave);
 	}
 
 	// 신고글 업데이트
 	@Override
 	public String reportProcessSub(Report reportSave) {
-		 String gbn = reportSave.getReportGbn();
-		 Integer result;
-		 String rtnStr = "";
-		 System.out.println("입력된 구분자 : "+gbn);
-		 
-		 if(gbn.equals("USER")) {
+		String gbn = reportSave.getReportGbn();
+		Integer result;
+		String rtnStr = "";
+		System.out.println("입력된 구분자 : " + gbn);
+
+		if (gbn.equals("USER")) {
 			result = repository.reportProcessUser(reportSave);
-			System.out.println("회원 신고 내역 업데이트");			
-		 } else if(gbn.equals("POST")) {
-			 result = repository.reportProcessPost(reportSave);
-			 System.out.println("게시글 신고 내역 업데이트");
-		 } else {
-			 result = repository.reportProcessComment(reportSave);
-			 System.out.println("댓글 신고 내역 업데이트");
-		 } 
-		 
-		 if(result == 0) {
-			rtnStr = "신고처리 실패하였습니다."; 
-		 } else {
-			 rtnStr = "신고처리 성공하였습니다.";
-		 }
-		 
+			System.out.println("회원 신고 내역 업데이트");
+		} else if (gbn.equals("POST")) {
+			result = repository.reportProcessPost(reportSave);
+			System.out.println("게시글 신고 내역 업데이트");
+		} else {
+			result = repository.reportProcessComment(reportSave);
+			System.out.println("댓글 신고 내역 업데이트");
+		}
+
+		if (result == 0) {
+			rtnStr = "신고처리 실패하였습니다.";
+		} else {
+			rtnStr = "신고처리 성공하였습니다.";
+		}
+
 		return rtnStr;
-		
+
 	}
-
-
 
 }

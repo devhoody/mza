@@ -4,11 +4,10 @@ import com.matzalal.web.entity.*;
 import com.matzalal.web.service.CelebListService;
 import com.matzalal.web.service.CelebRestService;
 import com.matzalal.web.service.RestDetailViewService;
-import com.matzalal.web.service.ReviewService;
+import com.matzalal.web.service.ReviewViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("/celeb")
+@RequestMapping("/menu")
 public class CelebRestController {
 
     @Autowired
@@ -35,7 +34,7 @@ public class CelebRestController {
     private ReviewViewService reviewViewService;
 
 //    -----------------------------유명인-----------------------------------
-    @RequestMapping("list")
+    @RequestMapping("celeb-list")
     public String list(Model model){
 
         List<CelebRestView> celebRestList = celebRestService.getCelebListViewById(null);

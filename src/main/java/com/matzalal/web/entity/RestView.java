@@ -28,5 +28,4 @@ public class RestView {
     private Long celebRestId;
     private Long reviewId;
 
-
 }

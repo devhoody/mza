@@ -11,23 +11,23 @@ public class CommuLikeServiceImp implements CommuLikeService {
 
 	@Autowired
 	CommuLikeRepository repository;
-	
+
 	@Override
 	public PostLike add(PostLike like) {
-		
+
 		repository.save(like);
-		
+
 		PostLike newOne = repository.last();
-		System.out.println(newOne);
+		System.out.println("===좋아요 저장 " + newOne);
 		return newOne;
 
 	}
 
 	@Override
-	public void delete(Long userId, Long postId ) {
+	public void delete(Long userId, Long postId) {
 		System.out.println("좋아요 하나 삭제중");
-		System.out.println("userId: "+ userId);
-		System.out.println("postId: "+ postId);
+		System.out.println("userId: " + userId);
+		System.out.println("postId: " + postId);
 
 		repository.delete(userId, postId);
 

@@ -19,7 +19,7 @@ public class SearchController {
 
     @RequestMapping("result")
     public String list(Model model,
-                       @RequestParam(required = false) String query){
+            @RequestParam(required = false) String query) {
         List<RestView> list = service.getViewList(query);
         System.out.println(query);
         System.out.println(list);

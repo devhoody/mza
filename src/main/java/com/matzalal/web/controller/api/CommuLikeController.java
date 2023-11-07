@@ -20,45 +20,42 @@ public class CommuLikeController {
 	@Autowired
 	private CommuLikeService service;
 
-// 좋아요 등록	 API -------------------------------
-	
-	@PostMapping 
+	// 좋아요 등록 API -------------------------------
+
+	@PostMapping
 	public PostLike reg(
-		@RequestBody PostLike like,
-		Authentication authentication) {
-		
+			@RequestBody PostLike like,
+			Authentication authentication) {
+
 		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
-        System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
-        Long id = userDetails.getId();
-		
-		like.setUserId(id); // 현재 로그인한 userId 
+		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
+		Long id = userDetails.getId();
+
+		like.setUserId(id); // 현재 로그인한 userId
 		PostLike newOne = service.add(like);
-		
+
 		System.out.println(newOne);
+		System.out.println(id);
 
 		return newOne;
 	}
 
-
-//---------------------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------------------
 	// 좋아요 삭제 API
 
-	
 	@DeleteMapping("posts/{post-id}")
 	public void delete(
 			@PathVariable("post-id") Long postId,
-			Authentication authentication){
-		
-		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
-        System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
-        Long id = userDetails.getId();
-        
-		Long userId= id;
-		
-		service.delete(userId, postId);
-		
-	}
-		
+			Authentication authentication) {
 
-	
+		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
+		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
+		Long id = userDetails.getId();
+
+		Long userId = id;
+
+		service.delete(userId, postId);
+
+	}
+
 }

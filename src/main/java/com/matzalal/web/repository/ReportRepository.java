@@ -9,7 +9,6 @@ import com.matzalal.web.entity.Report;
 @Mapper
 public interface ReportRepository {
 
-
 	List<Report> getListByPage(Integer offset, Integer page, Integer size, String query);
 
 	int count();

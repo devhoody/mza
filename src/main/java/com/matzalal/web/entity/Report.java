@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Report {
-	
+
 	private String reportGbn; // 신고 구분
 	private Long reportSeq; // 신고 순번
 	private Date createdDate; // 신고날짜
@@ -26,7 +26,7 @@ public class Report {
 	private Long userId; // 신고대상 아이디
 	private String alias; // 신고대상 닉네임
 	private String email; // 신고대상 이메일
-	private Long postId;  // 신고대상 게시글 코드
+	private Long postId; // 신고대상 게시글 코드
 	private String title; // 신고대상 게시글 제목
 	private Long commentId; // 신고대상 댓글 코드
 	private String cmtContent; // 신고대상 댓글 내용

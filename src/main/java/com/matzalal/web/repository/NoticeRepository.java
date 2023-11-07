@@ -17,7 +17,7 @@ public interface NoticeRepository {
 	Notice findById(Long noticeId);
 
 	// 관리자 시스템
-	
+
 	// 공지사항 등록
 	int save(Notice notice);
 
@@ -33,5 +33,4 @@ public interface NoticeRepository {
 	// 공지사항 여러개 삭제
 	void deleteNotices(List<Long> noticeList);
 
-	
 }

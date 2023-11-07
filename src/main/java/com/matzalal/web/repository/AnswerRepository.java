@@ -17,7 +17,4 @@ public interface AnswerRepository {
 
 	void modify(Answer answer);
 
-
-
-
 }

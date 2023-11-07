@@ -13,7 +13,7 @@ public class FaqServiceImp implements FaqService {
 
 	@Autowired
 	private FaqRepository repository;
-	
+
 	@Override
 	public List<Faq> getList() {
 		return repository.findAll();
@@ -30,7 +30,7 @@ public class FaqServiceImp implements FaqService {
 		List<Faq> list = repository.getListByPage(offset, page, size, faqId, query);
 		return list;
 	}
-	
+
 	// 페이지별 faq 리스트 조회
 	@Override
 	public List<Faq> getListByPages(Integer offset, Integer page, Integer size, Long faqId, String query) {
@@ -58,21 +58,21 @@ public class FaqServiceImp implements FaqService {
 	@Override
 	public void edit(Faq faq) {
 		repository.modify(faq);
-		
+
 	}
 
 	@Override
 	public void deleteFaq(Long faqId) {
 		System.out.println("FAQ 1개 삭제중");
 		repository.delete(faqId);
-		
+
 	}
 
 	@Override
 	public void deleteFaq(List<Long> faqList) {
 		System.out.println("faq 여러개 삭제중");
 		repository.deleteFaqs(faqList);
-		
+
 	}
 
 }

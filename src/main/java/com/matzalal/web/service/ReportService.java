@@ -28,5 +28,4 @@ public interface ReportService {
 
 	String reportProcessSub(Report reportSave);
 
-	
 }
