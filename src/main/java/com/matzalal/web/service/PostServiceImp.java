@@ -18,10 +18,9 @@ public class PostServiceImp implements PostService {
 
 	@Autowired
 	private PostRepository postRepository;
-	
+
 	@Autowired
 	private LocCateRepository locCateRepository;
-	
 
 	@Override
 	public Post add(Post post) {
@@ -33,8 +32,7 @@ public class PostServiceImp implements PostService {
 		return newPost;
 	}
 
-
-//  --------------------- 커뮤 메인 조회 ---------------------
+	// --------------------- 커뮤 메인 조회 ---------------------
 
 	@Override
 	public List<PostView> getPostList(Long currentUserId) {
@@ -46,64 +44,60 @@ public class PostServiceImp implements PostService {
 		return locCateRepository.findAll();
 	}
 
-//	[랭킹조회] 조회수 인기글 _ 조회수 -> 좋아요 -> 댓글  
+	// [랭킹조회] 조회수 인기글 _ 조회수 -> 좋아요 -> 댓글
 	@Override
 	public List<CommuRanking> getHitBestList() {
 		return postRepository.findHitRanking();
 	}
 
-//	[랭킹조회] 좋아요 인기글 _ 좋아요 -> 댓글  
+	// [랭킹조회] 좋아요 인기글 _ 좋아요 -> 댓글
 	@Override
 	public List<CommuRanking> getLikesBestList() {
 		return postRepository.findLikesRanking();
 	}
 
-// --------------------- 포스팅 검색 & 카테고리별 조회 ---------------------
+	// --------------------- 포스팅 검색 & 카테고리별 조회 ---------------------
 	@Override
 	public List<PostView> getViewList(String query, Long locationPostId) {
-		List<PostView> postList 
-		= postRepository.findViewAll(query, locationPostId);
-		
+		List<PostView> postList = postRepository.findViewAll(query, locationPostId);
+
 		return postList;
 	}
 
-// --------------------- 포스팅 상세조회  ---------------------
-//	[포스팅 상세] 포스팅 출력. 
+	// --------------------- 포스팅 상세조회 ---------------------
+	// [포스팅 상세] 포스팅 출력.
 	@Override
 	public PostView getById(Long postId) {
 		PostView post = postRepository.findById(postId);
 		return post;
 	}
-	
-//	[포스팅 상세] 포스팅 댓글 총 개수 . 
+
+	// [포스팅 상세] 포스팅 댓글 총 개수 .
 	@Override
 	public int commentCount(Long postId) {
 		int totalComment = postRepository.count(postId);
 		return totalComment;
 	}
-	
-//	[포스팅 수정] 포스팅 상세조회 
+
+	// [포스팅 수정] 포스팅 상세조회
 	@Override
 	public Post getByIdForEdit(Long postId) {
 		Post post = postRepository.findByIdForEdit(postId);
 		return post;
 	}
-//	[포스팅 수정] 포스팅 수정 저장. 
+
+	// [포스팅 수정] 포스팅 수정 저장.
 	@Override
 	public void edit(Post post) {
 		postRepository.modify(post);
 	}
 
-
-	
-	
-// ~~~~~관리자용~~~~~~~~~
+	// ~~~~~관리자용~~~~~~~~~
 	@Override
 	public int countPost() {
 		int count = postRepository.count();
 		return count;
 	}
-
 
 	@Override
 	public List<PostView> getPostByPage(Integer offset, Integer page, Integer pageSize, String query) {
@@ -126,9 +120,9 @@ public class PostServiceImp implements PostService {
 
 	@Override
 	public void delete(Long postId) {
-		
-		 postRepository.delete(postId);
-			System.out.println(postId);
+
+		postRepository.delete(postId);
+		System.out.println(postId);
 	}
 
 }

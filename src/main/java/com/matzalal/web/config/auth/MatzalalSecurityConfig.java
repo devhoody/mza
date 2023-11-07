@@ -33,6 +33,8 @@ public class MatzalalSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
                         authorize -> authorize
+                        		.requestMatchers("/admin/**")
+                        		.hasRole("ADMIN")
                                 .requestMatchers("/commu/**")
                                 .hasAnyRole("ADMIN", "RICE","ROWRICE")
                                 .requestMatchers("/user/**")

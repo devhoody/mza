@@ -16,5 +16,16 @@ public interface ReportService {
 	// 신고사유 조회
 	List<ReportReason> getReasonList();
 
-	
+	Report getUserReport(Long userReportId);
+
+	Report getReport(Long reportId);
+
+	Report getPostReport(Long reportId);
+
+	Report getCmtReport(Long reportId);
+
+	Integer reportProcessMain(Report reportSave);
+
+	String reportProcessSub(Report reportSave);
+
 }

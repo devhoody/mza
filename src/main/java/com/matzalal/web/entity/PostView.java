@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor // builder랑 붙이지 말기 
+@NoArgsConstructor // builder랑 붙이지 말기
 public class PostView {
-	
+
 	private Long postId;
 	private String alias;
 	private Long userId;
@@ -26,7 +26,7 @@ public class PostView {
 	private String profileImg;
 	private Long postLikeCount;
 	private Long commentCount;
-	private Boolean isLiked;
+	private Boolean isLike;
 	private String sanctionTime;
 
 }

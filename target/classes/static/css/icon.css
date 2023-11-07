@@ -359,25 +359,6 @@
     mask-image:  url(css/image/commu/icon/imgupload.svg);
 }
 
-.icon-commu-delete::before{
-    -webkit-mask-image: url(/css/image/commu/icon/commu-delete.svg);
-    mask-image:  url(css/image/commu/icon/commu-delete.svg);
-}
-
-.icon-commu-report::before{
-    -webkit-mask-image: url(/css/image/commu/icon/commu-report.svg);
-    mask-image:  url(css/image/commu/icon/commu-report.svg);
-}
-
-.icon-commu-add-post::before{
-    -webkit-mask-image: url(/css/image/commu/icon/add-post.svg);
-    mask-image:  url(css/image/commu/icon/add-post.svg);
-}
-.icon-commu-edit::before{
-    -webkit-mask-image: url(/css/image/commu/icon/commu-edit.svg);
-    mask-image:  url(css/image/commu/icon/commu-edit.svg);
-}
-
 .icon-expanding-arrow::before {
   -webkit-mask-image: url(/static/css/image/icon/expanding-arrow.svg);
   mask-image: url(/static/css/image/icon/expanding-arrow.svg);

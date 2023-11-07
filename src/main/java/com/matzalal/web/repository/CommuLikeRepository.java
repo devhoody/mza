@@ -12,6 +12,5 @@ public interface CommuLikeRepository {
 	void delete(Long userId, Long postId);
 
 	PostLike last();
-	
 
 }

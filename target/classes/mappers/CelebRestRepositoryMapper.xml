@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -18,4 +19,26 @@
             <if test="celebId != null">celeb_id = #{celebId}</if>
         </where>
     </select>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.CelebRestRepository">
+
+    <select id="findByCelebId" resultType="CelebRestView">
+        select * from celeb_view
+        where celeb_id = #{celebId}
+    </select>
+
+    <select id="findViewAll" resultType="CelebRestView">
+        select * from celeb_view
+    </select>
+    <select id="findViewByCelebId" resultType="CelebRestView">
+        select * from celeb_view
+        <where>
+            <if test="celebId != null">celeb_id = #{celebId}</if>
+        </where>
+    </select>
+>>>>>>> develop
 </mapper>

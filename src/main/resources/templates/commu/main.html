@@ -156,19 +156,18 @@
                 							type="submit" value="" > </a>
 	                            </div>
 	                            
-	                            <div > 
-                					<button class="commu-edit" 
-                							href=""
-                							th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
+	                           <div > 
+                					<a class="" 
                 							th:data-post="${p.postId}"
-                							type="submit" value="" > </button>
+                							href="/report/post"
+                							type="submit" value="" > R </a>
 	                            </div>
 	                            
 	                            <div > 
                 					<button class="commu-delete" 
                 							th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
                 							th:data-post="${p.postId}"
-                							type="submit" value="" > </button>
+                							type="submit" value="" > D </button>
 	                            </div>
 	                        </section><!-- date_info -->
 	                    </section><!-- top -->
@@ -234,9 +233,8 @@
 									</div>
 
 	                                    <div>
-	                                        <button class="icon commu-likes icon-size:1 icon-hover icon-pointer icon-color:main 
-                                    				"
-                                    				th:classappend="${ p.isLiked} ? icon-commu-likes-fill : icon-commu-likes"
+	                                        <button class="icon commu-likes icon-size:1 icon-hover icon-pointer icon-color:main" 
+                                    				th:classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
 													th:data-currentid="${#authentication.principal.id}"
                                     				th:data-post="${p.postId}"
 	                                                type="button"> 좋아요</button>

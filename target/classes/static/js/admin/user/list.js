@@ -24,7 +24,6 @@ window.addEventListener("load", function(){
 		} 
 		let url = `/admin/api/users/${selectBoxes}`;
 		console.log(url);
-
     	fetch(url, {
 	        method: 'DELETE'
 	    })

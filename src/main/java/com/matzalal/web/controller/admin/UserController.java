@@ -53,106 +53,103 @@ public class UserController {
 
 		User userDtl = service.getById(id);
 		List<Grade> gradeList = service.getGrade();
-//		List<ReportReason> reportReason = service.getReasonList();
+		// List<ReportReason> reportReason = service.getReasonList();
 		List<LocCategory> locCateList = service.getCategoryList();
 
 		model.addAttribute("userDtl", userDtl);
 		model.addAttribute("gradeList", gradeList);
-//		model.addAttribute("reportReason", reportReason);
+		// model.addAttribute("reportReason", reportReason);
 		model.addAttribute("locCateList", locCateList);
 		System.out.println(userDtl);
 
 		return "admin/user/edit";
 	}
-	
-//	@PutMapping("update") 
-//	public String update(
-////			@RequestParam("grade") int gradeId,
-//			User user) {
-//		
-//		service.edit(user); 
-//		System.out.println("수정완료");
-//		System.out.println(user);
-//		System.out.println(user.getGradeId());
-//	
-//		return "redirect:/admin/user/list"; 
-//	}
-	
-//	@PutMapping("update") 
-//	public String update(
-//			HttpServletRequest request,
-//			User user, MultipartFile img) throws IllegalStateException, IOException {
-//		
-//		String strPath = request.getServletContext().getRealPath("/image/user");
-//		System.out.println(strPath);
-//		
-//		// 경로가 없으면 새로 생성해주기
-//		File path = new File(strPath);
-//		if(!path.exists()) {
-//			path.mkdirs();
-//		}
-//		{
-//			// 파일 이름을 가져와서 저장해주기
-//			File file = new File(strPath+File.separator+img.getOriginalFilename());
-//			img.transferTo(file);
-//			
-//			// 메뉴 객체의 img(string)에 imgFile(multifile)이름을 넣어주기 
-//			user.setProfileImg(img.getOriginalFilename());
-//			
-//		}	
-//		
-//		System.out.println(user);
-//		service.edit(user);
-//		System.out.println("수정 완료");
-//	
-//		return "redirect:/admin/user/list"; 
-//	}
-	
 
-//	// 회원 등록 코드
-//	@GetMapping("detail")
-//	public String reg() {
-//		return "/admin/user/detail";
-//	}
+	// @PutMapping("update")
+	// public String update(
+	//// @RequestParam("grade") int gradeId,
+	// User user) {
+	//
+	// service.edit(user);
+	// System.out.println("수정완료");
+	// System.out.println(user);
+	// System.out.println(user.getGradeId());
+	//
+	// return "redirect:/admin/user/list";
+	// }
 
-//	@PostMapping("detail")
-//	public String reg(
-////			@RequestParam(name="userImg") String profileImg,
-//			@RequestParam(name="grade", required=true) Long gradeId,
-//			@RequestParam(name="alias", required=true) String alias,
-//			@RequestParam(name="email", required=true) String email,
-//			@RequestParam(name="pwd", required=true) String pwd,
-//			@RequestParam(name="name", required=true) String name,
-//			@RequestParam(name="phone", required=true) String phone,
-//			@RequestParam(name="status") Long statusId
-//			) {
-//		
-//			User user = User.builder()
-//							.profileImg("user.png")
-//							.gradeId(gradeId)
-//							.alias(alias)
-//							.email(email)
-//							.pwd(pwd)
-//							.name(name)
-//							.phone(phone)
-//							.statusId(statusId)
-//							.build();
-//			System.out.println(user);
-//			service.add(user);
-//					
-//		return "redirect:list";
-//	}
-	
+	// @PutMapping("update")
+	// public String update(
+	// HttpServletRequest request,
+	// User user, MultipartFile img) throws IllegalStateException, IOException {
+	//
+	// String strPath = request.getServletContext().getRealPath("/image/user");
+	// System.out.println(strPath);
+	//
+	// // 경로가 없으면 새로 생성해주기
+	// File path = new File(strPath);
+	// if(!path.exists()) {
+	// path.mkdirs();
+	// }
+	// {
+	// // 파일 이름을 가져와서 저장해주기
+	// File file = new File(strPath+File.separator+img.getOriginalFilename());
+	// img.transferTo(file);
+	//
+	// // 메뉴 객체의 img(string)에 imgFile(multifile)이름을 넣어주기
+	// user.setProfileImg(img.getOriginalFilename());
+	//
+	// }
+	//
+	// System.out.println(user);
+	// service.edit(user);
+	// System.out.println("수정 완료");
+	//
+	// return "redirect:/admin/user/list";
+	// }
+
+	// // 회원 등록 코드
+	// @GetMapping("detail")
+	// public String reg() {
+	// return "/admin/user/detail";
+	// }
+
+	// @PostMapping("detail")
+	// public String reg(
+	//// @RequestParam(name="userImg") String profileImg,
+	// @RequestParam(name="grade", required=true) Long gradeId,
+	// @RequestParam(name="alias", required=true) String alias,
+	// @RequestParam(name="email", required=true) String email,
+	// @RequestParam(name="pwd", required=true) String pwd,
+	// @RequestParam(name="name", required=true) String name,
+	// @RequestParam(name="phone", required=true) String phone,
+	// @RequestParam(name="status") Long statusId
+	// ) {
+	//
+	// User user = User.builder()
+	// .profileImg("user.png")
+	// .gradeId(gradeId)
+	// .alias(alias)
+	// .email(email)
+	// .pwd(pwd)
+	// .name(name)
+	// .phone(phone)
+	// .statusId(statusId)
+	// .build();
+	// System.out.println(user);
+	// service.add(user);
+	//
+	// return "redirect:list";
+	// }
 
 	// 다중선택 삭제를 위해 주석 처리. 리스트 내 삭제 버튼으로 삭제가능
-//		@DeleteMapping("delete")
-//		public String deleteUsers(@RequestParam(name = "deleteBox") Long id) {
+	// @DeleteMapping("delete")
+	// public String deleteUsers(@RequestParam(name = "deleteBox") Long id) {
 	//
-//			service.deleteUser(id);
-//			System.out.println("삭제완료");
+	// service.deleteUser(id);
+	// System.out.println("삭제완료");
 	//
-//			return "redirect:/admin/user/list";
-//		}
-
+	// return "redirect:/admin/user/list";
+	// }
 
 }

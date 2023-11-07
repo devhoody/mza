@@ -10,6 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import com.matzalal.web.service.ReviewViewService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -42,7 +49,7 @@ public class CelebRestController {
         return "menu/celeb-list";
     }
 //    -------------------------------맛집 조회--------------------------------------------------------
-    @RequestMapping("restDetail")
+    @RequestMapping("detail")
     public String detail(@RequestParam(value = "restId") Long restId,
                          Model model
                          ) {
@@ -60,7 +67,7 @@ public class CelebRestController {
         model.addAttribute("reviewView", reviewView);
 
         return "menu/restDetail/rest_detail";
-    }// http://localhost:8000/menu/restDetail?restId=1
+    }
 
 //    -------------------------------맛집 후기 더보기--------------------------------------------------------
 
@@ -79,7 +86,7 @@ public class CelebRestController {
         model.addAttribute("total", totalReview);
 
 
-        return "menu/detail/review";
+        return "menu/restDetail/rest_review_detail";
     }
 
 }

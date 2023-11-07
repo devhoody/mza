@@ -21,14 +21,14 @@ public class MatzalalUserDetails implements UserDetails {
     private Date sanctionTime;
 
     public Date getSanctionTime() {
-		return sanctionTime;
-	}
+        return sanctionTime;
+    }
 
-	public void setSanctionTime(Date sanctionTime) {
-		this.sanctionTime = sanctionTime;
-	}
+    public void setSanctionTime(Date sanctionTime) {
+        this.sanctionTime = sanctionTime;
+    }
 
-	public Integer getFavCount() {
+    public Integer getFavCount() {
         return favCount;
     }
 

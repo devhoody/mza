@@ -1,5 +1,5 @@
 .aside{
-
+	height: 100vh;
 }
 
 
@@ -28,8 +28,11 @@
 
 .sidebar
     .content-box{
-        display: block;
+        display: flex;
+        flex-direction: column;
         text-align: center;
+        height: 100vh;
+        justify-content: space-between;
     }
 
 
@@ -38,7 +41,7 @@
         .aside-list{
             display: flex;
             flex-direction: column;
-            gap: var(--gap-5);
+            gap: 20px;
         }
         
 		.aside-list
@@ -46,7 +49,14 @@
 				margin-top: 30px;
 				margin-bottom: 10px;
 			}
-
+.sidebar   
+    .content-box
+        .aside-list
+        	.category-block{
+				display: flex;
+				flex-direction: column;
+        		gap: 20px;
+			}
 
 .sidebar
     .content-box
@@ -89,6 +99,7 @@
             flex-direction: column;
             align-items: center; 
             padding: 10px 0;   
+            margin-top: 20px;
     }
     
     .second-aside
@@ -133,6 +144,7 @@
 
         justify-content: center;
         align-items: center; 
+        justify-content: space-between;
         /*margin-top: 53px;*/
     }
 

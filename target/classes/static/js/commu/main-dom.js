@@ -4,15 +4,16 @@ window.addEventListener("load", function(){
 	let locUl = commuLocFilterSection.querySelector("ul");
 	let currentLoc = locUl.querySelector("li:first-child a");
 	
+	// post-detail 페이지 연
 	let content = document.querySelector(".post-layout ");
-	let bottom = document.querySelectorAll(".bottom");
+	// 
+	let bottom = document.querySelector(".bottom");
 	
 	// 검색 버튼 
     let findButton = document.querySelector(".query-filter .btn-search");
 	// 삭제 버튼 (-> 나중에 모달로 바꿔야...! )	
 	let commuDeleteList = document.querySelectorAll(".commu-delete");
       console.log("commuDeleteList :  "+commuDeleteList);
-      console.log("bottom:  "+bottom.length);
 
 
 // ------------------------- 포스팅 삭제  -------------------------
@@ -62,59 +63,79 @@ window.addEventListener("load", function(){
 	}
 	
 // ------------- 좋아요 클릭 -> EventListener 페이지에 존재하는 요소로 받기! -------------------
-	for (let i =0 ; i<bottom.length; i++){
-	    bottom[i].addEventListener("click", async function(e) {
-			let btn = document.querySelector(".commu-likes")
-			console.log("클릭체크")
+
+    bottom.addEventListener("click", async function(e) {
+        let el = e.target;
+        e.preventDefault();
+
+        // 클릭된 요소가 "icon-commu-likes" 클래스를 가진 경우에만 처리
+        if (el.classList.contains("icon-commu-likes")) {
+            console.log("게시물 ID: " + el.dataset.post);
+            console.log("좋아요");
+
+            // 좋아요 처리를 위한 API 호출 등의 로직 추가
+            let url = `/api/commu/likes`;
+
+            let response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    postId: el.dataset.post
+                })
+            });
+        }
+    });	
+	  bottomLikes.addEventListener("click", async function (e) {
 	        let el = e.target;
 	        e.preventDefault();
 	
-	        // 클릭된 요소가 "icon-commu-likes" 클래스를 가진 경우에만 처리
-	        if (el.classList.contains("icon-commu-likes")) {
-	            console.log("게시물 ID: " + el.dataset.post);
-	            console.log("좋아요");
-	
-	            // 좋아요 처리를 위한 API 호출 등의 로직 추가
-	            let url = `/api/commu/likes`;
-	
-	            let resp = await fetch(url, {
-	                method: 'POST',
-	                headers: {
-	                    'Content-Type': 'application/json',
-	                },
-	                body: JSON.stringify({
-	                    postId: el.dataset.post
-	                })
-	            });
-	            if(resp.ok){
-					console.log(btn)
-					console.log("등록 성공")
-//					btn.classList.add("icon-commu-likes-fill")
-//					btn.classList.remove("icon-commu-likes")
-					
-				}
+	        // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+	        // likes -> likes-fill
+	        if (!el.classList.contains("icon-commu-likes")) 
+	 			return;
+	            console.log("postId: " + el.dataset.post);
+	            console.log("like");
 	            
 	            
-	        }
-	           if (el.classList.contains("icon-commu-likes-fill")) {
-			        
-				    console.log("접속한 사람 : " + el.dataset.currentid);
-				    console.log("postId: " + el.dataset.post);
-				    
-				    let delurl = `/api/commu/likes/posts/${el.dataset.post}`;
-				    
-				        let response = await fetch(delurl, {
-				            method: 'DELETE',
-				        });
-				        
-				        if(response.ok){
-							console.log("삭제성공")
-						}
-					
-				}
-	    });	
-   } 
+	      	let url = `/api/commu/likes`
+	        
+	        let response = await fetch(url, {
+				method:'POST',
+				headers: {
+	            	'Content-Type': 'application/json',
+	            },
+	            body: JSON.stringify({
+	                postId: el.dataset.post
+				})
+			})
+	        
+	    });
+	
+		bottomLikes.addEventListener("click", async function (e) {
+		    let el = e.target;
+		    
+		    e.preventDefault();
+		    console.log("좋아요 취소 " + el);
+		    
+		    // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+		    if (!el.classList.contains("icon-commu-likes-fill")) 
+		        return;
+		    
+		    console.log("접속한 사람 : " + el.dataset.currentid);
+		    console.log("postId: " + el.dataset.post);
+		    console.log("likefill");
+		    
+		    let url = `/api/commu/likes/posts/${el.dataset.post}`;
+		    
+		        let response = await fetch(url, {
+		            method: 'DELETE',
+		        });
 
+
+		});
+		
 		
 // ------------- 지역카테고리 선택시 -> query전달 함수 -> data json으로 전달 -------------
 
@@ -144,8 +165,58 @@ window.addEventListener("load", function(){
         let response = await fetch(url);
         let json = await response.json();
         bind(json);
-
- 
+        
+    bottom = document.querySelectorAll(".bottom");
+	    bottom.forEach((bottomLikes) => {
+	     bottomLikes.addEventListener("click", async function (e) {
+	        let el = e.target;
+	        e.preventDefault();
+	
+	        // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+	        // likes -> likes-fill
+	        if (!el.classList.contains("icon-commu-likes")) 
+	 			return;
+	            console.log("postId: " + el.dataset.post);
+	            console.log("like");
+	            
+	            
+	      	let url = `/api/commu/likes`
+	        
+	        let response = await fetch(url, {
+				method:'POST',
+				headers: {
+	            	'Content-Type': 'application/json',
+	            },
+	            body: JSON.stringify({
+	                postId: el.dataset.post
+				})
+			})
+	        
+	    });
+	
+		bottomLikes.addEventListener("click", async function (e) {
+		    let el = e.target;
+		    
+		    e.preventDefault();
+		    console.log("클릭" + el);
+		    
+		    // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+		    if (!el.classList.contains("icon-commu-likes-fill")) 
+		        return;
+		    
+		    console.log("접속한 사람 : " + el.dataset.currentid);
+		    console.log("postId: " + el.dataset.post);
+		    console.log("likefill");
+		    
+		    let url = `/api/commu/likes/posts/${el.dataset.post}`;
+		    
+		        let response = await fetch(url, {
+		            method: 'DELETE',
+		        });
+	
+		});
+	});
+        
 };
 	
 // ------------- 데이터 요청 후 응답기다리는...! -------------
@@ -169,7 +240,7 @@ window.addEventListener("load", function(){
 	                            <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
 	
 	                            <div class="badge">
-	                                <img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" /> 
+	                                <img src="/css/image/icon/badge${p.gradeId}.svg" style="height:20px;" alt="등급2" /> 
 	                            </div>
 	                                
 	                            <div class="nickname" >
@@ -241,7 +312,7 @@ window.addEventListener("load", function(){
 	                                <h1 class="d:none"> 조회수 </h1>
 	
 	                                    <div>
-	                                        <span class="deco icon-commu-view icon-size:1 icon-color:main" href=""> 조회수</span>
+	                                        <span class="deco-commu icon-commu-view icon-size:1 icon-color:main" href=""></span>
 	                                    </div>
 	
 	                                    <div>
@@ -254,29 +325,29 @@ window.addEventListener("load", function(){
 	
 	                                    <div>
 	                                        <button class=" ${iconLike} icon icon-size:1 icon-hover icon-pointer icon-color:main" 
-                                                     
+                                                    classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
                                     				data-post="${p.postId}"
-	                                                type="button"> 좋아요</button>
+	                                                type="button"></button>
 	                                    </div>
 	
 	                                    <div>
 	                                        <span> ${p.postLikeCount} </span>
 	                                    </div>
-	                            </section><!-- like -->
+	                            </section><!— like —>
 	            
 	                            <section class="comment">
 	                                <h1 class="d:none"> 댓글 </h1>
 	
 	                                    <div>
-	                                        <span class="deco icon-comment icon-size:1 icon-color:main" href=""> 댓글</span>
+	                                        <span class="deco-commu icon-comment icon-size:1 icon-color:main" href=""></span>
 	                                    </div>
 	
 	                                    <div>
 	                                        <span> ${p.commentCount} </span>
 	                                    </div>
-	                            </section><!-- comment -->
+	                            </section><!— comment —>
 	                            
-	                    </section><!-- bottom -->
+	                    </section><!— bottom —>
                   </div>  
             `;
 	        

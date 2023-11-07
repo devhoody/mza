@@ -52,6 +52,12 @@
                                     12분전   
                                 </span> 
                             </div>
+                             <div > 
+            					<button class="post-delete" 
+            							th:data-post="${p.postId}"
+            							th:data-postUser="${p.userId}"
+            							type="submit" value="" > 삭제 </button>
+                           		</div>
 
                             <div > 
                 					<a class="commu-edit" 
@@ -215,8 +221,7 @@
 
                                  
                                  <div > 
-            					<button  class="commu-delete" 
-                					th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
+            					<button class="comment-delete" 
             							th:data-comment="${c.commentId}"
             							th:data-post="${c.postId}"
             							type="submit" value="" > 삭제 </button>

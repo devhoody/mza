@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface HomeService {
 
-
     List<RecomView> getRecomViewList();
 
     List<Review> getReviewList();

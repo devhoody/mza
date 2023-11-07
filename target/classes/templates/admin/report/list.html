@@ -26,16 +26,16 @@
     
                 <!-- 등록, 수정, 삭제 버튼 -->
                 <div class="manage-button">
-                    <a href="/admin/report/process" class="store-create-button">
+                    <!--<a href="/admin/report/process" class="store-create-button">
                         <input type="button" value="처리" class="btn-main btn-main-create btn-main-small">
-                    </a>
-                    <a class="store-delete-button">
+                    </a>-->
+                    <!--<a class="store-delete-button">
                         <input type="button" value="삭제" class="btn-main btn-main-create btn-main-create-delete btn-main-small">
-                    </a>
+                    </a>-->
                 </div>
                   
                 <div class="dropdown-select md:dropdown-select">
-                    <form action="" class="report-select md:report-select">
+                   <!-- <form action="" class="report-select md:report-select">
                         <legend for="report" class="d:none">신고구분 선택창</legend>
                             <select id="" name="">
                                 <option value="1">회원신고</option>
@@ -50,7 +50,7 @@
                                 <option value="처리완료">처리완료</option>
                                 <option value="미처리">미처리</option>
                             </select>
-                    </form>
+                    </form>-->
                 </div>
             </header>
         
@@ -99,12 +99,23 @@
 	                </div>
 	
 	                <!-- 미처리 시 색이 accent 2(report-compleated-no), 처리완료 시 accent 1(report-compleated)로 변경-->
-	                <div class="report-status-block">
-	                    <span th:class="${r.processYn == 0} ? 'report-completed-no' : 'report-completed'"
-	                    	  th:text="${r.processYn == 0} ? '미처리' : '처리완료'" >
-	                    </span>
+	                <div class="report-status-block" th:switch="${r.reportGbn}">
+		                <a th:case="USER" th:href="'/admin/report/userProcess?reportId=' + ${r.reportSeq}">
+		                    <span th:class="${r.processYn == 0} ? 'report-completed-no' : 'report-completed'"
+		                    	  th:text="${r.processYn == 0} ? '미처리' : '처리완료'" >
+		                    </span>
+		                </a>
+		                <a th:case="POST" th:href="'/admin/report/postProcess?reportId=' + ${r.reportSeq}">
+		                    <span th:class="${r.processYn == 0} ? 'report-completed-no' : 'report-completed'"
+		                    	  th:text="${r.processYn == 0} ? '미처리' : '처리완료'" >
+		                    </span>
+		                </a>
+		                <a th:case="COMMENT" th:href="'/admin/report/commentProcess?reportId=' + ${r.reportSeq}">
+		                    <span th:class="${r.processYn == 0} ? 'report-completed-no' : 'report-completed'"
+		                    	  th:text="${r.processYn == 0} ? '미처리' : '처리완료'" >
+		                    </span>
+		                </a>
 	                </div>
-	                
 	            </section> 
 	            
 	               <!-- 페이지 이동 -->

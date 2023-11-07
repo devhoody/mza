@@ -5,7 +5,7 @@
   align-items: center;
   /* justify-content: center; */
   /* margin: 0 30px; */
-   margin-top: 40px;
+   margin-top: 30px;
 }
 
 .report
@@ -31,10 +31,20 @@
 	    margin-bottom: 10px;
 	    font-size: 17px;
 }*/
+
+.report
+	.report-form
+		.reported-user-block{
+			display: flex;
+			flex-direction: column;
+			gap: var(--gap-2);
+			margin-bottom: 20px;
+		}
+
 .report 
 	.report-box {
-	    height: 310px;
-}
+	    height: 290px;
+	}
 .report 
 	.report-box li {
 	    display: flex;
@@ -52,7 +62,7 @@
 
 .report 
 	.write-reason-box {
-	    margin-bottom: 55px;
+	    margin-bottom: 10px;
 	    text-align: center;
 }
 
@@ -94,7 +104,7 @@
         border: none;
         color: var(--color-base-0);
         filter: drop-shadow(0px 2px 2px #d0d0d1);
-        
+        margin-top: 20px;
         cursor: pointer;
         /* margin-right: 10px; */
 }
@@ -141,5 +151,10 @@
   color: var(--color-base-4);
 
   margin: 30px;
+}
+
+.select-sanctionTime
+	input{
+	  margin:10px 10px;
 }
 

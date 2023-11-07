@@ -18,4 +18,4 @@ public class Answer {
 	private Date createdDate;
 	private Long questionId;
 	private Long open;
-	}
+}

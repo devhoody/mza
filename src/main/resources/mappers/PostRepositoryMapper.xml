@@ -151,6 +151,13 @@
   		</foreach>
   	</delete>
   	
+  	<select id="findPostWithIsLike" resultType="PostView"> 
+ 
+        select p.*,
+            if(lp.post_id is null, 0, 1) as isliked
+        from post_u_li_co_view p
+        left join (select * from likes_post where user_id=#{currentUserId}) lp on p.post_id = lp.post_id
 
+    </select>
   		
 </mapper>

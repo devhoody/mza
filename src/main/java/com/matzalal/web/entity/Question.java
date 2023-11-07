@@ -25,15 +25,12 @@ public class Question {
 	private String alias;
 	private Integer open;
 	private Long answerId;
-	
+
 	// 답변글 조회용 칼럼
 	private String aTitle;
 	private String aContent;
 	private String aImg;
 	private Date aCreatedDate;
 	private String adminAlias;
-	
-	
-	
-	
-	}
+
+}

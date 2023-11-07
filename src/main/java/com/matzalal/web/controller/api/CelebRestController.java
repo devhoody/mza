@@ -19,8 +19,7 @@ public class CelebRestController {
     private CelebListService celebListService;
 
     @GetMapping
-    public List<CelebRestView> list(@RequestParam(name="c", required = false) Long celebId
-    ){
+    public List<CelebRestView> list(@RequestParam(name = "c", required = false) Long celebId) {
         List<CelebRestView> celebRestList = celebRestService.getCelebListViewById(celebId);
         List<Celeb> celebCategoryList = celebListService.getCelebList();
 
@@ -28,22 +27,24 @@ public class CelebRestController {
         System.out.println(celebRestList);
         return celebRestList;
     }
-//    @GetMapping("{id}")
-//    public Menu detail(@PathVariable long id
-////        , @PathVariable String name
-//    ){
-//        Menu menu = service.getById(id);
-//        return menu;
-//    }
-//@GetMapping
-//public List<Celeb> list(@RequestParam(name="restId", required = false) Long celebId
-//){
-////    List<CelebRestView> celebRestList = celebRestService.getCelebListViewById(celebId);
-//    List<Celeb> celebCategoryList = celebListService.getCelebList(celebId);
-//
-//    System.out.println(celebId);
-//    System.out.println(celebCategoryList);
-//    return celebCategoryList;
-//}
+    // @GetMapping("{id}")
+    // public Menu detail(@PathVariable long id
+    //// , @PathVariable String name
+    // ){
+    // Menu menu = service.getById(id);
+    // return menu;
+    // }
+    // @GetMapping
+    // public List<Celeb> list(@RequestParam(name="restId", required = false) Long
+    // celebId
+    // ){
+    //// List<CelebRestView> celebRestList =
+    // celebRestService.getCelebListViewById(celebId);
+    // List<Celeb> celebCategoryList = celebListService.getCelebList(celebId);
+    //
+    // System.out.println(celebId);
+    // System.out.println(celebCategoryList);
+    // return celebCategoryList;
+    // }
 
 }
