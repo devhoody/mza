@@ -4,23 +4,17 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.matzalal.web.entity.Question;
+import com.matzalal.web.entity.Answer;
 
 @Mapper
 public interface AnswerRepository {
 
-	void save(Question qna);
+	List<Answer> findAll();
 
-	Question last();
+	void save(Answer answer);
 
-	List<Question> findAll();
+	Answer last();
 
-	int count();
-
-	List<Question> getListByPage(int offset, int page, int size, Long questionId, String query);
-
-	Question findById(Long questionId);
-
-	void modify(Question question);
+	void modify(Answer answer);
 
 }

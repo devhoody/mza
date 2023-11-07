@@ -1,5 +1,7 @@
 package com.matzalal.web.config.auth;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class MatzalalSecurityConfig {
@@ -33,6 +33,8 @@ public class MatzalalSecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
                         authorize -> authorize
+                        		.requestMatchers("/admin/**")
+                        		.hasRole("ADMIN")
                                 .requestMatchers("/commu/**")
                                 .hasAnyRole("ADMIN", "RICE","ROWRICE")
                                 .requestMatchers("/user/**")

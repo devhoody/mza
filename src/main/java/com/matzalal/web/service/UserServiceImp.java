@@ -1,5 +1,6 @@
 package com.matzalal.web.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.matzalal.web.entity.*;
@@ -8,15 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class UserServiceImp implements UserService {
 
-	@Autowired
-	private UserRepository repository;
-	
-	@Autowired
-	private GradeRepository gradeRepository;
+    @Autowired
+    private UserRepository repository;
+
+    @Autowired
+    private GradeRepository gradeRepository;
     @Autowired
     private UserGradeRepository userGradeRepository;
 
@@ -25,29 +25,32 @@ public class UserServiceImp implements UserService {
 
     @Autowired
     private PasswordEncoder encoder;
-	
-	@Autowired
-	private ReportReasonRepository reportReasonRespository;
-	
-	@Autowired
-	private LocationUserRepository locationUserRepository;
-	
-	@Override
+
+    @Autowired
+    private ReportReasonRepository reportReasonRespository;
+
+    @Autowired
+    private LocationUserRepository locationUserRepository;
+
+    // 회원 목록 조회
+    @Override
     public List<User> getList() {
         System.out.println(repository.findAll());
         return repository.findAll();
     }
-	
-	@Override
-	public List<User> getList(Integer offset, Integer page, Integer pageSize, String query) {
-//		int size = 10;
-//		int offset = size * (page-1);
-		return repository.findAllByPage(offset, page, pageSize, query);
-	}
-	
-     @Override
+
+    // 회원 목록 페이지별 조회
+    @Override
+    public List<User> getList(Integer offset, Integer page, Integer pageSize, String query) {
+        // int size = 10;
+        // int offset = size * (page-1);
+        return repository.findAllByPage(offset, page, pageSize, query);
+    }
+
+    // 회원가입
+    @Override
     public User signUp(User user) {
-        //비밀번호 암호화
+        // 비밀번호 암호화
         String plainPwd = user.getPwd();
         String hashedPwd = encoder.encode(plainPwd);
         System.out.println(hashedPwd);
@@ -60,7 +63,7 @@ public class UserServiceImp implements UserService {
         User newUser = repository.last();
         // 권한 저장하기
         Long gradeId = newUser.getGradeId();
-        Long userId= newUser.getId();
+        Long userId = newUser.getId();
 
         UserGrade userGrade = UserGrade.builder()
                 .userId(userId)
@@ -71,7 +74,8 @@ public class UserServiceImp implements UserService {
 
         return newUser;
     }
-	
+
+    // 회원 아이디 조회
     @Override
     public User getById(Long id) {
         return repository.findById(id);
@@ -82,7 +86,7 @@ public class UserServiceImp implements UserService {
         int cnt = repository.findEmail(email);
         System.out.println("이메일 개수 : " + cnt);
 
-        if(cnt == 1){
+        if (cnt == 1) {
             return true;
         } else
             return false;
@@ -102,18 +106,18 @@ public class UserServiceImp implements UserService {
     public UserView getUserViewById(Long id) {
         return repository.findUserViewById(id);
     }
-    
-// ~~~~~  관리자용 ~~~~~~ //
-    
-	@Override
-	public Integer countUser() {
-		int count = repository.count();
-		return count;
-	}
 
-	@Override
-	public void edit(User user) {
-        if(user.getPwd() !=null) {
+    // ~~~~~ 관리자용 ~~~~~~ //
+    // 회원 수 조회
+    @Override
+    public Integer countUser() {
+        int count = repository.count();
+        return count;
+    }
+
+    @Override
+    public void edit(User user) {
+        if (user.getPwd() != null) {
             String plainPwd = user.getPwd();
             String hashedPwd = encoder.encode(plainPwd);
             System.out.println("암호 변경요청시 인코딩된 암호 :" + hashedPwd);
@@ -121,11 +125,15 @@ public class UserServiceImp implements UserService {
             user.setPwd(hashedPwd);
         }
 
-		System.out.println("editimp");
-		repository.modify(user);
-	}
+        System.out.println("editimp");
+        repository.modify(user);
 
-	@Override
+        // 회원 등급 수정
+        userGradeRepository.modify(user);
+    }
+
+    // 회원 삭제
+    @Override
     public boolean delete(Long id) {
         int rowCount = repository.delete(id);
 
@@ -135,7 +143,7 @@ public class UserServiceImp implements UserService {
 
         return false;
     }
-    
+
     @Override
     public boolean hasName(String name) {
         return repository.hasIdByName(name);
@@ -156,12 +164,11 @@ public class UserServiceImp implements UserService {
         return repository.findPostViewById(id);
     }
 
-
-	@Override
-	public List<Grade> getGrade() {
-		List<Grade> grade = gradeRepository.findAll();
-		return grade;
-	}
+    @Override
+    public List<Grade> getGrade() {
+        List<Grade> grade = gradeRepository.findAll();
+        return grade;
+    }
 
     @Override
     public List<ReportReason> getReasonList() {
@@ -199,8 +206,7 @@ public class UserServiceImp implements UserService {
     public boolean hasForFindId(User user) {
         int result = repository.findForFindId(user);
 
-
-        if(result == 0) {
+        if (result == 0) {
             return false;
         } else
             return true;
@@ -215,7 +221,7 @@ public class UserServiceImp implements UserService {
     public boolean hasForFindPwd(User user) {
         int result = repository.findForFindPwd(user);
 
-        if(result == 0) {
+        if (result == 0) {
             return false;
         } else
             return true;
@@ -226,9 +232,29 @@ public class UserServiceImp implements UserService {
         int cnt = repository.findAlias(query);
         System.out.println("닉네임 개수 : " + cnt);
 
-        if(cnt == 1){
+        if (cnt == 1) {
             return true;
         } else
             return false;
     }
+
+    // 회원 활동 정지
+    @Override
+    public void inactiveUser(String email) {
+        repository.userSanction(email);
+    }
+
+    // 회원 정지 해제
+    @Override
+    public void activeUser(String email) {
+        repository.userSanctionCancel(email);
+    }
+
+    // 회원 활동 정지 기간 확인
+    @Override
+    public Date getSancTime(String email) {
+        Date userSancTime = repository.userSanctionTime(email);
+        return userSancTime;
+    }
+
 }

@@ -41,9 +41,9 @@ window.addEventListener("load", function () {
         for(let cr of CelebRestViewList){
             let template = `
                         <article class="celeb_rest">
-                            <h1 class="d:none">또순이네</h1>
-                            <a class="rest_name">${cr.restName}</a>
-                            <img src="/css/image/${cr.bannerImg}">
+                            <h1 class="d:none" >또순이네</h1>
+                            <a class="rest_name" href="/celeb/detail?restId=${cr.restId}">${cr.restName}</a>
+                            <a href="/celeb/detail?restId=${cr.restId}"><img src="/css/image/${cr.bannerImg}"></a>
                         </article>`;
 
             celebRestList.insertAdjacentHTML("beforeend",template);

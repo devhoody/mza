@@ -3,19 +3,17 @@
 	xmlns:th="http://www.thymeleaf.org" 
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{inc/layout.html}">
+	
 <head>
-
-  <link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
-  <link href="/css/components/commu/location.css" rel="stylesheet" type="text/css">
-  <link href="/css/components/commu/ranking.css" rel="stylesheet" type="text/css">
+ <link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
+ <link href="/css/components/commu/location.css" rel="stylesheet" type="text/css">
+ <link href="/css/components/commu/ranking.css" rel="stylesheet" type="text/css">
  <link href="/css/components/commu/post/main.css" rel="stylesheet" type="text/css">
  <script src="/js/commu/main-dom.js"> </script> 
 
 </head>
 
 <body>
-
-
 	<main layout:fragment="main" class="mainlayout md:mainlayout" id="main">
      <!-- -----------------랭킹--------------- -->
 
@@ -24,130 +22,59 @@
         <section class="ranking">
             <h1>👑  이번주 조회수 인기글  👑</h1>
 
-            <section class="list">
+            <section class="list"
+              th:each="rt:${hitBestList}">
                 <h1 class="d:none"> 조회수기준 인기글 리스트 </h1>
                 
                 <ul >
-
                     <li> 
                         <a class="post" href="" >
-                            <div class="number color-purple"> 1. </div>
-                            <p>
+                            <div 
+                            class="number color-purple"
+                            th:text=${rt.rownum}
+                            th:href="@{post/detail?(post-id=${rt.postId})}"
+                            > 1. </div>
+                            <p th:text=${rt.title} >
                                 상큼하고 부드러움이 완벽한 타르트
                             </p>
-                            <div class="img"> <img src="/image/ranking1.JPG"> </div>
+                            <div class="img"> 
+								<img src="/image/ranking1.JPG"> 
+							</div>
                         </a>
                     </li>
-                    
-                    <li> 
-                        <a class="post">
-                            <div class="number color-blue"> 2. </div>
-                            <p>
-                                맛잘알들은 반쎄오를 알겠지ㅎㅎㅎ
-                            </p>
-                            <div class="img"> <img src="/image/ranking2.JPG"> </div>
-                        </a>
-                    </li>                
-                    
-                    <li> 
-                        <a class="post">
-                            <div class="number color-green"> 3. </div>
-                            <p>
-                                나만 알고 싶었는데... 알려드림...
-                            </p>
-                            <div class="img"> <img src="/image/ranking3.JPG"> </div>
-                        </a>
-                    </li>
-
-                    <li class="mxd:d:none "> 
-                        <a class="post">
-                            <div class="number color-purple"> 4. </div>
-                            <p>
-                                감자토핑이 이렇게 맛있을 일?
-                            </p>
-                            <div class="img"> <img src="/image/ranking4.JPG"> </div>
-                        </a>
-                    </li>
-
-                    <li class=" mxd:d:none"> 
-                        <a class="post">
-                            <div class="number color-blue"> 5. </div>
-                            <p>
-                                뇨끼는 여기서  ^______^
-                            </p>
-                            <div class="img"> <img src="/image/ranking5.JPG"> </div>
-                        </a>
-                    </li>
-
                 </ul>
 
             </section>
 
-        </section>
+        </section> <!-- 조회수 인기글 끝 -->
 
         <section class="ranking mxd:d:none">
           <h1> ❤️ 이번주 좋아요 인기글 ❤️ </h1>
 
-          <section class="list">
+          <section class="list"
+          th:each="rl:${likesBestList}">
               <h1 class="d:none"> 좋아요기준 인기글 리스트 </h1>
 
               <ul >
 
                   <li> 
                       <a class="post">
-                          <div class="number color-purple"> 1. </div>
-                          <p>
-                              상큼하고 부드러움이 완벽한 타르트
-                          </p>
-                          <div class="img"> <img src="/image/ranking1.JPG"> </div>
+                          <div class="number color-purple" 
+                          	th:text=${rl.rownum}> 1. </div>
+	                          <p th:text=${rl.title}>
+	                              상큼하고 부드러움이 완벽한 타르트
+	                          </p>
+                          <div class="img"> 
+							  <img src="/image/ranking1.JPG"> 
+						  </div>
                       </a>
                   </li>
-                
-                  <li> 
-                      <a class="post">
-                          <div class="number color-blue"> 2. </div>
-                          <p>
-                              맛잘알들은 반쎄오를 알겠지ㅎㅎㅎ
-                          </p>
-                          <div class="img"> <img src="/image/ranking2.JPG"> </div>
-                      </a>
-                  </li>                
-                  
-                  <li> 
-                      <a class="post">
-                          <div class="number color-green"> 3. </div>
-                          <p>
-                              나만 알고 싶었는데... 알려드림...
-                          </p>
-                          <div class="img"> <img src="/image/ranking3.JPG"> </div>
-                      </a>
-                  </li>
-
-                  <li class="  mxd:d:none"> 
-                      <a class="post">
-                          <div class="number color-purple"> 4. </div>
-                          <p>
-                              감튀토핑이 이렇게 맛있을일?
-                          </p>
-                          <div class="img"> <img src="/image/ranking4.JPG"> </div>
-                      </a>
-                  </li>
-
-                  <li class=" mxd:d:none"> 
-                      <a class="post">
-                          <div class="number color-blue"> 5. </div>
-                          <p>
-                              뇨끼는 여기서  ^______^
-                          </p>
-                          <div class="img"> <img src="/image/ranking5.JPG"> </div>
-                      </a>
-                  </li>
-
+   
               </ul>
 
           </section>
 
-        </section>
+        </section> <!-- 좋아요 인기글 끝 -->
 
     </section><!-- 랭킹 끝 -->
 
@@ -181,7 +108,7 @@
 	        <section class = "commu-area md:commu-area">
 <!--	            <h1 class = "d:none"> 🌝 커뮤 공간 🌝 </h1>-->
 				
-		        <!-- ------------------- 피드 1열 ----------------- -->
+	        <!-- ------------------- 피드 1열 ----------------- -->
 	
 	            <section class="post-layout md:post-layout">
 	                <h2 class = "d:none"> 피드 1 </h2>
@@ -196,15 +123,18 @@
 	                            <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
 	
 	                            <div class="badge">
-	                                <img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" /> 
-	                            </div>
+	                                <img 
+	                                th:src="@{'/css/image/icon/badge' + ${p.gradeId} + '.svg'}"
+	                                src="/image/icon/grade2.svg" 
+	                                style="height:20px;" alt="등급2" /> 
 	                                
+	                            </div>
 	                            <div class="nickname" >
 	                                <span th:text="${p.alias}"> 
 	                                    팅클이졸귀임 
 	                                </span>
 	                            </div>
-	                        </section> 	<!-- member_info-->
+	                        </section> 	<!-- member_info-->			
 	
 	                        <section class="date_info md:date_info">
 	                            <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
@@ -215,22 +145,37 @@
 	                                </span> 
 	                            </div>
 	
-	                            <div>
-	                                <a class="icon icon-commu-more icon-size-commu:2 icon-color:va" href=""> 세로 확장</a>
+	                          	<!--  <div>
+	                                <a class="icon icon-commu-more icon-size-commu:2 " href=""> 세로 확장</a>
+	                            </div>-->
+	                            
+	                           <div > 
+                					<a class="" 
+                							th:classappend="${#authentication.principal.id == p.userId} ? 'd:none' : 'icon icon-size:0 icon-color:base-4 icon-commu-report'"
+                							href="/report/post"
+                							type="submit" value="" > </a>
 	                            </div>
 	                            
+	                           <div > 
+                					<a class="" 
+                							th:data-post="${p.postId}"
+                							href="/report/post"
+                							type="submit" value="" > R </a>
+	                            </div>
 	                            
 	                            <div > 
                 					<button class="commu-delete" 
+                							th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
                 							th:data-post="${p.postId}"
-                							type="submit" value="" > 삭제 </button>
+                							type="submit" value="" > D </button>
 	                            </div>
 	                        </section><!-- date_info -->
 	                    </section><!-- top -->
-
+	
 						<a
 						id="link"
 						href="post/detail?id=20"
+						th:data-post="${p.postId}"
 						th:href="@{post/detail?(post-id=${p.postId})}"> <!-- detail 조회 링크 -->
 						
 		                    <section class ="middle"
@@ -257,13 +202,7 @@
 		                                    th:src="@{/css/image/commu/post/{img} (img=${p.img1})}" 
 		                                    		alt="Responsive Image1">
 		                                    		
-		                                    <img src="/image/ranking2.JPG"
-		                                    th:src="@{/css/image/commu/post/{img} (img=${p.img2})}" 
-		                                    		alt="Responsive Image2">
-		                                    		
-		                                    <img src="/image/ranking3.JPG"
-		                                    th:src="@{/css/image/commu/post/{img} (img=${p.img3})}" 
-		                                    		alt="Responsive Image3">
+
 		                                </picture>  
 		                            </section><!-- picture -->
 		                    </section><!-- middle -->
@@ -294,11 +233,10 @@
 									</div>
 
 	                                    <div>
-	                                        <button class="icon icon-size:1 icon-hover icon-pointer icon-color:main" 
+	                                        <button class="icon commu-likes icon-size:1 icon-hover icon-pointer icon-color:main" 
                                     				th:classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
 													th:data-currentid="${#authentication.principal.id}"
                                     				th:data-post="${p.postId}"
-                                    				th:data-user="${p.userId}"
 	                                                type="button"> 좋아요</button>
 	                                                
 	                                    </div>
@@ -330,7 +268,6 @@
     </section> <!-- 커뮤니티 공간 끝 -->
 
 
-
     <!-- -----------------  고정버튼:검색,글쓰기 --------------- -->
     <section class="fixed-button md:fixed-button">
         <h1 class="d:none"> 고정버튼: 검색, 글쓰기</h1>
@@ -351,7 +288,7 @@
 
         </div>
         <div>
-            <a href="/commu/post/create " class="icon icon-add icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
+            <a href="/commu/post/create " class="icon icon-commu-add-post icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
         </div>
 
     </section>

@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link href="searchbar.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/search/" rel="stylesheet" type="text/css">
         <link href="/css/components/search/search_result.css" rel="stylesheet" type="text/css">
 
 
@@ -54,11 +54,11 @@
                 </ul>
             </div>
             <div class="menu1">
-                <p>돈까스<span>12000원</span></p>
+                <p th:text="${l.menuName}">돈까스<span>12000원</span></p>
             </div>
-            <div class="menu2">
-                <p>제육볶음</p>
-            </div>
+<!--            <div class="menu2">-->
+<!--                <p>제육볶음</p>-->
+<!--            </div>-->
         </nav>
     </div>
     </main>

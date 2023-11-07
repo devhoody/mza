@@ -1,6 +1,5 @@
 package com.matzalal.web.controller.api;
 
-
 import com.matzalal.web.config.auth.MatzalalUserDetails;
 import com.matzalal.web.entity.User;
 import com.matzalal.web.service.UserService;
@@ -22,8 +21,7 @@ public class UserController {
 
 	@GetMapping("edit")
 	public boolean edit(
-			@RequestParam(name="q") String query
-	){
+			@RequestParam(name = "q") String query) {
 		System.out.println(query);
 		boolean result = service.hasAlias(query);
 
@@ -33,7 +31,7 @@ public class UserController {
 
 	@PutMapping("edit")
 	public boolean update(
-//			@RequestParam("grade") int gradeId,
+			// @RequestParam("grade") int gradeId,
 			Authentication authentication,
 			@RequestBody User user) {
 
@@ -60,8 +58,7 @@ public class UserController {
 			User user,
 			MultipartFile img, // 엔티티의 img 속성명과 같으면 안된다.
 			HttpServletRequest request,
-			Authentication authentication
-	) throws IOException {
+			Authentication authentication) throws IOException {
 		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
 		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
 		Long id = userDetails.getId();
@@ -71,11 +68,10 @@ public class UserController {
 		// webapp경로
 		String strPath = request.getServletContext().getRealPath("/image/user/profile");
 		System.out.println(strPath);
-		//경로 설정
+		// 경로 설정
 		File path = new File(strPath);
 		if (!path.exists())
 			path.mkdirs();
-
 
 		File file = new File(strPath + File.separator + img.getOriginalFilename());
 		img.transferTo(file);
@@ -89,15 +85,15 @@ public class UserController {
 
 	}
 
-//	@GetMapping
-//	public Boolean reg(
-//			@RequestParam String email
-//	){
-//		System.out.println("검색어:" + email);
-//		Boolean hasEmail = service.hasEmail(email);
-//		System.out.println("이메일 유무 :" + hasEmail);
-//
-//		return hasEmail;
-//	}
+	// @GetMapping
+	// public Boolean reg(
+	// @RequestParam String email
+	// ){
+	// System.out.println("검색어:" + email);
+	// Boolean hasEmail = service.hasEmail(email);
+	// System.out.println("이메일 유무 :" + hasEmail);
+	//
+	// return hasEmail;
+	// }
 
 }

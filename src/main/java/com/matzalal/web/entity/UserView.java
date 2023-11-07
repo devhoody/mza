@@ -1,10 +1,14 @@
 package com.matzalal.web.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
@@ -25,4 +29,5 @@ public class UserView {
     private Integer favCount;
     private String gradeName;
     private String gradeImg;
+    private Date sanctionTime;
 }

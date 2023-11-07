@@ -19,11 +19,12 @@
                 <li>
                     <form method="post" enctype="multipart/form-data">
                         <label>
-                                <input type="file" th:data-id="${#authentication.principal.id}" class="profile-img d:none" name="f">
+                                <input type="file" th:data-id="${#authentication.principal.id}" class="profile-img d:none" name="f" multiple>
                                 <img alt="프로필 이미지선택" th:src="@{'/image/user/profile/' + ${userView.profileImg}}">
             <!--                        <img id="profile-img" src="/css/image/user/noh-profile.png" th:src="@{'/css/image/user/' + ${userView.profileImg}}" alt="프로필이미지">-->
                         </label>
                     </form>
+
                 </li>
                 <li><img src="/css/image/icon/badge1.svg" th:src="@{'/css/image/icon/' + ${userView.gradeImg}}"></li>
                 <li><span th:text="${userView.alias}" class="nickname">바지사장</span></li>
@@ -74,6 +75,13 @@
                             <li class="list-content">
                                 <a href="../notice/list">공지사항</a>
                             </li>
+                        </ul>
+                    </section>
+                    
+                    <section sec:authorize="hasRole('ADMIN')">
+                        <h1 class="list-label">관리자</h1>
+                        <ul>
+                            <li class="list-content"><a href="/admin/index">관리자 Index</a></li>
                         </ul>
                     </section>
                 </div>

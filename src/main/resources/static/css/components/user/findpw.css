@@ -9,7 +9,7 @@
     width : 270px;
 }
 
-.comment\:findpw {
+.comment\:findipw {
     color:var(--color-base-4);
     font-size: 12px;
     line-height: 20px;
@@ -20,7 +20,6 @@
     flex-direction: column;
     gap : 30px;
     width: 330px;
-    margin-top : 30px;
 }
 
 .label-box {
@@ -48,12 +47,12 @@
 }
 
 @media(min-width:700px) {
-    .findpw
+    .findid
         .findtab {
             width : 700px;
             display: flex;
             }
-    .findpw
+    .findid
         .findtab
             .md\:findbtn{
             width : 350px;
@@ -62,7 +61,7 @@
 
 /* ------------------findid---------------------------- */
 
-.findpw {
+.findid {
     display: flex;
     flex-direction: column;
     align-items: center;

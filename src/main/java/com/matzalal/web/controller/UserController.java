@@ -112,12 +112,6 @@ public class UserController {
 
         List<PostUserLikeCommentView> myPostList = userService.getPostViewById(id);
         model.addAttribute("list", myPostList);
-        System.out.println(myPostList.size());
-        System.out.println(myPostList.get(0).getPostId());
-        System.out.println(myPostList.get(0).getAlias());
-        System.out.println(myPostList.get(0).getPostLikeCount());
-        System.out.println(myPostList.get(0).getCommentCount());
-
 
         return "user/mypost";
     }

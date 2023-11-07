@@ -1,5 +1,5 @@
 window.onload = function () {
-    const slider = document.querySelectorAll(".scrollMenu .container");
+    const slider = document.querySelector(".scrollMenu .container");
     let isDown = false;
     let startX;
     let scrollLeft;
