@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.matzalal.web.entity.Faq;
-import com.matzalal.web.entity.Question;
 import com.matzalal.web.service.FaqService;
 
 @Controller

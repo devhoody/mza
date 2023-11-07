@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Accordion Menu</title>
+
+  <link href="../root.css" rel="stylesheet" type="text/css">
+  <link href="../style.css" rel="stylesheet" type="text/css">
+  <link href="../util.css" rel="stylesheet" type="text/css">
+  <link href="../icon.css" rel="stylesheet" type="text/css">
+  <link href="../button.css" rel="stylesheet" type="text/css">
+  <link href="header.css" rel="stylesheet" type="text/css">
+  <link href="layout.css" rel="stylesheet" type="text/css">
+  <link href="bottom.css" rel="stylesheet" type="text/css">
+  <link href="faqList.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+
+
+<div class = "search_div">
+    <form id="searchBarForm" name action="/product/search.html" method="get" target="_self" enctype="multipart/form-data">
+        <input id="banner_action" name="banner_action" value type="hidden">
+        <div class="xans-element- xans-layout xans-layout-searchheader">
+            <fieldset>
+                <input id ="keyword" name="keyword" fw-filter fw-label="검색어" fw-msg class="inputTypeText" placeholder="search" onmousedown="SEARCH_BANNER.clickSearchForm(this)" value type="text">
+                <i class="fa fa-search" onclick="SEARCH_BANNER.submitSearchBanner(this); return false;">
+                <!-- ::before -->
+                </i>
+                
+            </fieldset>
+
+
+
+        </div> 
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="search-form">
+    <h1 class="d:none">자주 묻는 질문 검색 폼</h1>
+    <form>
+        <fieldset class="faq-fieldset">
+            <legend class="d:none">이름 검색</legend>
+                <input type="text-box" minlength="1">
+                <button type="submit" class="icon icon-search" style="width:32px; height:32px;">
+                </button>
+                
+                <input class="icon icon-search" type="button" name="cmd" value="검색">
+        </fieldset>
+    </form>
+</section>
+
+
+<section class="faq-list">
+    <ul class="faq-list-block">
+        <span class="target" id="accordion"></span>
+        <li class="accordion-li">
+        <span class="target" id="accordion1"></span>
+        <a href="#accordion1" class="open-content" title="open">
+            
+            <div>
+                <div class="faq-title-block">
+                    <span class="faq-list-num">Q1</span>
+                    
+                    <h1 class="faq-list-title">
+                        등급은 어떻게 올리나요?
+                    </h1>
+                </div>
+                
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </a>
+
+
+        <a href="#accordion" class="close-content" title="close">
+            <div>
+                <div class="faq-title-block">
+                    <span class="faq-list-num">Q1</span>
+                    <h1 class="faq-list-title">
+                        등급은 어떻게 올리나요?
+                    </h1>
+                </div>
+
+                <i class="fas fa-chevron-up"></i>
+            </div>
+        </a>
+
+
+        <div class="faq-content-box">
+            <p class="ppppp">
+                등급은 어쩌구 저쩌구 
+                이러쿵 저러쿵 
+                이렇게 저렇게 하면은
+                등급을 높일 수 있습니다. 
+            </p>
+            <div>
+        </li>
+
+
+        <!-- <li class="accordion__li">
+        <span class="target" id="accordion3"></span>
+        <a href="#accordion3" class="open-accordion" title="open">
+            <div>
+            <div>
+                <span class="accordion__num">03</span>
+                <h5 class="accordion__title">
+                Dolor sit amet consectetur adipiscing elit?
+                </h5>
+            </div>
+            <i class="fas fa-chevron-down"></i>
+            </div>
+        </a>
+        <a href="#accordion" class="close-accordion" title="close">
+            <div>
+            <div>
+                <span class="accordion__num">03</span>
+                <h5 class="accordion__title">
+                Dolor sit amet consectetur adipiscing elit?
+                </h5>
+            </div>
+            <i class="fas fa-chevron-up"></i>
+            </div>
+        </a>
+        <div class="faq-content-box">
+            <p class="accordion__content">
+            Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis
+            orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra
+            diam sit amet nisl suscipit. Rutrum tellus pellentesque eu
+            tincidunt. Lectus urna duis convallis convallis tellus. Urna
+            molestie at elementum eu facilisis sed odio morbi quis
+            </p>
+        </div>
+        </li> -->
+
+
+
+
+        
+    </ul>
+    
+ 
+
+
+
+</section>
+ 
+ 
+ 
+ 
+  <script src="https://kit.fontawesome.com/70e0dc75f1.js" crossorigin="anonymous"></script>
+  
+
+
+
+
+</body>
+</html>

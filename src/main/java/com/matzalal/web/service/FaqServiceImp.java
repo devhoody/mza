@@ -74,4 +74,5 @@ public class FaqServiceImp implements FaqService {
 		repository.deleteFaqs(faqList);
 		
 	}
+
 }

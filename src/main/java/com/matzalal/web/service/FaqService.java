@@ -3,7 +3,6 @@ package com.matzalal.web.service;
 import java.util.List;
 
 import com.matzalal.web.entity.Faq;
-import com.matzalal.web.entity.Notice;
 
 public interface FaqService {
 	List<Faq> getList();
