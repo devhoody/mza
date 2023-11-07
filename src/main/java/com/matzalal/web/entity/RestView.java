@@ -10,21 +10,23 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 public class RestView {
-    private Integer restId;
+    private Long restId;
     private String restName;
     private Date openTime;
     private Date closeTime;
     private String addr;
-    private Integer locRestId;
+    private Long locRestId;
     private String phone;
-    private Integer menuId;
+    private Long menuId;
+    private String menuName;
+    private Long price;
     private Long rating;
     private String bannerImg;
     private String img1;
     private String img2;
     private String img3;
-    private Integer celebRestId;
-    private Integer reviewId;
+    private Long celebRestId;
+    private Long reviewId;
 
 
 }

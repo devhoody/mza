@@ -2,8 +2,42 @@ window.addEventListener("load", function(){
 	let commentBox = document.querySelector(".commentbox")
 	let btnPost = commentBox.querySelector(".btn-post")
     let content = document.querySelector(".commentgroup"); // 
- 	let deleteComment = document.querySelectorAll(".commu-delete");
+ 	let deleteComment = document.querySelectorAll(".comment-delete");
+ 	let deletePost = document.querySelectorAll(".post-delete");
       console.log("deleteComment"+deleteComment);
+      console.log("deletePost"+deletePost);
+
+
+// ------------ 포스팅 삭제  -------------
+
+deletePost.forEach((postDelete) => {
+	
+      postDelete.addEventListener("click", async (e) => {
+		     e.preventDefault();
+		      let el = e.target;
+		      console.log("클릭클릭 ");
+		      console.log(el.dataset.post);
+		      
+			let url =`/api/commus/posts/${el.dataset.post}`;
+
+	        fetch(url,{
+			method: 'DELETE'
+			})
+			.then(response => response.text())
+		    .then(data => {
+		        if (data === '') {
+		            alert("삭제가 완료되었습니다.");
+				window.location.href = `/commu/main`;
+		        }
+		    })
+		    .catch(error => {
+		        console.error("삭제 요청 실패:", error);
+		    });
+			
+  	  });
+  });
+
+
 // ------------ 댓글 삭제  -------------
 
 deleteComment.forEach((commuDelete) => {

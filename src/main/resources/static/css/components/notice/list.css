@@ -1,3 +1,10 @@
+.jump-tab {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    /*margin-top : 10px;*/
+}
+
 .notice-list-box {
     width: 100%;
     /* display: inline-block; */
@@ -10,6 +17,19 @@
   flex-direction: column;
   /* align-items: center; */
   /* position: relative; */
+}
+.notice-list-box 
+	.fixed-button {
+	    width: fit-content;
+	    display: flex;
+	    flex-direction: column;
+	    gap: 10px;
+	    
+	    cursor: pointer;
+	    position: fixed;
+	    top: 90%;
+	    left: 88%;
+	    z-index: 1;
 }
 
 .notice-qty {
@@ -97,6 +117,7 @@
   -webkit-mask-image: url(/image/icon/right-arrow.svg);
   mask-image: url(/image/icon/right-arrow.svg);
   background-color: var(--color-base-5);
+  cursor: pointer;
 
   /* -webkit-mask-position: left 200px;
     mask-position: left 200px; */
@@ -137,6 +158,14 @@
     display: none;
   }
 
+
+
+   .md\:fixed-button{
+        top: 80%;
+        right: 30%;
+
+
+    }
   /* .md\:notice-list {
         display:flex;
         

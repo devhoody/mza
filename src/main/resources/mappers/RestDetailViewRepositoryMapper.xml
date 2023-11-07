@@ -5,14 +5,29 @@
 <mapper namespace="com.matzalal.web.repository.RestDetailViewRepository">
 
 
-    <select id="findRestDetailView" resultType="RestDetailView">
-        select * from rest_detail_view
-
-    </select>
-
     <select id="findById" resultType="RestDetailView">
-        select * from rest_detail_view
-        where rest_id=#{restId}
+        select
+        r.rest_id,
+        r.rest_name,
+        r.open_time,
+        r.close_time,
+        r.addr,
+        lr.location_rest_id,
+        lr.area,
+        r.phone,
+        r.menu_id,
+        rv.rating,
+        r.banner_img,
+        r.img1, r.img2, r.img3,
+        cr.celeb_id,
+        c.name,
+        r.admin_id
+        from restaurant r
+        left join rating_view rv on r.rest_id = rv.rest_id
+        left join location_rest lr on r.location_rest_id = lr.location_rest_id
+        left join celeb_restaurant cr on r.celeb_rest_id = cr.celeb_rest_id
+        left join celeb c on cr.celeb_id = c.celeb_id
+        where r.rest_id=#{restId}
     </select>
 
 

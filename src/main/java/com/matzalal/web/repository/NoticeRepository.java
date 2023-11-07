@@ -13,6 +13,7 @@ public interface NoticeRepository {
 	int count();
 
 	List<Notice> getListByPage(int offset, int page, int size, Long noticeId, String query);
+	List<Notice> getListByPage(Integer offset, Integer page, Integer size, Long noticeId, String query);
 
 	Notice findById(Long noticeId);
 

@@ -8,11 +8,43 @@
     <title>Document</title>
     <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
     <link href="/css/components/qna/question/list.css" rel="stylesheet" type="text/css">
+ 	<script src="/js/qna/question-dom.js"> </script> 
 </head>
 
 <body>
 	<main layout:fragment="main">
-		<!--//검색-->
+	<!--tab 부분-->
+	    <div class="jump-tab">
+            <button onclick="location.href='/notice/list'" class="btn btn-user-tab md:findbtn">NOTICE</button>
+            <button onclick="location.href='/faq/list'" class="btn btn-user-tab md:findbtn">FAQ</button>
+            <button onclick="location.href='list'" class="btn btn-user-tab btn-user-tab-line md:findbtn">QNA</button>         
+        </div>
+	<!--검색 commu_main.css 에서 가져온 부분-->
+	<!--- 고정버튼:검색,글쓰기 - -->
+    <section class="fixed-button md:fixed-button">
+        <h1 class="d:none"> 고정버튼: 검색, 글쓰기</h1>
+
+        <div class="search">
+          <section class="query-filter">
+			<!--<a href="" class="icon icon-search icon-size:5 icon-color:base-5"> 검색</a>-->
+	            <form>
+		            <fieldset>
+		                <legend class="d:none"> 커뮤니티 포스팅 검색</legend>
+		                <input class=" search-input input-query" 
+		                		type="text" 
+		                		placeholder="검색어를 입력하세요.">
+		                <button class="btn-search icon icon-search icon-size:5 icon-color:base-5">검색</button>
+		            </fieldset>
+	        	</form>
+      	 </section> <!--  query-filter  -->
+        </div>
+<!--        <div>
+            <a href="/notice/list " class="icon icon-add icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
+        </div>-->
+    </section>
+    
+<!--=========================원래 내꺼=========================-->
+	<div class="question-template">
 	    <div class="qna-qty">총 <span th:text="${count}"></span><span>건</span></div>
 		<div class="qna-list-box" th:each="q:${list}" th:onclick="|location.href='@{/qna/question/detail(question-id=${q.questionId})}'|">  <!-- 여기 div class로 구역 잡기 -->
 	        <section class="qna-list-box-left">
@@ -41,6 +73,7 @@
                 </a>
                 <a th:if="${currentPage < pageCount+1}" th:href="@{/qna/question/list(page=${currentPage+1})}">&raquo;</a>
             </div>
+        </div>
 	</main>
 </body>	
 </html>

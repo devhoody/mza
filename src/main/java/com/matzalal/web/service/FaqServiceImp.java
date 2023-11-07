@@ -23,22 +23,17 @@ public class FaqServiceImp implements FaqService {
 	public int countFaq() {
 		return repository.count();
 	}
-	
-	@Override
-	public List<Faq> getListByPage(Integer page, String query) {  //입력받을 값.
-		int size = 10;
-		int offset = size*(page-1);
-		
-		List<Faq> list 
-			= repository.getListByPage
-				(offset, size, query
-						/* page, category, query*/);
-		return list;
-	}
 
 	// 페이지별 faq 리스트 조회
 	@Override
 	public List<Faq> getListByPage(Integer offset, Integer page, Integer size, Long faqId, String query) {
+		List<Faq> list = repository.getListByPage(offset, page, size, faqId, query);
+		return list;
+	}
+	
+	// 페이지별 faq 리스트 조회
+	@Override
+	public List<Faq> getListByPages(Integer offset, Integer page, Integer size, Long faqId, String query) {
 		List<Faq> list = repository.getListByPages(offset, page, size, faqId, query);
 		return list;
 	}
@@ -47,19 +42,15 @@ public class FaqServiceImp implements FaqService {
 	@Override
 	public Faq add(Faq faq) {
 		System.out.println("faq 등록중~");
-		
 		repository.save(faq);
-		
 		// faq 최신글 조회
 		Faq newFaq = repository.last();
-		
 		return newFaq;
 	}
 
 	// faq 수정을 위한 아이디별 값 가져오기
 	@Override
 	public Faq getById(Long faqId) {
-			
 		return repository.findById(faqId);
 	}
 

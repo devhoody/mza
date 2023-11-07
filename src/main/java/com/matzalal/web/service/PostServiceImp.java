@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.matzalal.web.entity.CommuRanking;
 import com.matzalal.web.entity.LocCategory;
 import com.matzalal.web.entity.Post;
 import com.matzalal.web.entity.PostView;
@@ -33,18 +34,31 @@ public class PostServiceImp implements PostService {
 	}
 
 
-	@Override
-	public List<PostView> getPostList() {
-		return postRepository.findPostAll();
-	}
+//  --------------------- 커뮤 메인 조회 ---------------------
 
+	@Override
+	public List<PostView> getPostList(Long currentUserId) {
+		return postRepository.findPostWithIsLike(currentUserId);
+	}
 
 	@Override
 	public List<LocCategory> getCategoryList() {
 		return locCateRepository.findAll();
 	}
 
-// 포스팅 검색 & 카테고리별 조회 
+//	[랭킹조회] 조회수 인기글 _ 조회수 -> 좋아요 -> 댓글  
+	@Override
+	public List<CommuRanking> getHitBestList() {
+		return postRepository.findHitRanking();
+	}
+
+//	[랭킹조회] 좋아요 인기글 _ 좋아요 -> 댓글  
+	@Override
+	public List<CommuRanking> getLikesBestList() {
+		return postRepository.findLikesRanking();
+	}
+
+// --------------------- 포스팅 검색 & 카테고리별 조회 ---------------------
 	@Override
 	public List<PostView> getViewList(String query, Long locationPostId) {
 		List<PostView> postList 
@@ -53,11 +67,19 @@ public class PostServiceImp implements PostService {
 		return postList;
 	}
 
-//	포스팅 상세조회 
+// --------------------- 포스팅 상세조회  ---------------------
+//	[포스팅 상세] 포스팅 출력. 
 	@Override
 	public PostView getById(Long postId) {
 		PostView post = postRepository.findById(postId);
 		return post;
+	}
+	
+//	[포스팅 상세] 포스팅 댓글 총 개수 . 
+	@Override
+	public int commentCount(Long postId) {
+		int totalComment = postRepository.count(postId);
+		return totalComment;
 	}
 	
 //	[포스팅 수정] 포스팅 상세조회 
@@ -106,6 +128,5 @@ public class PostServiceImp implements PostService {
 		 postRepository.delete(postId);
 			System.out.println(postId);
 	}
-
 
 }

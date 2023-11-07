@@ -25,8 +25,11 @@ public class CommuLikeServiceImp implements CommuLikeService {
 
 	@Override
 	public void delete(Long userId, Long postId ) {
+		System.out.println("좋아요 하나 삭제중");
+		System.out.println("userId: "+ userId);
+		System.out.println("postId: "+ postId);
 
-		int rowCount =repository.delete(userId, postId);
+		repository.delete(userId, postId);
 
 	}
 }

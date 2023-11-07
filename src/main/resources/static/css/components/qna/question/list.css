@@ -1,3 +1,10 @@
+.jump-tab {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    /*margin-top : 10px;*/
+}
+
 .qna-list-box {
     width: 100%;
     /* display: inline-block; */
@@ -10,6 +17,19 @@
     flex-direction: column;
     /* align-items: center; */
     /* position: relative; */
+}
+.qna-list-box
+	.fixed-button {
+	    width: fit-content;
+	    display: flex;
+	    flex-direction: column;
+	    gap: 10px;
+	    
+	    cursor: pointer;
+	    position: fixed;
+	    top: 90%;
+	    left: 88%;
+	    z-index: 1;
 }
 
 .qna-qty {
@@ -108,6 +128,7 @@
     -webkit-mask-image : url(/image/icon/right-arrow.svg);
     mask-image : url(/image/icon/right-arrow.svg);
     background-color: var(--color-base-5);
+	cursor: pointer;
 
     /* -webkit-mask-position: left 200px;
     mask-position: left 200px; */

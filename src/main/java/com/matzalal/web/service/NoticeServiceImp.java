@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.matzalal.web.entity.CommentPostView;
 import com.matzalal.web.entity.Notice;
 import com.matzalal.web.repository.NoticeRepository;
 
@@ -24,9 +25,9 @@ public class NoticeServiceImp implements NoticeService {
 		return repository.count();
 	}
 	
+	//===== 공지 리스트 불러오기 and 검색 후 리스트 불러오기 =====//
 	@Override
 	public List<Notice> getListByPage(Integer offset, Integer page, Integer size, Long noticeId, String query) {  //입력받을 값.
-
 		List<Notice> list = repository.getListByPage(offset, page, size, noticeId, query);
 		return list;
 	}

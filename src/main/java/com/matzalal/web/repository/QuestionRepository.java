@@ -23,4 +23,14 @@ public interface QuestionRepository {
 
 	void modify(Question question);
 
+	Question findQnA(Long questionId);
+
+	String countAnswer(Long questionId);
+
+	// 문의글 1개 삭제
+	void delete(Long questionId);
+
+	// 문의글 다중 삭제
+	void deleteQnas(List<Long> QnaList);
+
 }

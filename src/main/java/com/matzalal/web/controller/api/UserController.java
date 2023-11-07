@@ -1,6 +1,5 @@
 package com.matzalal.web.controller.api;
 
-
 import com.matzalal.web.config.auth.MatzalalUserDetails;
 import com.matzalal.web.entity.User;
 import com.matzalal.web.service.UserService;
@@ -75,7 +74,6 @@ public class UserController {
 		File path = new File(strPath);
 		if (!path.exists())
 			path.mkdirs();
-
 
 		File file = new File(strPath + File.separator + img.getOriginalFilename());
 		img.transferTo(file);

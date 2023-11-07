@@ -32,8 +32,8 @@
                     <div class="celeb_rest_list" >
                         <article class="celeb_rest" th:each="cr:${celebRestList}" >
                             <h1 class="d:none" >또순이네</h1>
-                            <a class="rest_name" th:text="${cr.restName}" href="./restDetail/rest_detail.html">또순이네</a>
-                            <a href="./restDetail/rest_detail.html?id=1" th:href="@{/menu/detail?rId=(${cr.restId})}"><img src="/img/1-1.png" th:src="@{/static/css/image/img (img=${cr.bannerImg})}" ></a>
+                            <a class="rest_name" th:text="${cr.restName}" th:href="@{/celeb/detail(restId=${cr.restId})}">또순이네</a>
+                            <a th:href="@{/celeb/detail(restId=${cr.restId})}"><img src="/img/1-1.png" th:src="@{/css/image/{img} (img=${cr.bannerImg})}" ></a>
                         </article>
                <!--         <article class="celeb_rest">
                             <h1 class="d:none">또순이네</h1>

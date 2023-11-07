@@ -1,7 +1,7 @@
-/*.body{*/
-/*    width : 393px;*/
-/*    height: 100vh;*/
-/*}*/
+.body{
+    width : 393px;
+    height: 100vh;
+}
 
 .login-box{
     width : inherit;
@@ -26,11 +26,6 @@
     font-weight: bold;
 }
 
-.label-btn
-    .text {
-    text-align: center;
-}
-
 
 .find_reg_idpw{
     color : var(--color-base-4);
@@ -43,6 +38,11 @@
 
 
 /* -----------layout---------------- */
+body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 
 .login{
     display: flex;

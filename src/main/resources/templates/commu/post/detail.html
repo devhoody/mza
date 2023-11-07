@@ -51,6 +51,12 @@
                                     12분전   
                                 </span> 
                             </div>
+                             <div > 
+            					<button class="post-delete" 
+            							th:data-post="${p.postId}"
+            							th:data-postUser="${p.userId}"
+            							type="submit" value="" > 삭제 </button>
+                           		</div>
 
                             <div>
                                 <a class="icon icon-commu-more icon-size-commu:2 icon-color:va" href=""> 세로 확장</a>
@@ -143,8 +149,11 @@
 				
                 <!-- 댓글영역-->
                 <h1 class = "comment heading-1"> 댓글 
-					<span class ="count color:logo-2"
-					 >12개</span> 
+					<span 
+					th:text= "${count}"
+					class ="count color:logo-2">
+					0</span>
+					<span>개</span> 
 				</h1>
         
                  <section class="commentgroup"> 
@@ -187,7 +196,7 @@
                                     <a class="icon  icon-commu-more icon-size-commu:2 icon-color:base-5" href=""> 세로 확장</a>
                                 </div>
                                  <div > 
-            					<button class="commu-delete" 
+            					<button class="comment-delete" 
             							th:data-comment="${c.commentId}"
             							th:data-post="${c.postId}"
             							type="submit" value="" > 삭제 </button>

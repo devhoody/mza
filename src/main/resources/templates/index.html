@@ -8,7 +8,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="/css/components/index/index.css" rel="stylesheet" type="text/css">
-
+		<script src="/js/function/mainscroll1.js"></script>
 		<title>Document</title>
 	</head>
 
@@ -17,12 +17,18 @@
 	<!-- 랭킹 + 버튼  -->
 	<div class="main_btn_div">
 		<section class="rank">
-			<h1 class="title">오늘의 랭킹</h1>
-			<div class="rank-container">
+			<h1 class="title"><a href="/rank">오늘의 랭킹</a></h1>
+			<div class="rank-container" th:each="rank:${ratingView}">
 				<div class="rank-box" >
-					<img class="rank-img" src="/css/img/gold.png">
-					<img class="rest-img" src="/css/img/1-1.png">
-					<span>${rest_name}</span>
+					<a  href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
+					<img class="rank-img" src="/css/img/gold.png" th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
+					</a>
+					<a  href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
+					</a>
+					<img class="rest-img" src="/css/img/1-1.png" th:src="@{/css/image/{img} (img=${rank.img})}">
+						<a  href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
+						<span th:text="${rank.restName}"></span>
+						</a>
 				</div>
 <!--				<div class="rank-box">-->
 <!--					<img class="rank-img" src="/css/img/silver.png">-->
@@ -42,9 +48,16 @@
 				<div class="rest-map">
 					<a href>근처 맛집 지도</a>
 				</div>
+				<form action="/search/result">
 				<div class="find-rest">
-					<a href>맛집 찾아보기</a>
+					<a>
+						<button class="hidden" type="submit" name="query" value="">
+						맛집 전체 보기
+						</button>
+					</a>
+
 				</div>
+				</form>
 			</div>
 			</section>
 	</div>
@@ -52,8 +65,8 @@
 	<!-- 검색창 -->
 
 	<div class="srchbar_div">
-		<form action="/test/test.html">
-			<input type="text" placeholder="검색창"
+		<form action="/search/result">
+			<input type="text" placeholder="검색창" name="query"
 				   minlength="1">
 			<button type="submit"
 					class=" icon icon-search icon-hover search">
@@ -68,7 +81,9 @@
 			<div class="container" >
 				<article class="card" th:each="rc:${recom}">
 					<h1 th:text="${rc.restName}"></h1>
-					<a href=""><img src="" th:src="@{/css/image/img (img=${rc.bannerImg})}" alt=""></a>
+					<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rc.id})}">
+						<img src="" th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt="">
+					</a>
 				</article>
 <!--				<article class="card">-->
 <!--					<h1>토속촌</h1>-->
@@ -94,7 +109,7 @@
 				<article class="reviewCard" th:each="rv:${review}">
 					<h1 class="rest-name" th:text="${rv.restName}">상호명</h1>
 					<div class="text-box">
-						<p th:text="${rv.content}"></p>
+						<p th:text="${rv.content}">a</p>
 					</div>
 					<div class="alias" >
 						<span th:text="${rv.alias}">작성자 닉네임</span>

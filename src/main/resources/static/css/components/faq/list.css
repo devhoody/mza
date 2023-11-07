@@ -1,3 +1,10 @@
+.jump-tab {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    /*margin-top : 10px;*/
+}
+
 .faq-list-box {
     width: 100%;
     /* display: inline-block; */

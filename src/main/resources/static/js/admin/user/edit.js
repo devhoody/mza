@@ -1,86 +1,82 @@
-/*수정은 mvc로 해결 완료. 현재 사용하지 않는 페이지*/
-
 window.addEventListener("load", function(){
-    let edit = document.querySelector(".edit");
-    let idQuery = edit.querySelector(".id")
-    let editBtn = edit.querySelector(".store-edit-button");
+	let userSection = document.querySelector(".user-detail");
+	let fileInput = userSection.querySelector("input[type=file]");
+	let editBtn = document.querySelector(".store-edit-button");
+	
+	// 사진 미리보기
+	fileInput.oninput = function(e){
+		console.log("입력완료");
+		const files = e.target.files;
+	    let text = "";
+	    for(const file of files){
+	        text += `${file.name}: ${file.type || "알 수 없음."}\n`;
+	    }
+	
+	    let f = files[0];
+	    
+	    var reader = new FileReader();
     
-    let inputGrade = document.getElementById("grade");
- 	let inputAlias = document.getElementById("alias");
- 	let inputEmail = document.getElementById("email");
- 	let inputPwd = document.getElementById("pwd");
- 	let inputName = document.getElementById("name");
- 	let inputPhone = document.getElementById("phone");
- 	let inputLocation = document.getElementById("locCateList");
+	    reader.addEventListener("load", ()=> {
+			  let img = fileInput.nextElementSibling;
+		      img.src = reader.result;
+		    });
+		    reader.readAsDataURL(f);
+	    console.log(text);
+	}
 
-  let gradeSelect = document.querySelector("#grade");
-  let locationSelect = document.querySelector("#locCateList");
 
-  gradeSelect.onclick = function (e) {
-    e.preventDefault();
-    console.log("등급 선택창 클릭");
+	editBtn.onclick = function(e) {
+		console.log("수정버튼")
+	    /*let el = e.target;*/
+	
+	    /*let isValidButtonClicked = el.classList.contains("store-edit-button")
+						        || false;
+	
+	
+	    if (!isValidButtonClicked) {
+	        return;
+	    }*/
+	
+	 /*   if (el.classList.contains("store-edit-button")) {*/
+			
+			e.preventDefault();
+	        console.log("asdf");
+	        
+	        let id = document.querySelector("#id").value;
+		 	let alias = document.getElementById("alias").value;
+		 	let email = document.getElementById("email").value;
+		 	let phone = document.getElementById("phone").value;
+		 	let pwd = document.getElementById("pwd").value;
+		 	let name = document.getElementById("name").value;
+		 	let location = document.getElementById("locCateList").value;
+	        let grade = document.querySelector("#grade").value;
+	           
+	        console.log(grade, pwd, name, location, id, grade);
+	        
+	        let file = fileInput.files[0];
+	        
+	        // 따로 보내는 것은 이미지만 폼데이터에 담고 나머지는 json으로 보내기
+	        // 통으로 보내는 것은 폼데이터에 다 담아서 보내기 
+	        let formData = new FormData();
+	        formData.append("id", id);
+	        formData.append("pwd", pwd);
+	        formData.append("nAlias", alias);
+	        formData.append("nEmail", email);
+	        formData.append("nPhone", phone);
+	        formData.append("name", name);
+	        formData.append("locationId", location);
+	        formData.append("gradeId", grade);
+	        formData.append("img", file);
+	        
+	        let request = new XMLHttpRequest();
+			
+			request.open("PUT", "http://localhost:8000/admin/api/users");
+			
+			request.send(formData);
+			console.log(request.onloadend);
+			 window.location.href = `/admin/user/list`;
 
-    let gradeQuery = gradeSelect.value;
-    console.log(gradeQuery);
-    inputGrade.value = gradeQuery;
+}
+			
 
-    /*		inputGrade.addEventListener("change", function(){
-			console.log(inputGrade.value);
-			let gradeCurrent = document.getElementById("gradeCurrent");
-			gradeCurrent.value=inputGrade.value;
-			console.log(gradeCurrent.value);
-		})*/
-  };
-
-  locationSelect.onclick = function (e) {
-    e.preventDefault();
-    console.log("지역 선택창 클릭");
-
-    let locationQuery = locationSelect.value;
-    console.log(locationQuery);
-    inputLocation.value = locationQuery;
-  };
-
-  editBtn.onclick = async function (e) {
-    e.preventDefault();
-
-    let id = idQuery.value;
-    let gradeValue = inputGrade.value;
-    let aliasValue = inputAlias.value;
-    let emailValue = inputEmail.value;
-    let pwdValue = inputPwd.value;
-    let nameValue = inputName.value;
-    let phoneValue = inputPhone.value;
-    let locationValue = inputLocation.value;
-
-    console.log("test");
-    console.log(id);
-    console.log(gradeValue);
-    console.log(aliasValue);
-    console.log(emailValue);
-    console.log(nameValue);
-    console.log(phoneValue);
-    console.log(locationValue);
-
-    let data = {
-      id: id,
-      gradeId: gradeValue,
-      alias: aliasValue,
-      email: emailValue,
-      pwd: pwdValue,
-      name: nameValue,
-      phone: phoneValue,
-      locationId: locationValue,
-    };
-    let url = `/admin/api/users/${id}`;
-
-    let response = await fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log(response);
-  };
 });

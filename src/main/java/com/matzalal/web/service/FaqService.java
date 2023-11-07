@@ -8,10 +8,10 @@ import com.matzalal.web.entity.Notice;
 public interface FaqService {
 	List<Faq> getList();
 	int countFaq();
-	List<Faq> getListByPage(Integer page, String query);
+	List<Faq> getListByPage(Integer offset, Integer page, Integer size, Long faqId, String query);
 	
 	// faq 리스트 조회(페이지 분류)
-	List<Faq> getListByPage(Integer offset, Integer page, Integer size, Long faqId, String query);
+	List<Faq> getListByPages(Integer offset, Integer page, Integer size, Long faqId, String query);
 	
 	// faq 등록
 	Faq add(Faq faq);

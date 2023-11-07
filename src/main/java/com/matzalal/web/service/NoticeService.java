@@ -9,6 +9,7 @@ public interface NoticeService {
 	
 	int countNotice();
 	
+	//========== 공지 리스트 + 검색어에 따른 공지사항 List API ==========//
 	List<Notice> getListByPage(Integer offset, Integer page, Integer size, Long noticeId, String query);
 	
 	Notice getById(Long noticeId);

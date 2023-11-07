@@ -212,7 +212,7 @@
 
 .icon-view::before {
   -webkit-mask-image: url(/static/css/image/commu/icon/view.svg);
-  mask-image: url(/static/css/image/commu/icon/view.svg);
+  mask-image: url(/static/css/image/icon/view.svg);
 }
 
 .icon-heart::before {
@@ -352,6 +352,11 @@
 .icon-commu-recomment::before{
     -webkit-mask-image: url(/css/image/commu/icon/recomment.svg);
     mask-image:  url(css/image/commu/icon/recomment.svg);
+}
+
+.icon-commu-img-upload::before{
+    -webkit-mask-image: url(/css/image/commu/icon/imgupload.svg);
+    mask-image:  url(css/image/commu/icon/imgupload.svg);
 }
 
 .icon-expanding-arrow::before {

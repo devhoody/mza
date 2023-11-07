@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import com.matzalal.web.service.ReviewViewService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,7 +32,7 @@ public class CelebRestController {
     @Autowired
     private RestDetailViewService service;
     @Autowired
-    private ReviewService reviewService;
+    private ReviewViewService reviewViewService;
 
 //    -----------------------------유명인-----------------------------------
     @RequestMapping("list")
@@ -43,18 +49,45 @@ public class CelebRestController {
 
         return "menu/celeb-list";
     }
-//    ---------------------------------------------------------------------------------------
-    @GetMapping("detail")
-    public String detail(Model model,
-                         @RequestParam(value = "rId") Long restId) {
+//    -------------------------------맛집 조회--------------------------------------------------------
+    @RequestMapping("detail")
+    public String detail(@RequestParam(value = "restId") Long restId,
+                         Model model
+                         ) {
+
 
         RestDetailView restDetailList = service.getRestDetailViewByid(restId);
-        List<Review> reviewList = reviewService.getReviewAllByRestId(restId);
+        List<ReviewView> reviewView = reviewViewService.getReviewThreeByRestId(restId);
+
+
         System.out.println(restDetailList);
-        System.out.println(reviewList);
+        System.out.println(reviewView);
+//        model.addAttribute("restId", restId);
+
         model.addAttribute("restDetail", restDetailList);
-        model.addAttribute("reviewList", reviewList);
+        model.addAttribute("reviewView", reviewView);
 
         return "menu/restDetail/rest_detail";
     }
+
+//    -------------------------------맛집 후기 더보기--------------------------------------------------------
+
+    @RequestMapping("detail/review")
+    public String review(@RequestParam(value = "restId") Long restId,
+                         Model model
+    ) {
+
+
+        List<ReviewView> reviewView = reviewViewService.getReviewAllByRestId(restId);
+        ReviewTotal totalReview = reviewViewService.getCount(restId);
+        System.out.println(reviewView);
+//        model.addAttribute("restId", restId);
+
+        model.addAttribute("reviewView", reviewView);
+        model.addAttribute("total", totalReview);
+
+
+        return "menu/restDetail/rest_review_detail";
+    }
+
 }

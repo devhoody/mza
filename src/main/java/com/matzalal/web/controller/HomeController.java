@@ -1,5 +1,6 @@
 package com.matzalal.web.controller;
 
+import com.matzalal.web.entity.RatingView;
 import com.matzalal.web.entity.RecomView;
 import com.matzalal.web.entity.Review;
 import com.matzalal.web.service.HomeService;
@@ -19,15 +20,29 @@ public class HomeController {
 	@RequestMapping("index")
 	public String index(Model model) {
 
+
 		List<RecomView> recomViewList = service.getRecomViewList();
 		List<Review> reviewList = service.getReviewList();
+		List<RatingView> ratingViewList = service.getRankingViewList();
 
 		System.out.println(recomViewList);
 		System.out.println(reviewList);
 
 		model.addAttribute("recom", recomViewList);
 		model.addAttribute("review", reviewList);
+		model.addAttribute("ratingView", ratingViewList);
+
 
 		return "index";
+	}
+	@RequestMapping("rank")
+	public String rank(Model model) {
+
+		List<RatingView> ranking = service.getRankingViewListAll();
+
+		model.addAttribute("ranking", ranking);
+
+
+		return "menu/rank";
 	}
 }

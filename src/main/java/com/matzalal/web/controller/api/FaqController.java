@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.matzalal.web.entity.Faq;
+import com.matzalal.web.entity.Notice;
 import com.matzalal.web.service.FaqService;
 
 @RestController("apiFaqController")
@@ -18,17 +19,20 @@ public class FaqController {
 		@Autowired
 		private FaqService service;
 		
-		//목록 제공 API
-		@GetMapping
-		//@CrossOrigin(origins = "http://127.0.0.1:5501/") // 메서드에서 설정
-	    public List<Faq> list(
-//	    	@RequestParam(name = "p", defaultValue = "1") Integer page,
-//	    	@RequestParam(name = "c", required = false) Long categoryId,	    	
-	    	@RequestParam(name = "q", required = false) String query
-	    	) {
-			
-	        List<Faq> list = service.getList();
-	        return list;
-	    }
-
+//========================== 목록 제공 API ==========================//
+	@GetMapping
+    public List<Faq> list(
+    	@RequestParam(defaultValue = "1") int page,
+    	@RequestParam(name = "q", required = false) String query
+    	) {
+		int size = 10; // 페이지 당 아이템 수
+		int offset = (page - 1) * size; // 시작 인덱스
+		List<Faq> list = service.getListByPage(offset, page, size, null, query); //faq ID 필요없음. why? 넣으면 걔만 출력되기 때문.
+		int count = service.countFaq();
+		int pageCount = count / size;
+		
+		System.out.println("Faq list API 검색 컨트롤러" +list);
+		System.out.println("검색어: "+query);
+        return list;
+    }
 }

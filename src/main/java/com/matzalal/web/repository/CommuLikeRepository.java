@@ -9,8 +9,9 @@ public interface CommuLikeRepository {
 
 	void save(PostLike like);
 
-	int delete(Long userId, Long postId);
+	void delete(Long userId, Long postId);
 
 	PostLike last();
+	
 
 }

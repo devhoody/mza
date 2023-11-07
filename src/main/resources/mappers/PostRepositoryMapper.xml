@@ -25,6 +25,43 @@
   where area_id=#{areaId}
   </select>
   
+  <select id="findHitRanking" resultType="CommuRanking">
+	SELECT 
+	    p.title, 
+		p.post_id,
+	    p.post_like_count,
+	    p.comment_count,
+	    p.img1,
+	    ROW_NUMBER() OVER 
+			(ORDER BY 
+			p.hit DESC, 
+			p.post_like_count DESC, 
+			p.comment_count DESC
+	        )AS rownum,
+			p.hit
+    FROM 
+    post_u_li_co_view p
+	LIMIT 5; -- 가져올 행 수
+  </select>
+  
+  <select id="findLikesRanking" resultType="CommuRanking">
+	SELECT 
+	    p.title, 
+	    p.post_id,
+	    p.post_like_count,
+	    p.comment_count,
+	    p.img1,
+	    ROW_NUMBER() OVER 
+			(ORDER BY 
+			p.post_like_count DESC, 
+			p.comment_count DESC
+	        )AS rownum,
+			p.hit
+    FROM 
+    post_u_li_co_view p
+	LIMIT 5; -- 가져올 행 수
+  </select>
+  
   
   <!--  포스팅 개별 조회-->
   <select id="findById" resultType="PostView">
@@ -104,5 +141,14 @@
   		 	#{postId}
   		</foreach>
   	</delete>
-</mapper>
+  	
+  	<select id="findPostWithIsLike" resultType="PostView"> 
+ 
+        select p.*,
+            if(lp.post_id is null, 0, 1) as isliked
+        from post_u_li_co_view p
+        left join (select * from likes_post where user_id=#{currentUserId}) lp on p.post_id = lp.post_id
 
+    </select>
+  		
+</mapper>

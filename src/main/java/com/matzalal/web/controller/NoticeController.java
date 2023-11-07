@@ -50,9 +50,7 @@ public class NoticeController {
 		//System.out.println("이전 노티스 ID? " +prevNoticeId);
 		//System.out.println("다음 노티스 ID? " +nextNoticeId);
 		*/
-		
 		model.addAttribute("notice", notice);
-		
 		System.out.println("노티스 다 담아오니? " +notice);
 
 		return "notice/detail";

@@ -2,26 +2,11 @@ window.addEventListener("load", function(){
 	let mainSection = document.querySelector(".main-section");
 	let editBtn = mainSection.querySelector(".store-edit-button");
 	let deleteBtn = mainSection.querySelector(".store-delete-button");
-	let asideIcon = document.querySelector(".aside-icon");
-    let menuBtn = document.querySelector("#aside-icon");
-    let sidebarSection = document.querySelector(".sidebar");
     let findBtn = document.querySelector(".query-filter .btn-find");
     let inputQuery = document.querySelector(".query-filter .input-query");
     let content = document.querySelector(".user-list");
     
-    	menuBtn.addEventListener('change', function(e){
-			e.preventDefault();
-
-			if(menuBtn.checked){
-				sidebarSection.classList.add("show");
-				asideIcon.classList.add("aside-show");
-			} else{
-				sidebarSection.classList.remove("show");
-				asideIcon.classList.remove("aside-show");
-			}		
-		});
-    
-
+   
 	deleteBtn.onclick = function(e){
         e.preventDefault();
         console.log("delBtn");
@@ -39,19 +24,6 @@ window.addEventListener("load", function(){
 		} 
 		let url = `/admin/api/users/${selectBoxes}`;
 		console.log(url);
-        
-        /*let request = new XMLHttpRequest();
-        request.open("DELETE", url, true);
-        request.send();
-        
-        request.onload = function(){
-        	alert(request.responseText);
-        	
-        	if(request.responseText == true){
-        		alert("회원 삭제가 완료되었습니다.");       		
-        	}
-        	
-    	}*/
     	fetch(url, {
 	        method: 'DELETE'
 	    })
@@ -90,6 +62,7 @@ window.addEventListener("load", function(){
 			
 			let id = selectBoxes[0];
 			url = ``;
+			console.log(id);
 			
 	    	fetch(url, {
 		        method: 'GET'
@@ -118,9 +91,7 @@ window.addEventListener("load", function(){
 	                	<input type="checkbox" class="checkBox" name="checkBox" value="${u.id}">
 	                </div>
 	            	<div class="user-image-block">
-	                    <img src="/css/image/admin-icon/user.svg" class="">
-		                <div>${u.profileImg}
-		                </div>
+	                    <img src="/image/user/${u.profileImg}" style="max-width: 80%; max-height: 80%; object-fit: fill;" class="">
 	           		</div>
 	                
 	                <div class="user-email-block">
@@ -128,7 +99,7 @@ window.addEventListener("load", function(){
 	                </div>
 	
 					<div class="user-grade-block">
-						<img src="@{'/css/image/icon/badge' + ${u.gradeId} + '.svg'}">
+						<img src="/css/image/icon/badge${u.gradeId}.svg">
 		                <div>
 		                    <a class="">${u.gradeId}</a>
 		                </div>

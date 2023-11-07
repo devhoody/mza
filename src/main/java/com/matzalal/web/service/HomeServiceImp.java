@@ -1,5 +1,6 @@
 package com.matzalal.web.service;
 
+import com.matzalal.web.entity.RatingView;
 import com.matzalal.web.entity.RecomView;
 import com.matzalal.web.entity.Review;
 import com.matzalal.web.repository.HomeRepository;
@@ -23,6 +24,20 @@ private HomeRepository homeRepository;
     @Override
     public List<Review> getReviewList() {
         List<Review> list = homeRepository.findReview();
+        return list;
+    }
+
+    @Override
+    public List<RatingView> getRankingViewList() {
+        List<RatingView> list = homeRepository.findRankLimitThree();
+
+        return list;
+    }
+
+    @Override
+    public List<RatingView> getRankingViewListAll() {
+        List<RatingView> list = homeRepository.findRankAll();
+
         return list;
     }
 }

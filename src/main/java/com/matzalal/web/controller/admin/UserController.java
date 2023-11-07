@@ -63,6 +63,7 @@ public class UserController {
 		model.addAttribute("gradeList", gradeList);
 //		model.addAttribute("reportReason", reportReason);
 		model.addAttribute("locCateList", locCateList);
+		System.out.println(userDtl);
 
 		return "admin/user/edit";
 	}

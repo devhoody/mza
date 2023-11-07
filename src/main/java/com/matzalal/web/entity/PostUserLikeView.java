@@ -22,4 +22,5 @@ public class PostUserLikeView {
     private Long postLikeCount;
     private Long gradeId;
     private String profileImg;
+    private Date sanctionTime;
 }

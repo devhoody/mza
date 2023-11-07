@@ -42,20 +42,22 @@ public class CommuLikeController {
 
 //---------------------------------------------------------------------------------------------
 	// 좋아요 삭제 API
-		@DeleteMapping("{post-id}")
-		public void delete(
-				@PathVariable("post-id") Long postId,
-				@RequestBody Authentication authentication) {
-			
-			MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
-	        System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
-	        Long id = userDetails.getId();
-	        
-			Long userId= id;
-			
-			service.delete(postId, userId);
-			
-		}
+
+	
+	@DeleteMapping("posts/{post-id}")
+	public void delete(
+			@PathVariable("post-id") Long postId,
+			Authentication authentication){
+		
+		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
+        System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
+        Long id = userDetails.getId();
+        
+		Long userId= id;
+		
+		service.delete(userId, postId);
+		
+	}
 		
 
 	
