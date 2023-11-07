@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!doctype html>
 <html lang="en"
     xmlns:th="http://www.thymeleaf.org"
@@ -75,77 +74,4 @@
             </div>
         </main>
     </body>
-=======
-<!doctype html>
-<html lang="en"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{inc/layout.html}">
-    <head>
-        <title>맛잘알 로그인</title>
-        <script src="/js/user/login.js"></script>
-        <link href="/css/components/user/login.css" rel="stylesheet"
-            type="text/css">
-    </head>
-    <body>
-        <main layout:fragment="main">
-            <div class="login">
-                <!-- 로고-->
-                <div>
-                    <a  class="login-logo"><img src="/css/image/icon/logo.svg"
-                            alt="맛잘알"></a>
-                </div>
-                <!-- 라벨박스-->
-                <form class="label-btn" action="login" method="post">
-                    <fieldset class="login-box">
-                        <div class="label-box">
-                            <label class="label">이메일</label>
-                            <input class="text-box" type="email" name="username"
-                                autocomplete="off" required>
-                        </div>
-                        <div class="label-box">
-                            <label class="label">비밀번호</label>
-                            <input class="text-box" type="password"
-                                name="password" required>
-                        </div>
-                    </fieldset>
-                    <div th:class="${param.error} ? 'text' : 'd:none'"
-                        style="color: red">
-                        아이디 또는 비밀번호가 일치하지 않습니다.
-                    </div>
-                    <!-- 로그인 btn-->
-                    <div class="btn-login">
-                        <input type="submit" class="btn btn-main" value="로그인">
-                    </div>
-                    <input type="hidden" name="return-url"
-                        th:value="${param.returnURL}">
-                </form>
-                <!-- 아이디, 비밀번호 찾기-->
-                <div class="find-box">
-                    <a class="find_reg_idpw" href="/stranger/findid">아이디 찾기</a>
-                    <a class="find_reg_idpw" href="/stranger/findpw">비밀번호 찾기</a>
-                </div>
-                <!-- SNS로그인 박스-->
-<!--                <div class="sns-box">-->
-<!--                    <ol class="socialbtn-list">-->
-<!--                        <li>-->
-<!--                            <a class="btn btn-question">카카오 로그인</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="btn btn-question">네이버 로그인</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a class="btn btn-question">구글 로그인</a>-->
-<!--                        </li>-->
-<!--                    </ol>-->
-<!--                </div>-->
-                <!-- 회원가입-->
-                <div>
-                    <a class="find_reg_idpw" href="/stranger/signup">회원가입</a>
-                </div>
-
-            </div>
-        </main>
-    </body>
->>>>>>> develop
 </html>
