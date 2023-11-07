@@ -52,13 +52,13 @@
                                     12분전   
                                 </span> 
                             </div>
-                            
+
                             <div > 
-                					<button class="commu-edit" 
-                							href=""
+                					<a class="commu-edit" 
+                							th:href="@{edit?(postId=${p.postId})}"
                 							th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
                 							th:data-post="${p.postId}"
-                							type="submit" value="" > </button>
+                							type="submit" value="" > </a>
 	                            </div>
 
                              <div > 
@@ -122,7 +122,7 @@
 
                                     <div>
                                         <button class="icon icon-size:1 icon-hover icon-pointer icon-color:main" 
-                                				th:classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
+                                				th:classappend ="${p.isLiked}? 'icon-commu-likes-fill': 'icon-commu-likes' "
                                                 type="button"> 좋아요</button>
                                     </div>
 

@@ -22,6 +22,8 @@ public class Post {
 	private String content;
 
 	private String img1;
+	private String img2;
+	private String img3;
 	
 	private Integer hit;
 	private String createdDate;

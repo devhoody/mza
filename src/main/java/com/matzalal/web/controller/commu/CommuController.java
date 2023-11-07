@@ -10,10 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.matzalal.web.config.auth.MatzalalUserDetails;
 import com.matzalal.web.entity.Comment;
@@ -86,33 +84,35 @@ public class CommuController {
 		System.out.println("get");
 
 		return "commu/post/create";
-	}
+	}	
 	@PostMapping("post/create") 
 	public String postCreate(
 			Authentication authentication,
 
-			@RequestParam("area_id") Long areaId,
-		    @RequestParam("title") String title,
-		    @RequestParam("content") String content,
-		    @RequestParam("img1") MultipartFile img1
+			@RequestParam(name="user_id", required =true) Long userId,
+			@RequestParam(name="area_id", required =false) Long areaId,
+			@RequestParam(required =true) String title,
+			@RequestParam(required =true) String content,
+	        @RequestParam(name="img1", required = false) String img1
 
 	) throws IOException{
 		
 		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
         System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
-        Long userId = userDetails.getId();
+        Long id = userDetails.getId();
 		
-		System.out.println("MVC post 등록 userID: " + userId);
-		System.out.println(areaId);
-		System.out.println("img: " + img1.getOriginalFilename());
-		
-		Post post = post.setAreaId(areaId);
+			System.out.println("post");
 
-			//System.out.println("MVC post 등록:  "+post);
-			
-			//post.setImg1(img1.getOriginalFilename());
+		    Post post = Post.builder()
+		            .userId(id)
+		            .areaId(areaId)
+		            .title(title)
+		            .content(content)
+		            .img1(img1)
+		            .build();
+			System.out.println(post);
 
-		//postService.add(post);
+		postService.add(post);
 		
 
 		return "redirect:/commu/main"; //

@@ -6,6 +6,62 @@ window.addEventListener("load", function(){
  	let deletePost = document.querySelectorAll(".post-delete");
       console.log("deleteComment"+deleteComment);
       console.log("deletePost"+deletePost);
+      
+// ------------좋아 삭제  -------------
+
+	let bottom = document.querySelectorAll(".bottom");
+	for (let i =0 ; i<bottom.length; i++){
+	    bottom[i].addEventListener("click", async function(e) {
+			let btn = document.querySelector(".commu-likes")
+			console.log("클릭체크")
+	        let el = e.target;
+	        e.preventDefault();
+	
+	        // 클릭된 요소가 "icon-commu-likes" 클래스를 가진 경우에만 처리
+	        if (el.classList.contains("icon-commu-likes")) {
+	            console.log("게시물 ID: " + el.dataset.post);
+	            console.log("좋아요");
+	
+	            // 좋아요 처리를 위한 API 호출 등의 로직 추가
+	            let url = `/api/commu/likes`;
+	
+	            let resp = await fetch(url, {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/json',
+	                },
+	                body: JSON.stringify({
+	                    postId: el.dataset.post
+	                })
+	            });
+	            if(resp.ok){
+					console.log(btn)
+					console.log("등록 성공")
+//					btn.classList.add("icon-commu-likes-fill")
+//					btn.classList.remove("icon-commu-likes")
+					
+				}
+	            
+	            
+	        }
+	           if (el.classList.contains("icon-commu-likes-fill")) {
+			        
+				    console.log("접속한 사람 : " + el.dataset.currentid);
+				    console.log("postId: " + el.dataset.post);
+				    
+				    let delurl = `/api/commu/likes/posts/${el.dataset.post}`;
+				    
+				        let response = await fetch(delurl, {
+				            method: 'DELETE',
+				        });
+				        
+				        if(response.ok){
+							console.log("삭제성공")
+						}
+					
+				}
+	    });	
+   } 
 
 
 // ------------ 포스팅 삭제  -------------

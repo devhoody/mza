@@ -151,12 +151,12 @@ window.addEventListener("load", function(){
 // ------------- 데이터 요청 후 응답기다리는...! -------------
 
 	function bind(postList){
-		console.log("태호하트")
+		console.log(" --function bind 시작 부분-- ")
 		
         content.innerHTML = ""; // section을 위한 DOM 객체를 직접 생성해서 append 한다.
 
         for (let p of postList){
-            let iconLike = "${p.isLiked} ? icon-commu-likes-fill: icon-commu-likes";
+            let iconLike = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
 
             let template = `
 	            

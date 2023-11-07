@@ -6,13 +6,11 @@
 <mapper namespace="com.matzalal.web.repository.PostRepository">
 
   	<select id="findPostWithIsLike" resultType="PostView"> 
- 
         select p.*,
             if(lp.post_id is null, 0, 1) as isliked
         from post_u_li_co_view p
         left join (select * from likes_post where user_id=#{currentUserId}) lp on p.post_id = lp.post_id
         	order by created_date desc
-
     </select>
   
    <select id="findPostAll" resultType="PostView">
@@ -105,8 +103,8 @@
 	</update>
 
   <insert id="save" parameterType="Post">
-  insert into post(user_id, area_id, title, content, img1)
-  values (#{userId}, #{areaId}, #{title}, #{content}, #{img1})
+  insert into post(user_id, area_id, title, content, img1, img2, img3)
+  values (#{userId}, #{areaId}, #{title}, #{content}, #{img1}, #{img2}, #{img3})
   </insert>
   
 	<select id="last" resultType="Post">
