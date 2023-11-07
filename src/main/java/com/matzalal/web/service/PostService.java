@@ -49,7 +49,6 @@ public interface PostService {
 	boolean deletePost(List<Long> postIds);
 
 	void deletePost(Long postId);
-	
 
 	
 	

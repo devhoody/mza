@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.matzalal.web.config.auth.MatzalalUserDetails;
 import com.matzalal.web.entity.Question;
+import com.matzalal.web.entity.UserView;
 import com.matzalal.web.service.QnaService;
 
 @Controller
@@ -145,7 +146,6 @@ public class QuestionController {
 	
 	
 	
-
 	
 	
 	

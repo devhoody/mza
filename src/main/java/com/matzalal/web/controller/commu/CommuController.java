@@ -81,43 +81,54 @@ public class CommuController {
 
 		return "commu/post/create";
 	}
-//	@PostMapping("post/create") 
-//	public String postCreate(
-//			Authentication authentication,
-//
-//			@RequestParam(name="user_id", required =true) Long userId,
-//			@RequestParam(name="area_id", required =false) Long areaId,
-//			@RequestParam(required =true) String title,
-//			@RequestParam(required =true) String content,
-//	        @RequestParam(name="img1", required = false) String img1,
-//	        @RequestParam(name="img2", required = false) String img2,
-//	        @RequestParam(name="img3", required = false) String img3
-//
-//	) throws IOException{
-//		
-//		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
-//        System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
-//        Long id = userDetails.getId();
-//		
-//			System.out.println("post");
-//
-//		    Post post = Post.builder()
-//		            .userId(id)
-//		            .areaId(areaId)
-//		            .title(title)
-//		            .content(content)
-//		            .img1(img1)
-//		            .img2(img2)
-//		            .img3(img3)
-//		            .build();
-//			System.out.println(post);
-//
-//		postService.add(post);
-//		
-//
-//		return "redirect:/commu/main"; //
-//	}
+	
+	@PostMapping("post/create") 
+	public String postCreate(
 
+			@RequestParam(name="user_id", required =true) Long userId,
+			@RequestParam(name="area_id", required =false) Long areaId,
+			@RequestParam(required =true) String title,
+			@RequestParam(required =true) String content,
+	        @RequestParam(name="img1", required = false) String img1
+//	        @RequestParam(name="img-file", required = false) MultipartFile img1
+//	        @RequestParam(name="images", required = false) List<MultipartFile> images
+
+	) throws IOException{
+			System.out.println("post");
+
+		    Post post = Post.builder()
+		            .userId(userId)
+		            .areaId(areaId)
+		            .title(title)
+		            .content(content)
+		            .img1(img1)
+		            .build();
+			System.out.println(post);
+
+		postService.add(post);
+		
+		
+//		System.out.println("img1 is Empty ? :"+ img1.isEmpty());
+//		System.out.println("getOriginalFilename ? :" +img1.getOriginalFilename());
+//		
+//		InputStream fis = img1.getInputStream();
+//
+//		OutputStream fos = new FileOutputStream("/Users/geniem/"+img1.getOriginalFilename());
+//
+//		int size=0;
+//		byte[] buf = new byte[1024];
+//		while((size = fis.read(buf))!=-1)
+//			fos.write(buf, 0, size);
+//		
+//		fis.close();
+//		fos.close();
+		
+		
+		return "redirect:/commu/main"; //
+	}
+
+
+	
 // ---------------------- 포스팅 상세조회 -> 포스팅, 댓글 출력 ----------------------  
 			
 	@RequestMapping("post/detail") 
@@ -128,9 +139,6 @@ public class CommuController {
 		
 		PostView post = postService.getById(postId);
 		List<CommentView> commentList = commentService.getById(postId);
-		int count = postService.commentCount(postId); 
-		// post view 만들어둔 것에서 댓글 총 개수 뽑아오기 
-		
 		
 		System.out.println("상세조회 postId: " + postId);
 		System.out.println("상세조회 post: "+ post);

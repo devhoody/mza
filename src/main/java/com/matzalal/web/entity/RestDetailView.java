@@ -31,5 +31,5 @@ public class RestDetailView {
     private String name;
     private Long adminId;
     private Long userId;
-
+    private String content;
 }

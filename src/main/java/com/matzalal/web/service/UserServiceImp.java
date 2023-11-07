@@ -9,14 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class UserServiceImp implements UserService {
 
-    @Autowired
-    private UserRepository repository;
-
-    @Autowired
-    private GradeRepository gradeRepository;
+	@Autowired
+	private UserRepository repository;
+	
+	@Autowired
+	private GradeRepository gradeRepository;
     @Autowired
     private UserGradeRepository userGradeRepository;
 
@@ -87,7 +88,7 @@ public class UserServiceImp implements UserService {
         int cnt = repository.findEmail(email);
         System.out.println("이메일 개수 : " + cnt);
 
-        if (cnt == 1) {
+        if(cnt == 1){
             return true;
         } else
             return false;
@@ -116,9 +117,9 @@ public class UserServiceImp implements UserService {
 		return count;
 	}
 
-    @Override
-    public void edit(User user) {
-        if (user.getPwd() != null) {
+	@Override
+	public void edit(User user) {
+        if(user.getPwd() !=null) {
             String plainPwd = user.getPwd();
             String hashedPwd = encoder.encode(plainPwd);
             System.out.println("암호 변경요청시 인코딩된 암호 :" + hashedPwd);
@@ -144,7 +145,6 @@ public class UserServiceImp implements UserService {
 
         return false;
     }
-
     @Override
     public boolean hasName(String name) {
         return repository.hasIdByName(name);
@@ -207,7 +207,8 @@ public class UserServiceImp implements UserService {
     public boolean hasForFindId(User user) {
         int result = repository.findForFindId(user);
 
-        if (result == 0) {
+
+        if(result == 0) {
             return false;
         } else
             return true;
@@ -222,7 +223,7 @@ public class UserServiceImp implements UserService {
     public boolean hasForFindPwd(User user) {
         int result = repository.findForFindPwd(user);
 
-        if (result == 0) {
+        if(result == 0) {
             return false;
         } else
             return true;
@@ -233,7 +234,7 @@ public class UserServiceImp implements UserService {
         int cnt = repository.findAlias(query);
         System.out.println("닉네임 개수 : " + cnt);
 
-        if (cnt == 1) {
+        if(cnt == 1){
             return true;
         } else
             return false;

@@ -94,8 +94,6 @@ public class PostServiceImp implements PostService {
 		postRepository.modify(post);
 	}
 
-
-	
 	
 // ~~~~~관리자용~~~~~~~~~
 	@Override
