@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/inc/layout.html}">
+
+    <head>
+        <title>회원 활동 정지</title>
+        <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/report/process.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="/js/admin/report/process.js" defer></script>
+    </head>
+
+    <body>
+        <main layout:fragment="main" class="report">
+            <section class="main-section md:main-section">
+                <h1 class="d:none">회원 활동 정지 처리</h1>
+
+            <!-- Form with fieldset, legend, and label -->
+            <form class="report-form" action="process" th:method="PUT">
+                <fieldset>
+                    <legend class="report-title">신고사유 선택</legend>
+                    <div class="report-box">
+						<ul>
+	                        <li th:each="r:${list}">
+                    			<input type="radio" name="reason" th:value="${r.reportReasonId}" th:text="${r.category}" checked>
+                			</li>
+						</ul>
+                    </div>
+                </fieldset>
+
+                <!-- Form which will send a POST request to the current URL -->
+                <div class="write-reason-box">
+                    <textarea class="content" name="content" rows="8"
+                        placeholder="회원 정지 사유에 대해 더 기술할 것이 있다면 작성해주세요."></textarea>
+                </div>
+
+                 <div class="cancle-report-box">
+					<a href="/admin/report/list">
+                    	<input class="btn-cancel" type="button" value="취소">
+                    </a>
+                    <a>
+                    	<input class="btn-report" type="submit" value="신고">
+					</a>
+                </div>
+            </form>
+
+            </section>
+
+        </main>
+    </body>
+
+</html>

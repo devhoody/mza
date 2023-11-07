@@ -1,0 +1,97 @@
+html {
+    font-size: 62.5%;
+  }
+  h5,
+  p {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ul {
+    list-style: none;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background: black;
+  }
+  
+  .target {
+    display: block;
+    top: 0;
+    left: 0;
+    position: fixed;
+  }
+  .open-accordion {
+    display: block;
+  }
+  .close-accordion {
+    display: none;
+  }
+  
+  :target ~ .open-accordion {
+    display: none;
+  }
+  :target ~ .close-accordion {
+    display: block;
+  }
+  
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .accordion__li {
+    width: 45rem;
+    background: white;
+    border-radius: 0.4rem;
+    padding: 2rem;
+  }
+  
+  .accordion__li a > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .accordion__li a > div div {
+    display: flex;
+    align-items: center;
+  }
+  .accordion__num {
+    font-size: 1.8rem;
+    margin-right: 1.3rem;
+  }
+  .accordion__title {
+    font-size: 1.6rem;
+  }
+  .accordion__li i {
+    font-size: 1.3rem;
+    position: relative;
+    top: 0.1rem;
+    right: 0.5rem;
+  }
+  
+  /* When accordion is open */
+  
+  .accordion__content-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  :target ~ .accordion__content-container {
+    max-height: 20rem; /* set it longer than expected height of content */
+  }
+  
+  .accordion__content {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+  }
+  :target ~ .accordion__content-container .accordion__content {
+    padding-top: 1rem;
+    transform: translateY(0);
+  }
