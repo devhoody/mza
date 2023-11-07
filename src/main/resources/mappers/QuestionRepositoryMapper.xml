@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.QuestionRepository">
+	
+	<select id="findAll" resultType="Question">
+		select * from question order by question_id desc
+	</select>
+
+	<insert id="save" parameterType="Question">
+  		insert into question(title, content, open, img, user_id)
+		values (#{title}, #{content}, #{open}, #{img}, #{userId})
+  	</insert>
+	
+ 	<select id="last" resultType="Question">
+		SELECT * from question order by question_id desc limit 1
+	</select>
+	
+	<select id="count" parameterType="Integer">
+		select count(question_id) count from question
+	</select>
+	
+   	<select id="getListByPage" resultType="Question">
+	 	select * from question
+	<!-- 	<where>
+			<if test="questionId != null">question_id=#{questionId}</if>
+		    <if test="query != null">and title like '%${query}%'</if>
+		</where> -->
+		order by question_id desc 
+		limit #{offset}, #{size}
+ 	</select>
+ 	
+	<select id="findById" resultType="Question">
+        select * from question where question_id = #{questionId}
+    </select>
+    
+    <update id="modify">
+        UPDATE `question`
+        <set>
+            <if test="title != null">`title` = #{title},</if>
+            <if test="content != null">`content` = #{content},</if>
+            <if test="open != null">`open` = #{open},</if>
+            <if test="img != null">`img` = #{img}</if>
+        </set>
+        WHERE `question_id` = #{questionId}
+    </update>
+    
+</mapper>

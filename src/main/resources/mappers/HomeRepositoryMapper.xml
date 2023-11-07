@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.HomeRepository">
+
+    <select id="findRecomViewAll" parameterType="RecomView">
+        select * from restaurant
+    </select>
+
+    <select id="findReview" parameterType="Review">
+        select rvv.*, user.alias from review_view rvv
+        left join user on (rvv.user_id = user.user_id)
+    </select>
+<!--    <select id="findRecomViewAll" parameterType="RecomView">-->
+<!--        select * from restaurant limit 3-->
+<!--    </select>-->
+</mapper>

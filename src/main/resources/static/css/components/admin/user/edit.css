@@ -1,0 +1,110 @@
+.user-detail{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.user-detail
+    .user-detail-title{
+        font-size: 25px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+.user-detail
+    .filebox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+
+
+.user-detail
+    .filebox
+        .user-img{
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+        }
+
+.user-detail
+    .input-box{
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: var( --font-size-5);
+        font-weight: 700;
+    }
+
+.user-detail
+    .input-box
+        .text-box{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    
+.user-detail
+    .input-box
+        .text-box
+            input{
+                border-bottom: 1px solid var(--color-base-2);
+                height: 30px;
+                background-color: transparent;
+            }
+
+.user-detail
+    .input-box
+        .pwd-box
+            .pwd-change-btn{
+                width: 230px;
+                height: 30px;
+                background-color: var(--color-base-0);
+                border-radius: 5px;
+                margin-left: 10px;
+            }
+            
+.user-detail
+    .manage-button{
+        display: flex;
+        flex-direction: row;
+        gap: var(--gap-5);
+    }
+
+
+
+
+
+@media (min-width : 700px) {
+    .user-detail{
+        min-width: 660px;
+    }
+
+    .user-detail
+        .input-box{
+            font-size: var(--font-size-10);
+            align-items: flex-start;
+        }
+
+    .user-detail
+        .input-box
+            .filebox{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+        }   
+
+    .user-detail
+        .input-box
+            .text-box{
+                margin-bottom: 30px;
+                
+            }
+
+
+}

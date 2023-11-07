@@ -1,0 +1,73 @@
+/* 검색창까지 23px */
+/* 170px heart to title */
+/* 19px img to title */
+/* 6px title to geomarker */
+/* 7px geomarker to distance */
+/* 25px distance to star */
+.skin_list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 23px;
+  /* border: 1px; */
+}
+
+.skin_list .list {
+  display: grid;
+  width: 700px;
+  grid-template-columns: 30px 130px 10px 120px 120px;
+  grid-template-rows: 40px 40px 40px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+}
+.list_title {
+  grid-column: 4;
+  grid-row: 1;
+}
+.img-size {
+  grid-column: 2;
+  grid-row: 1/4;
+  width: 130px;
+  height: 110px;
+  border-radius: 12px;
+  background-color: gray;
+}
+.list .heart {
+  grid-column: 5;
+  grid-row: 1;
+  text-align: right;
+}
+
+.list .geomarker {
+  grid-column: 4;
+  grid-row: 2;
+}
+.list .star {
+  grid-column: 5;
+  grid-row: 2;
+}
+.list .menu1 {
+  grid-column: 4;
+  grid-row: 3;
+  font-size: 11px;
+  text-align: center;
+}
+.list .menu2 {
+  grid-column: 5;
+  grid-row: 3;
+  font-size: 11px;
+  text-align: center;
+}
+
+.ul span {
+  font-size: 12px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+/* /////////////////////////////////////////////////////// */

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{inc/layout.html}">
+   
+<head>
+	<link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/post/detail.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/comment/comment.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/comment/recomment.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/comment/comment_create.css" rel="stylesheet" type="text/css">
+		<script src="/js/commu/post/detail.js" > </script>
+
+</head>
+				
+<body>
+	
+	<main layout:fragment="main" 
+		class="mainlayout md:mainlayout detail-main">
+
+    <section class = "commu_area" >
+        <h1 class = "d:none"> 🌝 커뮤 공간 🌝 </h1>
+
+            <div class="post-layout md:post-layout" >
+
+                <div class = "container md:container" 
+                	th:each="p:${post}">
+
+                    <section class ="top"> 
+                        <h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+
+                        <section class="member_info">
+                            <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
+
+                            <div class="badge">
+                                <img src="/image/icon/grade2.svg"
+                                	style="height:20px;" alt="등급2" /> 
+                            </div>
+                                   
+                            <div class="nickname">
+                                <span th:text="${p.alias}"> 
+                                    팅클이졸귀임 
+                                </span>
+                            </div>
+                        </section><!-- member_info-->
+
+                        <section class="date_info">
+                            <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+                            <div>
+                                <span th:text="${p.createdDate}">    
+                                    12분전   
+                                </span> 
+                            </div>
+
+                            <div>
+                                <a class="icon icon-commu-more icon-size-commu:2 icon-color:va" href=""> 세로 확장</a>
+                            </div>
+                            
+                        </section><!-- date_info -->
+                    </section><!-- top -->
+
+                    <section class ="middle"> 
+                        <h1 class="d:none"> 게시글-제목, 내용, 사진  </h1>
+
+                            <section class="title">
+                                <h1 class="d:none"> 제목</h1>
+                                <p th:text="${p.title}"> 111 첫번째 피드 .</p>
+                            </section><!-- title -->
+
+                            <section class="content">
+                                <h1 class="d:none"> 내용</h1>
+                                <p th:text="${p.content}"> 내용입니다. 내용을 많이많이많이 적으면 어떻게 되려나아아아아아아아아아아아아아</p>
+                            </section> <!-- content -->
+
+                            <section class="picture md:picture">
+                                <h1 class="d:none"> 사진</h1>
+	                                <picture>
+	                                    <img 
+	                                    src="/image/ranking1.JPG"
+	                                    th:src="@{/css/image/commu/post/{img} (img=${p.img1})}" 
+	                                    		alt="Responsive Image1">
+	                                    		
+	                                    <img src="/image/ranking2.JPG"
+	                                    th:src="@{/css/image/commu/post/{img} (img=${p.img2})}" 
+	                                    		alt="Responsive Image2">
+	                                    		
+	                                    <img src="/image/ranking3.JPG"
+	                                    th:src="@{/css/image/commu/post/{img} (img=${p.img3})}" 
+	                                    		alt="Responsive Image3">
+	                                </picture>  
+                            </section><!-- picture -->
+                    </section><!-- middle -->
+  
+                    <section class ="bottom"> 
+                        <h1 class="d:none"> 조회수 좋아요 댓글 </h1>
+
+                            <section class="view">
+                                <h1 class="d:none"> 조회수 </h1>
+
+                                    <div>
+                                        <span class="deco icon-commu-view icon-size:1 icon-color:main" href=""> 조회수</span>
+                                    </div>
+
+                                    <div>
+                                        <span th:text="${p.hit}"> 367</span>
+                                    </div>
+                            </section><!-- view -->
+
+                            <section class="like">
+                                <h1 class="d:none"> 좋아요 </h1>
+
+                                    <div>
+                                        <button class="icon icon-size:1 icon-hover icon-pointer icon-color:main" 
+                                				th:classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
+                                                type="button"> 좋아요</button>
+                                    </div>
+
+
+                                    <div>
+                                        <span th:text="${p.postLikeCount}"> 98</span>
+                                    </div>
+                            </section>
+              
+                            <section class="comment">
+                                <h1 class="d:none"> 댓글 </h1>
+
+                                    <div>
+                                        <span class="deco icon-comment icon-size:1 icon-color:main" href=""> 댓글</span>
+                                    </div>
+
+                                    <div>
+                                        <span th:text="${p.commentCount}"> 57</span>
+                                    </div>
+                            </section>
+                            
+                    </section>
+                </div>
+
+    </section>
+    
+            <!-- ---------------- 댓글영역 ----------------  -->
+            <section class = "comment-area">
+				
+                <!-- 댓글영역-->
+                <h1 class = "comment heading-1"> 댓글 
+					<span class ="count color:logo-2"
+					 >12개</span> 
+				</h1>
+        
+                 <section class="commentgroup"> 
+                    <h1 class="d:none"> 댓글+대댓 </h1>
+
+                    <section 
+                    	class="comment-list-box md:comment-list-box"
+                    	th:each="c:${commentList}"
+                    	>
+                    	
+                        <h2 class="d:none"> 댓글 </h2>
+        
+                        <section class ="top"> 
+                            <h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+        
+                            <section class="member_info">
+                                <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
+        
+                                <div class="badge">
+                                    <img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" /> 
+                                </div>
+                                        
+                                <div class="nickname"
+                                	th:text="${c.alias}">
+                                    <span > 
+                                        루피햅삐 
+                                    </span>
+                                </div>
+                            </section>
+        
+                            <section class="date_info md:date_info">
+                                <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+                                <div>
+                                    <span th:text="${c.createdDate}">    
+                                        12분전   
+                                    </span> 
+                                </div>
+        
+                                <div>
+                                    <a class="icon  icon-commu-more icon-size-commu:2 icon-color:base-5" href=""> 세로 확장</a>
+                                </div>
+                                 <div > 
+            					<button class="commu-delete" 
+            							th:data-comment="${c.commentId}"
+            							th:data-post="${c.postId}"
+            							type="submit" value="" > 삭제 </button>
+                           		</div>
+                            </section>
+                            
+                        </section> <!-- top 끝 -->
+        
+                        <section class="middle">
+                            <h1 class="d:none"> 댓글 내용</h1>
+                            <p th:text="${c.content}"> 댓글내용이 어쩌구저쩌구 </p>
+                        </section> <!-- middle 끝 -->
+        
+                        <section class="bottom">
+                            <h1 class="d:none"> 좋아요 & 대댓글버튼 </h1>
+        
+                            <div class="likes-numbers">
+                                <a class="icon icon-commu-likes icon-size:1 icon-color:main" href=""> 좋아요</a> 
+                                <span th:text="${c.cmtLikeCount}"> 98</span>
+                            </div>
+        
+                            <div>
+                                <a class="btn-main btn-main-comment btn-main-comment-recomment"> 대댓글 </a>
+                            </div>
+                        </section> <!-- bottom 끝 -->
+        
+                    </section><!-- 댓글 comment-list-box: thymeleaf 반복 -->
+                     
+                 </section>   <!-- commentgroup -->
+                     
+               		 <!-- 대댓글 -->
+                    <section class="recomment-list-box md:recomment-list-box">
+                        <h2 class="d:none"> 대댓글 </h2>
+        
+                        <section class ="top"> 
+                            <h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+        
+                            <section class="member_info">
+                                <h1 class="d:none"> 대댓글표시 & 작성자 등급 & 닉네임</h1>
+        
+                                <div class="recomment-icon">
+                                    <a class="deco icon-commu-recomment icon-size:2 icon-color:main" href=""> 대댓글</a>
+                                </div>
+        
+        
+                                <div class="badge">
+                                    <img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" /> 
+                                </div>
+                                        
+                                <div class="nickname">
+                                    <span > 
+                                        루피햅삐 
+                                    </span>
+                                </div>
+                            </section>
+        
+                            <section class="date_info md:date_info">
+                                <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+        
+                                <div>
+                                    <span>    
+                                        12분전   
+                                    </span> 
+                                </div>
+        
+                                <div>
+                                    <a class="icon icon-commu-more icon-size-commu:2 icon-color:base-5" href=""> 세로 확장</a>
+                                </div>
+                            </section>
+        
+                        </section> <!-- top 끝 -->
+        
+                        <section class="middle">
+                            <h1 class="d:none"> 댓글 내용</h1>
+                            <p> 댓글내용이 어쩌구저쩌구 </p>
+                        </section> <!-- middle 끝 -->
+        
+                        <section class="bottom">
+                            <h1 class="d:none"> 좋아요 & 대댓글버튼 </h1>
+        
+                            <div class="likes-numbers">
+                                <a class="icon icon-commu-likes icon-size:1 icon-color:main" 
+                                href=""> 좋아요</a> 
+                                <span> 12 </span>
+                            </div>
+        
+                        </section> <!-- bottom 끝 -->
+                    </section>   <!-- 대댓글 -->
+
+
+            </section> 
+
+            <!-- ---------------- 댓글입력 ----------------  -->
+            <div th:each="p:${post}">
+	            <form class="commentbox md:commentbox" 
+	            		id="comment-form" 
+	            		method="post" 
+						th:data-userId="${p.userId}"
+						th:data-postId="${p.postId}"
+	            		>
+	<!--	           	action="/post/detail"-->
+	<!--            	th:text="${username}"-->
+	
+	                <legend class="d:none"> 댓글 입력창 </legend>
+	                      <div class="textarea-wrap">
+	                              <textarea
+	                                      class="comment-content"
+	                                      name ="content"
+	                                      placeholder="댓글을 작성해주세요."
+	                                      rows="1"></textarea>
+	                                      <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
+	                      </div>
+	      
+	                      <button class="btn-post input-button btn-main btn-main-comment" 
+	                              value="등록" > 등록 
+	                       </button>	
+	      
+	              </form>   
+    		<div>	
+	</main>
+</body>
+</html>
