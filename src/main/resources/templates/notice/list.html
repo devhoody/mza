@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+	
+<head>
+    <title>Document</title>
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/notice/list.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<main layout:fragment="main">
+		<!--//검색-->
+	    <div class="notice-qty">총 <span th:text="${count}"></span><span>건</span></div>
+	    
+		<div class="notice-list-box" th:each="n:${list}" th:onclick="|location.href='@{/notice/detail(notice-id=${n.noticeId})}'|">     <!-- 여기 div class로 구역 잡기 -->
+		<!--th:href="@{/detail?(noticeId=${n.noticeId})}"-->
+	        <section class="notice-list-box-left">
+	            <h1 class="d:none">공지사항 목록</h1>
+	            <div class="list-left-side"><span class="notice-number" th:text="${n.noticeId}" 
+	            	href="?n=1" th:href="@{?n={n} (n=${n.noticeId})}"></span><span>.</span>
+	                <h1 th:text="${n.title}">공지사항 리스트 제목</h1>
+	                <div class="reg-date" th:text="${#dates.format(n.createdDate, 'yyyy.MM.dd')}">2023.08.04</div>
+	            </div>
+	        </section>
+	            
+	            <span class="gotodetail deco icon-right-arrow icon-size:0"></span> 
+	            <section class="notice-list-box-right"></section>
+	            <div class="list-right-side">
+	                <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
+	            </div>
+        	</div>
+        
+			<!-- 페이지 이동 -->
+            <div class="pagination">
+                <a class="" th:if="${currentPage > 1}" th:href="@{/notice/list(page=${currentPage-1})}">&laquo;</a>
+                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+                	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+                	th:text="${pageNo}" th:href="@{/notice/list(page=${pageNo})}" 
+                	th:class="${currentPage == pageNo} ? 'page-active' : ''">
+                </a>
+                <a th:if="${currentPage < pageCount+1}" th:href="@{/notice/list(page=${currentPage+1})}">&raquo;</a>
+            </div>
+	</main>
+</body>	
+</html>
