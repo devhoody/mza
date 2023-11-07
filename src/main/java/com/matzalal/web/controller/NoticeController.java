@@ -42,6 +42,9 @@ public class NoticeController {
 			//@RequestParam(name="prev-notice-id") Long prevNoticeId,
 			//@RequestParam(name="next-notice-id") Long nextNoticeId
 			){
+		List<Notice> list = service.getList();
+		System.out.println(list.get(0));
+
 		Notice notice = service.getById(noticeId);
 		System.out.println("노티스 ID? " +noticeId);
 		/*
@@ -50,7 +53,7 @@ public class NoticeController {
 		//System.out.println("이전 노티스 ID? " +prevNoticeId);
 		//System.out.println("다음 노티스 ID? " +nextNoticeId);
 		*/
-		
+		model.addAttribute("list", list);
 		model.addAttribute("notice", notice);
 		
 		System.out.println("노티스 다 담아오니? " +notice);
