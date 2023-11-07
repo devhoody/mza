@@ -5,7 +5,7 @@
 <mapper namespace="com.matzalal.web.repository.ReviewRepository">
 
 
-    <select id="findReviewByRestId" resultType="Review">
+<!--    <select id="findReviewByRestId" resultType="Review">
         select
         rev.review_id,
         rev.user_id,
@@ -18,6 +18,24 @@
         from review rev
         left join user u on rev.user_id = u.user_id
         where rest_id = #{restId}
-    </select>
+    </select>-->
+    
+    <select id="getReviewList" resultType="Review">
+		SELECT r.review_id       as review_id
+             , r.user_id         as user_id
+             , u.alias           as alias
+             , r.rest_id         as rest_id
+             , rest.rest_name    as rest_name
+             , r.rating          as rating
+             , r.content         as content
+             , r.img             as img
+             , r.created_date    as created_date
+        FROM review r
+        left join restaurant rest
+        on r.review_id = rest.review_id
+        left join user u
+        on r.user_id = u.user_id
+        order by created_date desc   
+	</select>
 
 </mapper>

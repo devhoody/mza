@@ -40,4 +40,14 @@ private HomeRepository homeRepository;
 
         return list;
     }
+
+    // 별점 순으로 맛집 3개 랭킹 조회(일주일기준)
+	@Override
+	public List<RatingView> getRankingList() {
+		List<RatingView> list = homeRepository.findRankAll();
+		System.out.println("일주일간의 별점 순으로 3개의 맛집을 추려냅니다");
+        return list;
+	}
+    
+    
 }

@@ -6,6 +6,7 @@ import com.matzalal.web.entity.Rest;
 import com.matzalal.web.entity.Review;
 import com.matzalal.web.service.HomeService;
 import com.matzalal.web.service.RestService;
+import com.matzalal.web.service.ReviewService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class HomeController {
 	
 	@Autowired
 	private RestService restService;
+	
+	@Autowired
+	private ReviewService reviewService;
 
 	@RequestMapping("index")
 	public String index(Model model) {
@@ -64,6 +68,14 @@ public class HomeController {
 		model.addAttribute("list", list);
 		model.addAttribute("recom", randomRecommend);
 		
+		
+		// 최신 리뷰 출력
+		List<Review> reviewList = reviewService.getReviewList();
+		model.addAttribute("review", reviewList);
+		
+		// 랭킹순 3개 맛집 조회(일주일기준)
+		List<RatingView> ranking = service.getRankingList();
+		model.addAttribute("ranking", ranking);
 		
 //		List<RecomView> recomViewList = service.getRecomViewList();
 //		List<Review> reviewList = service.getReviewList();

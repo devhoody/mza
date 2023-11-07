@@ -16,4 +16,7 @@ public interface HomeService {
     List<RatingView> getRankingViewList();
 
     List<RatingView> getRankingViewListAll();
+    
+    // 별점 랭킹순 3개 조회
+    List<RatingView> getRankingList();
 }

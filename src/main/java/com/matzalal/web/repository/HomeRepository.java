@@ -16,4 +16,8 @@ public interface HomeRepository {
     List<RatingView> findRankLimitThree();
 
     List<RatingView> findRankAll();
+    
+    // 리뷰 랭킹순 3개 조회(위쪽 매퍼 오류있음)
+    List<RatingView> findRankThree();
+    
 }

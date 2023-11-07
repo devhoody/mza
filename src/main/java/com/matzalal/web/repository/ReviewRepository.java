@@ -7,5 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface ReviewRepository {
-    List<Review> findReviewByRestId(Long restId);
+//    List<Review> findReviewByRestId(Long restId);
+	
+	  List<Review> getReviewList();
 }
