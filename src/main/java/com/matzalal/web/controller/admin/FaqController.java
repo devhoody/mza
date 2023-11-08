@@ -1,10 +1,8 @@
 package com.matzalal.web.controller.admin;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.matzalal.web.entity.Faq;
-import com.matzalal.web.entity.Notice;
 import com.matzalal.web.service.FaqService;
 
 @Controller("adminFaqController")

@@ -77,6 +77,13 @@
                             </li>
                         </ul>
                     </section>
+                    
+                    <section sec:authorize="hasRole('ADMIN')">
+                        <h1 class="list-label">관리자</h1>
+                        <ul>
+                            <li class="list-content"><a href="/admin/user">관리자 Index</a></li>
+                        </ul>
+                    </section>
                 </div>
             </section>
         </main>
