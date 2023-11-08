@@ -32,12 +32,10 @@ public class NoticeServiceImp implements NoticeService {
 		return list;
 	}
 
-
 	@Override
 	public Notice getById(Long noticeId) {
 		return repository.findById(noticeId);
 	}
-
 	
 	// 관리자 시스템
 

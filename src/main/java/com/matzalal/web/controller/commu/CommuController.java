@@ -81,51 +81,51 @@ public class CommuController {
 
 		return "commu/post/create";
 	}
-	
-	@PostMapping("post/create") 
-	public String postCreate(
-
-			@RequestParam(name="user_id", required =true) Long userId,
-			@RequestParam(name="area_id", required =false) Long areaId,
-			@RequestParam(required =true) String title,
-			@RequestParam(required =true) String content,
-	        @RequestParam(name="img1", required = false) String img1
-//	        @RequestParam(name="img-file", required = false) MultipartFile img1
-//	        @RequestParam(name="images", required = false) List<MultipartFile> images
-
-	) throws IOException{
-			System.out.println("post");
-
-		    Post post = Post.builder()
-		            .userId(userId)
-		            .areaId(areaId)
-		            .title(title)
-		            .content(content)
-		            .img1(img1)
-		            .build();
-			System.out.println(post);
-
-		postService.add(post);
-		
-		
-//		System.out.println("img1 is Empty ? :"+ img1.isEmpty());
-//		System.out.println("getOriginalFilename ? :" +img1.getOriginalFilename());
-//		
-//		InputStream fis = img1.getInputStream();
+//	
+//	@PostMapping("post/create") 
+//	public String postCreate(
 //
-//		OutputStream fos = new FileOutputStream("/Users/geniem/"+img1.getOriginalFilename());
+//			@RequestParam(name="user_id", required =true) Long userId,
+//			@RequestParam(name="area_id", required =false) Long areaId,
+//			@RequestParam(required =true) String title,
+//			@RequestParam(required =true) String content,
+//	        @RequestParam(name="img1", required = false) String img1
+////	        @RequestParam(name="img-file", required = false) MultipartFile img1
+////	        @RequestParam(name="images", required = false) List<MultipartFile> images
 //
-//		int size=0;
-//		byte[] buf = new byte[1024];
-//		while((size = fis.read(buf))!=-1)
-//			fos.write(buf, 0, size);
+//	) throws IOException{
+//			System.out.println("post");
+//
+//		    Post post = Post.builder()
+//		            .userId(userId)
+//		            .areaId(areaId)
+//		            .title(title)
+//		            .content(content)
+//		            .img1(img1)
+//		            .build();
+//			System.out.println(post);
+//
+//		postService.add(post);
 //		
-//		fis.close();
-//		fos.close();
-		
-		
-		return "redirect:/commu/main"; //
-	}
+//		
+////		System.out.println("img1 is Empty ? :"+ img1.isEmpty());
+////		System.out.println("getOriginalFilename ? :" +img1.getOriginalFilename());
+////		
+////		InputStream fis = img1.getInputStream();
+////
+////		OutputStream fos = new FileOutputStream("/Users/geniem/"+img1.getOriginalFilename());
+////
+////		int size=0;
+////		byte[] buf = new byte[1024];
+////		while((size = fis.read(buf))!=-1)
+////			fos.write(buf, 0, size);
+////		
+////		fis.close();
+////		fos.close();
+//		
+//		
+//		return "redirect:/commu/main"; //
+//	}
 
 
 	
@@ -143,12 +143,12 @@ public class CommuController {
 		System.out.println("상세조회 postId: " + postId);
 		System.out.println("상세조회 post: "+ post);
 		System.out.println("상세조회 commentList: "+ commentList);
-		System.out.println("상세조회 commentCount: "+ count);
+		//System.out.println("상세조회 commentCount: "+ count);
 
 
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
-		model.addAttribute("count", count);
+		//model.addAttribute("count", count);
 		return "commu/post/detail";
 	}
 	
