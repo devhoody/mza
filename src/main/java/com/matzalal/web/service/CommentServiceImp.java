@@ -17,11 +17,14 @@ public class CommentServiceImp implements CommentService {
 	@Autowired
 	private CommentRepository commentRepository;
 
+	// ------------------- 댓글 등록  -------------------
+
 	@Override
 	public Comment add(Comment comment) {
 		commentRepository.save(comment);
 
 		Comment newComment = commentRepository.last();
+		System.out.println("댓글저장: " + newComment);
 		return newComment;
 
 	}

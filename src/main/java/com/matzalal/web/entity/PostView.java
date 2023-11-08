@@ -26,7 +26,7 @@ public class PostView {
 	private String profileImg;
 	private Long postLikeCount;
 	private Long commentCount;
-	private Boolean isLike;
+	private Boolean isLiked;
 	private String sanctionTime;
 
 }
