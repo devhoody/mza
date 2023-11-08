@@ -258,7 +258,7 @@
         and phone = #{phone};
     </select>
 
-    <select id="findPostById" resultType="PostUserLikeCommentView">
+    <select id="findPostViewById" resultType="PostUserLikeCommentView">
         select 
 			  post_id as id
 		    , alias
