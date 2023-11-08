@@ -97,6 +97,7 @@ document.getElementById('phoneNumberButton').addEventListener('click', async (e)
             // ...
             console.log(confirmationResult);
             console.log("인증코드를 보냈습니다.");
+            alert("입력하신 번호로 인증코드를 보냈습니다.");
 
         }).catch((error) => {
         // Error; SMS not sent
@@ -137,7 +138,9 @@ document.getElementById('confirmCodeButton').addEventListener('click', async (e)
         let sendResult = await response.text();
 
         console.log(sendResult); // 입력한 이름을부터의 아이디 출력
-        alert(sendResult);
+        alert("회원님의 아이디는 [" + sendResult + "] 입니다.");
+
+        window.location="/stranger/login"
 
     }).catch((error) => { // 인증 실패
 

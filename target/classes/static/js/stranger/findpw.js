@@ -3,6 +3,7 @@ let findpw = document.querySelector(".findpw");
 let inputName = findpw.querySelector("input[name=name]");
 let inputEmail = findpw.querySelector("input[name=email]");
 let sendMail = findpw.querySelector("fieldset button");
+let confirmButton = document.querySelector(".btn-main");
 
 inputName.oninput = (e)=>{
     e.preventDefault();
@@ -37,7 +38,8 @@ sendMail.onclick = async (e)=>{
 
     console.log(result); // 입력한 이름과 핸드폰번호 일치 여부
     if (result === false) {
-        alert("존재하지않습니다.");
+        alert("입력하신 정보가 일치하지 않습니다.");
+        confirmButton.classList.remove("bg-color:logo-2")
         return;
     }
 
@@ -58,17 +60,7 @@ sendMail.onclick = async (e)=>{
         window.location="/stranger/login"
     }
     request.open("POST", `/api/strangers/findpw?email=${email}&name=${name}`);
-    request.setRequestHeader("Content-Type", "application/json");
 
     request.send(user);
-
-
-
-}
-
-async function matchEmailName(email, name) {
-
-    let response = await fetch(`/api/strangers/findid?name=${name}&email=${email}`)
-    return await response.json();
 
 }

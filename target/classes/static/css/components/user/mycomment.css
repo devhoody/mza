@@ -44,7 +44,7 @@
         }
 
 .comment-card
-    .content-block{
+    a{
         grid-column: 1 / 3;
         grid-row : 2;
         color:var(--color-base-4);

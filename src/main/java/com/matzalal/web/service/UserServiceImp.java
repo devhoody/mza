@@ -119,9 +119,17 @@ public class UserServiceImp implements UserService {
 
             user.setPwd(hashedPwd);
         }
+        // 회원 등급 수정
 
+        if (user.getGradeId()!= null) {
+            userGradeRepository.modify(user);
+        }
+
+        // 이미지 수정
         System.out.println("editimp");
         repository.modify(user);
+
+
     }
 
     @Override
@@ -227,5 +235,24 @@ public class UserServiceImp implements UserService {
             return true;
         } else
             return false;
+    }
+
+    // 회원 활동 정지
+    @Override
+    public void inactiveUser(String email) {
+        repository.userSanction(email);
+    }
+
+    // 회원 정지 해제
+    @Override
+    public void activeUser(String email) {
+        repository.userSanctionCancel(email);
+    }
+
+    // 회원 활동 정지 기간 확인
+    @Override
+    public Date getSancTime(String email) {
+        Date userSancTime = repository.userSanctionTime(email);
+        return userSancTime;
     }
 }
