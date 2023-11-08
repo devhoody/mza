@@ -66,6 +66,7 @@ window.addEventListener("load",function(){
 
         let pwdPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
+        console.log("입력한 비밀번호 정규식!! : " + inputPwd.value.match(pwdPattern))
         if(inputPwd.value === '') {
             pwdInvalid.classList.add("d:none");
         } else if(!inputPwd.value.match(pwdPattern)){
@@ -126,11 +127,12 @@ window.addEventListener("load",function(){
         //     aliasInvalid.classList.remove("d:none");
         // } else
         //     aliasInvalid.classList.add("d:none");
+        console.log("정규식 유효성 검사 : " + !inputAlias.value.match(aliasPattern));
 
         //유효성 검사
         if(inputAlias.value === '') {
             aliasInvalid.classList.add("d:none");
-        } else if(!inputAlias.value.match(aliasPattern)){
+        } else if(inputAlias.value.match(aliasPattern)){
             console.log("유효하지않다!");
             aliasInvalid.classList.remove("d:none");
         } else
@@ -147,7 +149,7 @@ window.addEventListener("load",function(){
             console.log("중복입니다.");
         } else { // 중복 x
             aliasDouble.classList.add("d:none");
-            console.log("가능한 이메일입니다.");
+            console.log("가능한 닉네임입니다.");
         }
     }
 })
