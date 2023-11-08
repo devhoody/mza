@@ -124,12 +124,17 @@ public class UserServiceImp implements UserService {
 
             user.setPwd(hashedPwd);
         }
+        // 회원 등급 수정
 
+        if (user.getGradeId()!= null) {
+            userGradeRepository.modify(user);
+        }
+
+        // 이미지 수정
         System.out.println("editimp");
         repository.modify(user);
 
-        // 회원 등급 수정
-        userGradeRepository.modify(user);
+
     }
 
     // 회원 삭제
