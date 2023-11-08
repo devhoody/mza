@@ -38,11 +38,6 @@
 
 
 /* -----------layout---------------- */
-body{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
 
 .login{
     display: flex;
