@@ -5,7 +5,6 @@
     flex-direction: column;   
     overflow: hidden;
     gap: var(--gap-5);
-    margin-top: 40px;
 }
 
 .reg-qna
@@ -13,7 +12,7 @@
         font-size: 25px;
         font-weight: 500;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
 
 .reg-qna
@@ -81,8 +80,6 @@
             font-family: "Pretendard Variable";
             font-weight: 500;
             margin-top: 10px;
-            display: flex;
-            flex-direction: column;
         }
 
 .reg-qna
@@ -105,7 +102,7 @@
         }
 
 
-.manage-button{
+.create-mg-btn{
     width: 100%;
     display: flex;
     justify-content: center;

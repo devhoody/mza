@@ -33,17 +33,9 @@
         color : var(--color-base-4);
     }
 
-.certi-btn {
-    width : 100%;
-    display: flex;
-    justify-content: center;
-    margin-top : 30px;
-}
-
 .box\:certi-btn {
     width : 250px;
     margin-top : 20px;
-
 }
 
 @media(min-width:700px) {

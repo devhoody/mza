@@ -1,46 +1,105 @@
 <!DOCTYPE html>
-<html lang="en" 
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{inc/layout.html}">
-	
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
-    <link href="/css/components/qna/question/list.css" rel="stylesheet" type="text/css">
+    <link href="list.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<main layout:fragment="main">
-		<!--//검색-->
-	    <div class="qna-qty">총 <span th:text="${count}"></span><span>건</span></div>
-		<div class="qna-list-box" th:each="q:${list}" th:onclick="|location.href='@{/qna/question/detail(question-id=${q.questionId})}'|">  <!-- 여기 div class로 구역 잡기 -->
-	        <section class="qna-list-box-left">
-	            <h1 class="d:none">QnA 목록</h1>
-	            <div class="list-left-side"><span class="qna-number" th:text="${q.questionId}" 
-	            	href="?q=1" th:href="@{?q={q} (q=${q.questionId})}"></span><span>.</span>
-	                <h1 th:text="${q.title}">QnA 제목</h1>
-	                <div class="reg-date" th:text="${#dates.format(q.createdDate, 'yyyy.MM.dd')}">2023.08.04</div>
-	            </div>
-	        </section>
-	            
-	            <span class="gotodetail deco icon-right-arrow icon-size:0"></span> 
-	            <section class="qna-list-box-right"></section>
-	            <div class="list-right-side">
-	                <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
-	            </div>
-        	</div>
-        
-			<!-- 페이지 이동 -->
-            <div class="pagination">
-                <a class="" th:if="${currentPage > 1}" th:href="@{/qna/question/list(page=${currentPage-1})}">&laquo;</a>
-                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
-                	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
-                	th:text="${pageNo}" th:href="@{/qna/question/list(page=${pageNo})}" 
-                	th:class="${currentPage == pageNo} ? 'page-active' : ''">
-                </a>
-                <a th:if="${currentPage < pageCount+1}" th:href="@{/qna/question/list(page=${currentPage+1})}">&raquo;</a>
+    <main class="qna-list">
+        <div class="qna-qty">20<span>건</span></div>
+        <section class="qna-list-box-left">
+            <h1 class="d:none">공지사항 목록</h1>
+            <div class="list-left-side"><span class="qna-number">20.</span>
+                <h1>시스템 점검 안내</h1>
+                <div class="reg-date">2023.08.04</div>
             </div>
-	</main>
-</body>	
+            
+        </section>
+            
+            <!-- <span class="gotodetail deco icon-right-arrow icon-size:0"></span> -->
+            <section class="qna-list-box-right"></section>
+            <div class="list-right-side">
+                <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+
+        <!-- <div class="content-box">
+                    <span class="number">19.</span><h1>시스템 점검 안내</h1>
+                    <div class="reg-date">2023.08.04</div>
+                    <div>
+                        <a class="icon icon-right-arrow icon-size:2" href="">화살표</a>
+                    </div>
+                </div>
+        
+                <div class="content-box">
+                    <span class="number">18.</span><h1>시스템 점검 안내</h1>
+                    <div class="reg-date">2023.08.04</div>
+                    <div>
+                        <a class="icon icon-right-arrow icon-size:2" href="">화살표</a>
+                    </div>
+                </div>
+        
+                <div class="content-box">
+                    <span class="number">17.</span><h1>시스템 점검 안내</h1>
+                    <div class="reg-date">2023.08.04</div>
+                    <div>
+                        <a class="icon icon-right-arrow icon-size:2" href="">화살표</a>
+                    </div>
+                </div> -->
+
+
+
+
+
+        </section>
+
+
+
+
+
+
+        <!-- 
+                    <div class="item">A</div>
+                    <div class="item">B</div>
+                    <div class="item">C</div>
+                    <div class="item">D</div>
+                    <div class="item">E</div>
+                    <div class="item">F</div>
+                    <div class="item">G</div>
+                    <div class="item">H</div>
+                    <div class="item">I</div> -->
+
+
+    </main>
+
+
+
+
+    <!-- --------------------하단 바-------------------------------- -->
+    <nav class="bottom-nav md:d:none">
+        <h1 class="d:none">하단바 내비게이션</h1>
+        <ul class="bottom-ul">
+            <a href="" class="icon icon-home icon-size:5 icon-color:black"> 홈</a>
+            <a href="" class="icon icon-search icon-size:5 icon-color:black"> 검색</a>
+            <a href="" class="icon icon-community icon-size:5 icon-color:black"> 커뮤니티</a>
+            <a href="" class="icon icon-person icon-size:5 icon-color:black"> 마이페이지</a>
+        </ul>
+    </nav>
+
+
+
+</body>
+
 </html>

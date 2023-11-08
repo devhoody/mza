@@ -1,6 +1,5 @@
 package com.matzalal.web.repository;
 
-import java.util.Date;
 import java.util.List;
 
 import com.matzalal.web.entity.*;
@@ -26,13 +25,13 @@ public interface UserRepository {
     UserView findUserViewById(Long id);
 
     UserView findUserViewByEmail(String email);
-   
-   
+	
+	
 // ~!~~~~~~관리자용 ~~~~~//
     
-   Integer count();
+	Integer count();
 
-   void modify(User user);
+	void modify(User user);
 
     int delete(Long id);
     
@@ -57,14 +56,4 @@ public interface UserRepository {
     User findByUser(User user);
 
     int findForFindPwd(User user);
-    
-    // 회원 활동정지
-   void userSanction(String email);
-   
-   // 회원 활동정지 해제
-   void userSanctionCancel(String email);
-   
-   // 회원 활동정지 기간 조회
-   Date userSanctionTime(String email);
-
 }

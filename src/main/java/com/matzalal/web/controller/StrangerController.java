@@ -1,7 +1,9 @@
 package com.matzalal.web.controller;
 
 import com.matzalal.web.entity.User;
+import com.matzalal.web.service.StrangerService;
 import com.matzalal.web.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,34 @@ public class StrangerController {
         return "stranger/login";
     }
 
+
+//    @PostMapping("login")
+//    public String login(
+//            String email,
+//            String pwd,
+//            @RequestParam("return-url") String returnURL,
+//            HttpSession session
+//    ) {
+//        // 로그인 유효성 검사
+//        if (strangerService.isValid(email, pwd)) {
+//            User user = userService.getByEmail(email);
+//            session.setAttribute("user", user);
+//
+//            System.out.println("returnURL :::::" + returnURL);
+//
+//            // 리턴URL 유무 확인
+//            if (returnURL != null && returnURL != ""){
+//                System.out.println("리턴 URL있음 ");
+//                return "redirect:" + returnURL;
+//            }
+//            return "redirect:/user/mypage?id=" +user.getId();
+//        }
+//
+//        // 로그인 유효성 검사 실패시 페이지 리턴
+//        return "redirect:login?error";
+//
+//    }
+
     @GetMapping("signup")
     public String signup(Model model) {
 
@@ -32,11 +62,6 @@ public class StrangerController {
         model.addAttribute("list", list);
 
         return "stranger/reg_user";
-    }
-
-    @GetMapping("signup/user-policy")
-    public String userPolicy(){
-        return "stranger/user-policy";
     }
 
     @PostMapping("signup")

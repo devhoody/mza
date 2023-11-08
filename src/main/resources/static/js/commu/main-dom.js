@@ -4,9 +4,7 @@ window.addEventListener("load", function(){
 	let locUl = commuLocFilterSection.querySelector("ul");
 	let currentLoc = locUl.querySelector("li:first-child a");
 	
-	// post-detail 페이지 연
 	let content = document.querySelector(".post-layout ");
-	// 
 	let bottom = document.querySelector(".bottom");
 	
 	// 검색 버튼 
@@ -30,7 +28,7 @@ window.addEventListener("load", function(){
 		
 	        fetch(url,{
 					method: 'DELETE'
-				})
+			})
 			.then(response => response.text())
 		    .then(data => {
 		        if (data === '') {
@@ -87,61 +85,60 @@ window.addEventListener("load", function(){
             });
         }
     });	
-	  bottomLikes.addEventListener("click", async function (e) {
-	        let el = e.target;
-	        e.preventDefault();
-	
-	        // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
-	        // likes -> likes-fill
-	        if (!el.classList.contains("icon-commu-likes")) 
-	 			return;
-	            console.log("postId: " + el.dataset.post);
-	            console.log("like");
-	            
-	            
-	      	let url = `/api/commu/likes`
-	        
-	        let response = await fetch(url, {
-				method:'POST',
-				headers: {
-	            	'Content-Type': 'application/json',
-	            },
-	            body: JSON.stringify({
-	                postId: el.dataset.post
-				})
-			})
-	        
-	    });
-	
-		bottomLikes.addEventListener("click", async function (e) {
-		    let el = e.target;
-		    
-		    e.preventDefault();
-		    console.log("좋아요 취소 " + el);
-		    
-		    // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
-		    if (!el.classList.contains("icon-commu-likes-fill")) 
-		        return;
-		    
-		    console.log("접속한 사람 : " + el.dataset.currentid);
-		    console.log("postId: " + el.dataset.post);
-		    console.log("likefill");
-		    
-		    let url = `/api/commu/likes/posts/${el.dataset.post}`;
-		    
-		        let response = await fetch(url, {
-		            method: 'DELETE',
-		        });
-
-
-		});
-		
+//	  bottomLikes.addEventListener("click", async function (e) {
+//	        let el = e.target;
+//	        e.preventDefault();
+//	
+//	        // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+//	        // likes -> likes-fill
+//	        if (!el.classList.contains("icon-commu-likes")) 
+//	 			return;
+//	            console.log("postId: " + el.dataset.post);
+//	            console.log("like");
+//	            
+//	            
+//	      	let url = `/api/commu/likes`
+//	        
+//	        let response = await fetch(url, {
+//				method:'POST',
+//				headers: {
+//	            	'Content-Type': 'application/json',
+//	            },
+//	            body: JSON.stringify({
+//	                postId: el.dataset.post
+//				})
+//			})
+//	        
+//	    });
+//	
+//		bottomLikes.addEventListener("click", async function (e) {
+//		    let el = e.target;
+//		    
+//		    e.preventDefault();
+//		    console.log("좋아요 취소 " + el);
+//		    
+//		    // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+//		    if (!el.classList.contains("icon-commu-likes-fill")) 
+//		        return;
+//		    
+//		    console.log("접속한 사람 : " + el.dataset.currentid);
+//		    console.log("postId: " + el.dataset.post);
+//		    console.log("likefill");
+//		    
+//		    let url = `/api/commu/likes/posts/${el.dataset.post}`;
+//		    
+//		        let response = await fetch(url, {
+//		            method: 'DELETE',
+//		        });
+//
+//
+//		});
+//		
 		
 // ------------- 지역카테고리 선택시 -> query전달 함수 -> data json으로 전달 -------------
 
 	locUl.onclick = async (e)=> {
 		e.preventDefault();
-		console.log("하트하트")
 		
 		let el = e.target;
 		
@@ -222,12 +219,11 @@ window.addEventListener("load", function(){
 // ------------- 데이터 요청 후 응답기다리는...! -------------
 
 	function bind(postList){
-		console.log(" --function bind 시작 부분-- ")
 		
         content.innerHTML = ""; // section을 위한 DOM 객체를 직접 생성해서 append 한다.
 
         for (let p of postList){
-            let iconLike = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
+            let iconLike = p.isLike ? "icon-commu-likes-fill" : "icon-commu-likes";
 
             let template = `
 	            
@@ -240,7 +236,7 @@ window.addEventListener("load", function(){
 	                            <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
 	
 	                            <div class="badge">
-	                                <img src="/css/image/icon/badge${p.gradeId}.svg" style="height:20px;" alt="등급2" /> 
+	                                <img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" /> 
 	                            </div>
 	                                
 	                            <div class="nickname" >
@@ -312,7 +308,7 @@ window.addEventListener("load", function(){
 	                                <h1 class="d:none"> 조회수 </h1>
 	
 	                                    <div>
-	                                        <span class="deco-commu icon-commu-view icon-size:1 icon-color:main" href=""></span>
+	                                        <span class="deco icon-commu-view icon-size:1 icon-color:main" href=""> 조회수</span>
 	                                    </div>
 	
 	                                    <div>
@@ -327,27 +323,27 @@ window.addEventListener("load", function(){
 	                                        <button class=" ${iconLike} icon icon-size:1 icon-hover icon-pointer icon-color:main" 
                                                     classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
                                     				data-post="${p.postId}"
-	                                                type="button"></button>
+	                                                type="button"> 좋아요</button>
 	                                    </div>
 	
 	                                    <div>
 	                                        <span> ${p.postLikeCount} </span>
 	                                    </div>
-	                            </section><!— like —>
+	                            </section><!-- like -->
 	            
 	                            <section class="comment">
 	                                <h1 class="d:none"> 댓글 </h1>
 	
 	                                    <div>
-	                                        <span class="deco-commu icon-comment icon-size:1 icon-color:main" href=""></span>
+	                                        <span class="deco icon-comment icon-size:1 icon-color:main" href=""> 댓글</span>
 	                                    </div>
 	
 	                                    <div>
 	                                        <span> ${p.commentCount} </span>
 	                                    </div>
-	                            </section><!— comment —>
+	                            </section><!-- comment -->
 	                            
-	                    </section><!— bottom —>
+	                    </section><!-- bottom -->
                   </div>  
             `;
 	        

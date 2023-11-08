@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 @Builder
 public class Post {
-
+	
 	private Long postId;
 	private Long userId;
 	private Long areaId;
@@ -24,8 +24,8 @@ public class Post {
 	private String img1;
 	private String img2;
 	private String img3;
-
+	
 	private Integer hit;
 	private String createdDate;
-
+	
 }

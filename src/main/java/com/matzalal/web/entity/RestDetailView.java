@@ -15,8 +15,10 @@ public class RestDetailView {
 
     private Long restId;
     private String restName;
-    private Date openTime;
-    private Date closeTime;
+    private String dayOpen;
+    private String dayClose;
+    private String endOpen;
+    private String endClose;
     private String addr;
     private Long locationRestId;
     private String area;

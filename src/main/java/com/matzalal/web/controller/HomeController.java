@@ -20,6 +20,7 @@ public class HomeController {
 	@RequestMapping("index")
 	public String index(Model model) {
 
+
 		List<RecomView> recomViewList = service.getRecomViewList();
 		List<Review> reviewList = service.getReviewList();
 		List<RatingView> ratingViewList = service.getRankingViewList();
@@ -31,15 +32,16 @@ public class HomeController {
 		model.addAttribute("review", reviewList);
 		model.addAttribute("ratingView", ratingViewList);
 
+
 		return "index";
 	}
-
 	@RequestMapping("rank")
 	public String rank(Model model) {
 
 		List<RatingView> ranking = service.getRankingViewListAll();
 
 		model.addAttribute("ranking", ranking);
+
 
 		return "menu/rank";
 	}

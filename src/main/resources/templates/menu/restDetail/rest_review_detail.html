@@ -23,7 +23,7 @@
         <img class="rest_img" src="/css/img/logo61.png" />
     </div>
     <div class="head-container">
-        <a class="rest_name">상호명</a>
+        <a class="rest_name" >상호명</a>
         <a class="icon icon-heart heart">찜 아이콘</a>
     </div>
 
@@ -47,7 +47,7 @@
                 </p>
             </div>
             <div class="review-info">
-                <a class="icon icon-2rank icon-size:1 rank">등급 아이콘</a>
+                <img class="icon icon-2rank icon-size:1 rank"  style="width:32px; height : 32px;" th:src="rv.gradeImg"></img>
                 <a class="user-id" th:text="${rv.alias}">ID</a>
                 <a class="rating" th:text="${rv.rating}">평점</a>
             </div>

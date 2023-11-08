@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Date;
 
 public class MatzalalUserDetails implements UserDetails {
 
@@ -18,15 +17,6 @@ public class MatzalalUserDetails implements UserDetails {
     private Integer postCount;
     private Integer commentCount;
     private Integer favCount;
-    private Date sanctionTime;
-
-    public Date getSanctionTime() {
-        return sanctionTime;
-    }
-
-    public void setSanctionTime(Date sanctionTime) {
-        this.sanctionTime = sanctionTime;
-    }
 
     public Integer getFavCount() {
         return favCount;

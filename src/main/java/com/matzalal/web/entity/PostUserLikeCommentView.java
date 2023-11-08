@@ -1,15 +1,13 @@
 package com.matzalal.web.entity;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class PostUserLikeCommentView {
     private Long id;
@@ -27,5 +25,4 @@ public class PostUserLikeCommentView {
     private String profileImg;
     private Long postLikeCount;
     private Long postCommentCount;
-    private Date sanctionTime;
 }

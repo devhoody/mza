@@ -25,37 +25,35 @@ public class NoticeController {
 		List<Notice> list = service.getListByPage(offset, page, size, null, null);
 		int count = service.countNotice();
 		int pageCount = count / size;
-
+		
 		model.addAttribute("list", list);
 		model.addAttribute("count", count);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("pageCount", pageCount);
-
-		System.out.println("리스트 중에 어디 눌렀닝?!" + list);
-		System.out.println("공지사항 총 " + count + "건");
+		
+		System.out.println("리스트 중에 어디 눌렀닝?!"+ list);
+		System.out.println("공지사항 총 "+count+"건");
 		return "notice/list";
 	}
-
+	
 	@RequestMapping("detail")
 	public String detail(Model model, 
 			@RequestParam(name="notice-id") Long noticeId
 			//@RequestParam(name="prev-notice-id") Long prevNoticeId,
 			//@RequestParam(name="next-notice-id") Long nextNoticeId
 			){
-		List<Notice> list = service.getList();
-		System.out.println(list.get(0));
-
 		Notice notice = service.getById(noticeId);
-		System.out.println("노티스 ID? " + noticeId);
+		System.out.println("노티스 ID? " +noticeId);
 		/*
 		//prevNoticeId = noticeId - 1;
 		//nextNoticeId = noticeId + 1;
 		//System.out.println("이전 노티스 ID? " +prevNoticeId);
 		//System.out.println("다음 노티스 ID? " +nextNoticeId);
 		*/
-		model.addAttribute("list", list);
+		
 		model.addAttribute("notice", notice);
-		System.out.println("노티스 다 담아오니? " + notice);
+		
+		System.out.println("노티스 다 담아오니? " +notice);
 
 		return "notice/detail";
 	}

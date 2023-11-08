@@ -26,13 +26,13 @@
                         <article class="rest-container" th:each="rank:${ranking}">
                             <h1 style="display:none">1등</h1>
                             <div class="rest-box">
-                                <a  href="menu/restDetail/rest_detail" th:href="@{/rank (restId=${rank.restId})}">
+                                <a  href="menu/restDetail/rest_detail" th:href="@{/celeb/detail (restId=${rank.restId})}">
                                 <img src="/css/img/gold.png" class="medal-img" th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}" >
                                 </a>
-                                <a  href="menu/restDetail/rest_detail" th:href="@{/rank (restId=${rank.restId})}">
+                                <a  href="menu/restDetail/rest_detail" th:href="@{/celeb/detail (restId=${rank.restId})}">
                                 <img src="/css/img/1-1.png" class="rest-img" th:src="@{/css/image/{img} (img=${rank.img})}">
                                 </a>
-                                <a  href="menu/restDetail/rest_detail" th:href="@{/rank (restId=${rank.restId})}">
+                                <a  href="menu/restDetail/rest_detail" th:href="@{/celeb/detail (restId=${rank.restId})}">
                                 <span class="rest-name" th:text="${rank.restName}"></span>
                                 </a>
 

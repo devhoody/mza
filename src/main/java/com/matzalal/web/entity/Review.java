@@ -11,13 +11,13 @@ import java.util.Date;
 @Builder
 public class Review {
 
-    // private Long reviewId;
-    // private Long userId;
-    // private Long restId;
-    // private Long rating;
-    // private String content;
-    // private String img;
-    // private Date createdDate;
+//    private Long reviewId;
+//    private Long userId;
+//    private Long restId;
+//    private Long rating;
+//    private String content;
+//    private String img;
+//    private Date createdDate;
 
     private Long restId;
     private String restName;

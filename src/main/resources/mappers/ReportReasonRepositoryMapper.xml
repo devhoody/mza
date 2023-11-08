@@ -6,8 +6,7 @@
 
     <select id="findAll" resultType="ReportReason">
         select
-	        report_reason_id,
-	   		category
+        *
         from report_reason
     </select>
 

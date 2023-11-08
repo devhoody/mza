@@ -13,7 +13,7 @@ public interface FaqRepository {
 
 	int count();
 
-	List<Faq> getListByPage(Integer offset, Integer page, Integer size, Long faqId, String query);
+	List<Faq> getListByPage(int offset, int size, String query);
 
 	// faq 페이지별 리스트 조회. 생성자 더 많이많이
 	List<Faq> getListByPages(Integer offset, Integer page, Integer size, Long faqId, String query);

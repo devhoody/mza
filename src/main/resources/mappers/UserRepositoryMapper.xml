@@ -6,35 +6,13 @@
 
     <select id="findAll" resultType="User">
         select
-	        user_id as id
-	      , pwd
-	      , alias
-	      , email
-	      , phone
-	      , name
-	      , grade_id
-	      , profile_img
-	      , created_date as date
-	      , status_id
-	      , access_location as location_id
-	      , sanction_time
+        *
         from user
     </select>
     
     <select id="findAllByPage" resultType="User">
 	  	select
-		      user_id as id
-		    , pwd
-		    , alias
-		    , email
-		    , phone
-		    , name
-		    , grade_id
-		    , profile_img
-		    , created_date as date
-		    , status_id
-		    , access_location as location_id
-		    , sanction_time
+			*
 		from user
 		<where>
 		    <if test="query != null">email like '%${query}%'</if>
@@ -46,45 +24,13 @@
 
     <select id="findUserView" resultType="UserView">
         select
-		      user_id as id
-		    , pwd
-		    , alias
-		    , email
-		    , phone
-		    , name
-		    , grade_id
-		    , profile_img
-		    , created_date as date
-		    , status_id
-		    , access_location as location_id
-		    , post_count
-		    , comment_count
-		    , fav_count
-		    , grade_name
-		    , grade_img
-		    , sanction_time
+        *
         from user_view
     </select>
 
     <select id="findUserViewById" resultType="UserView">
         select
-		      user_id as id
-		    , pwd
-		    , alias
-		    , email
-		    , phone
-		    , name
-		    , grade_id
-		    , profile_img
-		    , created_date as date
-		    , status_id
-		    , access_location as location_id
-		    , post_count
-		    , comment_count
-		    , fav_count
-		    , grade_name
-		    , grade_img
-		    , sanction_time
+        *
         from user_view
         where
         user_id = #{id}
@@ -92,23 +38,7 @@
 
     <select id="findUserViewByEmail" resultType="UserView">
         select
-		      user_id as id
-		    , pwd
-		    , alias
-		    , email
-		    , phone
-		    , name
-		    , grade_id
-		    , profile_img
-		    , created_date as date
-		    , status_id
-		    , access_location as location_id
-		    , post_count
-		    , comment_count
-		    , fav_count
-		    , grade_name
-		    , grade_img
-		    , sanction_time
+        *
         from user_view
         where
         email = #{email}
@@ -122,7 +52,6 @@
              , phone
              , name 
              , access_location
-             
       ) values (
                #{email}
              , #{pwd}  
@@ -135,8 +64,8 @@
 
     <!--쿼리문 내용 다름-->
     <select id="findById" resultType="User">
-        select user_id as id
-        , pwd 			
+        select user_id /* id*/
+        , pwd 			/*p*/
         , alias
         , email
         , phone
@@ -147,46 +76,19 @@
         substring(date_format(created_date, '%Y%m%d%h%m'), 5, 2), '-',
         substring(date_format(created_date, '%Y%m%d%h%m'), 7, 2), ' ',
         substring(date_format(created_date, '%Y%m%d%H%i'), 9, 2), ':',
-        substring(date_format(created_date, '%Y%m%d%H%i'), 11, 2)) as date
+        substring(date_format(created_date, '%Y%m%d%H%i'), 11, 2)) as ncreat_date
         , status_id
-        , access_location as locationId
-        , sanction_time 
+        , access_location
         from user
         where user_id=#{id}
     </select>
 
     <select id="findByEmail" resultType="User">
-        select 
-		      user_id as id
-		    , pwd
-		    , alias
-		    , email
-		    , phone
-		    , name
-		    , grade_id
-		    , profile_img
-		    , created_date as date
-		    , status_id
-		    , access_location as location_id
-		    , sanction_time
-		from user where email = #{email}
+        select * from user where email = #{email}
     </select>
 
     <select id="last" resultType="User">
-        SELECT 
-			user_id as id
-	      , pwd
-	      , alias
-	      , email
-	      , phone
-	      , name
-	      , grade_id
-	      , profile_img
-	      , created_date as date
-	      , status_id
-	      , access_location as location_id
-	      , sanction_time
-		 from user order by created_date desc limit 1
+        SELECT * from user order by created_date desc limit 1
     </select>
 
     <select id="findEmail" resultType="int">
@@ -198,37 +100,11 @@
     </select>
 
     <select id="findByName" resultType="User">
-        select 
-			  user_id as id
-		    , pwd
-		    , alias
-		    , email
-		    , phone
-		    , name
-		    , grade_id
-		    , profile_img
-		    , created_date as date
-		    , status_id
-		    , access_location as location_id
-		    , sanction_time
-		from user where name = #{name}
+        select * from user where name = #{name}
     </select>
 
     <select id="hasIdByAlias" resultType="Boolean">
-        select 
-			  user_id as id
-		    , pwd
-		    , alias
-		    , email
-		    , phone
-		    , name
-		    , grade_id
-		    , profile_img
-		    , created_date as date
-		    , status_id
-		    , access_location as location_id
-		    , sanction_time
-		 from user where alias = #{alias}
+        select * from user where alias = #{alias}
     </select>
 
     <select id="hasIdByName" resultType="boolean">
@@ -258,25 +134,9 @@
         and phone = #{phone};
     </select>
 
-    <select id="findPostById" resultType="PostUserLikeCommentView">
-        select 
-			  post_id as id
-		    , alias
-		    , user_id
-		    , area_id
-		    , title
-		    , content
-		    , img1
-		    , img2
-		    , img3
-		    , hit
-		    , created_date
-		    , grade_id
-		    , profile_img
-		    , post_like_count
-		    , comment_count as post_comment_count
-		    , sanction_time
-		from post_u_li_co_view where user_id = #{id}
+    <select id="findPostViewById" resultType="PostUserLikeCommentView">
+        SELECT * FROM post_u_li_co_view
+        where user_id = #{id};
     </select>
 
     <!--관리자 페이지-->
@@ -319,21 +179,20 @@
     	update user
         set grade_id = 5
           , sanction_time = DATE_ADD(NOW(), INTERVAL #{sanctionTime} DAY)
-        where email = #{email}
+        where user_id = #{id}
 	</update>
 	
 	<!-- 정지해제 -->
 	<update id="userSanctionCancel">
 		update user 
-		set grade_id = 1,
-        sanction_time = now() 
-		where email = #{email}
+		set grade_id = 1 
+		where user_id = #{id}
 	</update>
 	
 	<!-- 정지기간 확인 -->
-	<select id="userSanctionTime" resultType="Date">
+	<select id="memberSanctionTime" resultType="date">
 		select sanction_time 
 		from user 
-		where email = #{email}
+		where user_id = #{id}
 	</select>
 </mapper>

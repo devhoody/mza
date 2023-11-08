@@ -9,11 +9,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="/css/components/index/index.css" rel="stylesheet" type="text/css">
 		<script src="/js/function/mainscroll1.js"></script>
+
 		<title>Document</title>
 	</head>
 
 	<body >
 	<main layout:fragment="main" class="body">
+
+		<form id="reviewForm" class="review-form">
+			<div class="content">
+				<input class="img-onload" type="file" id="photo" name="photo" accept="image/*" >
+				<!--                        <div id="imagePreview" style="width: 100px; height: 100px; overflow: hidden;">-->
+				<!--                            <img id="previewImage" src="" alt="이미지 미리보기">-->
+				<!--                        </div>-->
+				<input class="rating-input" type="text" name="rating" placeholder="1~5까지 점수 입력">
+				<textarea class="txt-area" name="content" maxlength="130"  placeholder="130글자 내외로 작성해 주세요."></textarea>
+				<div class="command">
+					<button class="btn  font-size:-1">확인</button>
+				</div>
+			</div>
+		</form>
+
 	<!-- 랭킹 + 버튼  -->
 	<div class="main_btn_div">
 		<section class="rank">
@@ -73,6 +89,25 @@
 			</button>
 		</form>
 	</div>
+
+<!--		유명인 목록으로-->
+		<section class="category-link">
+			<h1 class="d:none">카테고리</h1>
+			<div class="menu-link">
+				<div class="link">
+					<a href="/notice/list">공지사항</a>
+				</div>
+				<div class="link">
+					<a href="/celeb/list">유명인</a>
+				</div>
+				<div class="link">
+					<a href="/commu/main">커뮤니티</a>
+				</div>
+				<div class="link">
+					<a href="/user/mypage">마이페이지</a>
+				</div>
+			</div>
+		</section>
 
 	<!-- 횡스크롤 -->
 	<div class="skin">

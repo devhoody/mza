@@ -77,11 +77,6 @@
 
 /* ============ 이전글 다음글 box ============ */
 .notice-detail-main 
-	.prev-next-box
-		.prev-title, .next-title {
-			cursor: pointer;
-}
-.notice-detail-main 
 	.prev-next-box {
 	    display: flex;
 	    width: 100%;
@@ -132,8 +127,6 @@
         display: flex;
         align-items:center;
         justify-content: center;
-        cursor: pointer;
-
 }
 
 
