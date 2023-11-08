@@ -103,7 +103,7 @@
 .main_btn_div .rank {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 320px;
     align-items: center;
     gap : 20px;
 }
