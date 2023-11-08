@@ -9,17 +9,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
-@Controller("ReviewApiController")
-@RequestMapping("/api/celeb/detail")
-public class CelebDetailReviewController {
-    @PostMapping
-    public String update(ReviewView review,
-                         MultipartFile img,
-                         HttpServletRequest request) throws IOException {
-
-
-
-        return;
-
-    }
-}
+//@Controller("ReviewApiController")
+//@RequestMapping("/api/celeb/detail")
+//public class CelebDetailReviewController {
+//    @PostMapping
+//    public String update(ReviewView review,
+//                         MultipartFile img,
+//                         HttpServletRequest request) throws IOException {
+//
+//
+//
+//        return;
+//
+//    }
+//}
