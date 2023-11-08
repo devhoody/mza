@@ -85,15 +85,24 @@ public class UserController {
 
 	}
 
-	// @GetMapping
-	// public Boolean reg(
-	// @RequestParam String email
-	// ){
-	// System.out.println("검색어:" + email);
-	// Boolean hasEmail = service.hasEmail(email);
-	// System.out.println("이메일 유무 :" + hasEmail);
-	//
-	// return hasEmail;
-	// }
+	 @GetMapping("reg")
+	 public Boolean reg(
+	 	@RequestParam(name="q", required = false) String email,
+		@RequestParam(name="a", required = false) String alias
+	 ){
+		if(alias == null) {
+			 System.out.println("이메일 검색어:" + email);
+			 Boolean hasEmail = service.hasEmail(email);
+			 System.out.println("이메일 유무 :" + hasEmail);
+			return hasEmail;
+		}
+		else {
+			System.out.println("닉네임 검색어:" + alias);
+			Boolean hasAlias = service.hasAlias(alias);
+			System.out.println("닉네임 유무 :" + hasAlias);
+			return hasAlias;
+		 }
+
+	 }
 
 }
