@@ -315,23 +315,24 @@
   	
   	<!-- 회원 활동 정지 -->
   	<update id="userSanction">
-    	update user
+ 	update user
         set grade_id = 5
           , sanction_time = DATE_ADD(NOW(), INTERVAL #{sanctionTime} DAY)
-        where user_id = #{id}
+        where email = #{email}
 	</update>
 	
 	<!-- 정지해제 -->
 	<update id="userSanctionCancel">
 		update user 
-		set grade_id = 1 
-		where user_id = #{id}
+		set grade_id = 1,
+        sanction_time = now() 
+		where email = #{email}
 	</update>
 	
 	<!-- 정지기간 확인 -->
-	<select id="memberSanctionTime" resultType="date">
+	<select id="userSanctionTime" resultType="date">
 		select sanction_time 
 		from user 
-		where user_id = #{id}
+		where email = #{email}
 	</select>
 </mapper>

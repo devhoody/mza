@@ -1,5 +1,6 @@
 package com.matzalal.web.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import com.matzalal.web.entity.*;
@@ -56,4 +57,13 @@ public interface UserRepository {
     User findByUser(User user);
 
     int findForFindPwd(User user);
+    
+    // 회원 활동정지
+	void userSanction(String email);
+	
+	// 회원 활동정지 해제
+	void userSanctionCancel(String email);
+	
+	// 회원 활동정지 기간 조회
+	Date userSanctionTime(String email);
 }
