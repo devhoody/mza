@@ -1,5 +1,6 @@
 package com.matzalal.web.controller.commu;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,44 +73,44 @@ public class CommuController {
 
 	// ---------------------- 포스팅 등록 ----------------------
 
-	// @GetMapping("post/create")
-	// public String postCreate() {
-	// System.out.println("get");
+	 @GetMapping("post/create")
+	 public String postCreate() {
+	 System.out.println("get");
 
-	// return "commu/post/create";
-	// }
-	// @PostMapping("post/create")
-	// public String postCreate(
-	// Authentication authentication,
+	 return "commu/post/create";
+	 }
+	 @PostMapping("post/create")
+	 public String postCreate(
+	 Authentication authentication,
 
-	// @RequestParam(name="user_id", required =true) Long userId,
-	// @RequestParam(name="area_id", required =false) Long areaId,
-	// @RequestParam(required =true) String title,
-	// @RequestParam(required =true) String content,
-	// @RequestParam(name="img1", required = false) String img1
+	 @RequestParam(name="user_id", required =true) Long userId,
+	 @RequestParam(name="area_id", required =false) Long areaId,
+	 @RequestParam(required =true) String title,
+	 @RequestParam(required =true) String content,
+	 @RequestParam(name="img1", required = false) String img1
 
-	// ) throws IOException{
+	 ) throws IOException{
 
-	// MatzalalUserDetails userDetails = (MatzalalUserDetails)
-	// authentication.getPrincipal();
-	// System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
-	// Long id = userDetails.getId();
+	 MatzalalUserDetails userDetails = (MatzalalUserDetails)
+	 authentication.getPrincipal();
+	 System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
+	 Long id = userDetails.getId();
 
-	// System.out.println("post");
+	 System.out.println("post");
 
-	// Post post = Post.builder()
-	// .userId(id)
-	// .areaId(areaId)
-	// .title(title)
-	// .content(content)
-	// .img1(img1)
-	// .build();
-	// System.out.println(post);
+	 Post post = Post.builder()
+	 .userId(id)
+	 .areaId(areaId)
+	 .title(title)
+	 .content(content)
+	 .img1(img1)
+	 .build();
+	 System.out.println(post);
 
-	// postService.add(post);
+	 postService.add(post);
 
-	// return "redirect:/commu/main"; //
-	// }
+	 return "redirect:/commu/main"; //
+	 }
 
 	// ---------------------- 포스팅 상세조회 -> 포스팅, 댓글 출력 ----------------------
 
@@ -122,6 +124,7 @@ public class CommuController {
 		int count = postService.commentCount(postId);
 		// post view 만들어둔 것에서 댓글 총 개수 뽑아오기
 
+		
 		System.out.println("상세조회 postId: " + postId);
 		System.out.println("상세조회 post: " + post);
 		System.out.println("상세조회 commentList: " + commentList);

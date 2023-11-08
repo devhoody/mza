@@ -20,7 +20,10 @@
             <h1 class = "d:none"> 🌝 포스팅 작성 공간 🌝 </h1>
 
                     
-                <form class="postcreate-form" method="post" enctype="multipart/form-data">
+                <form 
+                	class="postcreate-form" 
+                	method="post" 
+                	enctype="multipart/form-data">
 					
                     <legend class="d:none" for="location"> 지역카테고리 선택</legend>
                   	<div class="post-title-contents md:post-title-contents"> 
@@ -80,7 +83,7 @@
 						  <div class="preview">
 						    <p>No files currently selected for upload</p>
 						  </div>
-	                    </div>
+	                    </div>		
 <!--		                        <img -->
 <!--			                        alt="포스팅 이미지선택" -->
 <!--			                        class="of:scale-down post-imgs" -->
@@ -91,8 +94,8 @@
 
             <div class="posting-creating-btn md:posting-creating-btn">
 <!--                <input type="submit" value="등록" class="btn-main btn-main-create md:btn-main-create"> 등록 -->
-                <button type="submit" value="등록" class="btn-main btn-main-create md:btn-main-create"> 등록 </button>
-                <a href="/commu/main" value="취소" class="btn-main btn-main-create md:btn-main-create btn-main-create-cancel"> 취소 </a>
+                <input type="submit" value="등록" class="commu-btn-update md:btn-main-create">  </input>
+                <a href="/commu/main" value="취소" class="commu-btn-cancle md:btn-main-create btn-main-create-cancel"> 취소 </a>	
             </div>
             
 		</form>

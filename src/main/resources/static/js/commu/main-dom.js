@@ -16,6 +16,8 @@ window.addEventListener("load", function(){
       console.log("commuDeleteList :  "+commuDeleteList);
 
 
+ 		
+
 // ------------------------- 포스팅 삭제  -------------------------
 
  commuDeleteList.forEach((commuDelete) => {
@@ -63,79 +65,59 @@ window.addEventListener("load", function(){
 	}
 	
 // ------------- 좋아요 클릭 -> EventListener 페이지에 존재하는 요소로 받기! -------------------
-
-    bottom.addEventListener("click", async function(e) {
-        let el = e.target;
-        e.preventDefault();
-
-        // 클릭된 요소가 "icon-commu-likes" 클래스를 가진 경우에만 처리
-        if (el.classList.contains("icon-commu-likes")) {
-            console.log("게시물 ID: " + el.dataset.post);
-            console.log("좋아요");
-
-            // 좋아요 처리를 위한 API 호출 등의 로직 추가
-            let url = `/api/commu/likes`;
-
-            let response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    postId: el.dataset.post
-                })
-            });
-        }
-    });	
-	  bottomLikes.addEventListener("click", async function (e) {
+	for (let i =0 ; i<bottom.length; i++){
+	    bottom[i].addEventListener("click", async function(e) {
+			let btn = document.querySelector(".commu-likes")
+			console.log("클릭체크")
 	        let el = e.target;
 	        e.preventDefault();
 	
-	        // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
-	        // likes -> likes-fill
-	        if (!el.classList.contains("icon-commu-likes")) 
-	 			return;
-	            console.log("postId: " + el.dataset.post);
-	            console.log("like");
-	            
-	            
-	      	let url = `/api/commu/likes`
-	        
-	        let response = await fetch(url, {
-				method:'POST',
-				headers: {
-	            	'Content-Type': 'application/json',
-	            },
-	            body: JSON.stringify({
-	                postId: el.dataset.post
-				})
-			})
-	        
-	    });
+	        // 클릭된 요소가 "icon-commu-likes" 클래스를 가진 경우에만 처리
+	        if (el.classList.contains("icon-commu-likes")) {
+	            console.log("게시물 ID: " + el.dataset.post);
+	            console.log("좋아요");
 	
-		bottomLikes.addEventListener("click", async function (e) {
-		    let el = e.target;
-		    
-		    e.preventDefault();
-		    console.log("좋아요 취소 " + el);
-		    
-		    // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
-		    if (!el.classList.contains("icon-commu-likes-fill")) 
-		        return;
-		    
-		    console.log("접속한 사람 : " + el.dataset.currentid);
-		    console.log("postId: " + el.dataset.post);
-		    console.log("likefill");
-		    
-		    let url = `/api/commu/likes/posts/${el.dataset.post}`;
-		    
-		        let response = await fetch(url, {
-		            method: 'DELETE',
-		        });
+	            // 좋아요 처리를 위한 API 호출 등의 로직 추가
+	            let url = `/api/commu/likes`;
+	
+	            let resp = await fetch(url, {
+	                method: 'POST',
+	                headers: {
+	                    'Content-Type': 'application/json',
+	                },
+	                body: JSON.stringify({
+	                    postId: el.dataset.post
+	                })
+	            });
+	            if(resp.ok){
+					console.log(btn)
+					console.log("등록 성공")
+//					btn.classList.add("icon-commu-likes-fill")
+//					btn.classList.remove("icon-commu-likes")
+					
+				}
+	            
+	            
+	        }
+	           if (el.classList.contains("icon-commu-likes-fill")) {
+			        
+				    console.log("접속한 사람 : " + el.dataset.currentid);
+				    console.log("postId: " + el.dataset.post);
+				    
+				    let delurl = `/api/commu/likes/posts/${el.dataset.post}`;
+				    
+				        let response = await fetch(delurl, {
+				            method: 'DELETE',
+				        });
+				        
+				        if(response.ok){
+							console.log("삭제성공")
+						}
+					
+				}
+	    });	
+   } 
 
-
-		});
-		
 		
 // ------------- 지역카테고리 선택시 -> query전달 함수 -> data json으로 전달 -------------
 
@@ -145,6 +127,8 @@ window.addEventListener("load", function(){
 		
 		let el = e.target;
 		
+	    let currentUserId = el.dataset.currentUserId;
+        console.log("currentUserId= "+currentUserId);
 		 if(!el.classList.contains("location"))
 		 return;
 		console.log("location 클릭!");
@@ -164,60 +148,12 @@ window.addEventListener("load", function(){
 		
         let response = await fetch(url);
         let json = await response.json();
-        bind(json);
-        
-    bottom = document.querySelectorAll(".bottom");
-	    bottom.forEach((bottomLikes) => {
-	     bottomLikes.addEventListener("click", async function (e) {
-	        let el = e.target;
-	        e.preventDefault();
-	
-	        // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
-	        // likes -> likes-fill
-	        if (!el.classList.contains("icon-commu-likes")) 
-	 			return;
-	            console.log("postId: " + el.dataset.post);
-	            console.log("like");
-	            
-	            
-	      	let url = `/api/commu/likes`
-	        
-	        let response = await fetch(url, {
-				method:'POST',
-				headers: {
-	            	'Content-Type': 'application/json',
-	            },
-	            body: JSON.stringify({
-	                postId: el.dataset.post
-				})
-			})
-	        
-	    });
-	
-		bottomLikes.addEventListener("click", async function (e) {
-		    let el = e.target;
-		    
-		    e.preventDefault();
-		    console.log("클릭" + el);
-		    
-		    // 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
-		    if (!el.classList.contains("icon-commu-likes-fill")) 
-		        return;
-		    
-		    console.log("접속한 사람 : " + el.dataset.currentid);
-		    console.log("postId: " + el.dataset.post);
-		    console.log("likefill");
-		    
-		    let url = `/api/commu/likes/posts/${el.dataset.post}`;
-		    
-		        let response = await fetch(url, {
-		            method: 'DELETE',
-		        });
-	
-		});
-	});
-        
+        bind(json); 		
+
+
 };
+	
+	
 	
 // ------------- 데이터 요청 후 응답기다리는...! -------------
 
@@ -227,8 +163,11 @@ window.addEventListener("load", function(){
         content.innerHTML = ""; // section을 위한 DOM 객체를 직접 생성해서 append 한다.
 
         for (let p of postList){
+//            let iconReport = p.userId==el.dataset.userId ? "icon-commu-likes": "icon-commu-likes-fill";
+//            let iconEdit = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
+//            let iconDelete = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
+            
             let iconLike = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
-
             let template = `
 	            
 			<div class = "post-card container md:container" >
@@ -258,15 +197,12 @@ window.addEventListener("load", function(){
 	                                   ${p.createdDate}   
 	                                </span> 
 	                            </div>
-	
-	                            <div>
-	                                <a class="icon icon-more-horiz icon-size-commu:2 icon-color:va" href=""> 세로 확장</a>
-	                            </div>
+
 	                            
 	                             <div > 
                 					<button class="commu-delete" 
                 							data-post="${p.postId}"
-                							type="submit" value="" > 삭제 </button>
+                							type="submit" value="" >  </button>
 	                            </div>
 	                        </section><!-- date_info -->
 	                    </section><!-- top -->
@@ -333,7 +269,7 @@ window.addEventListener("load", function(){
 	                                    <div>
 	                                        <span> ${p.postLikeCount} </span>
 	                                    </div>
-	                            </section><!— like —>
+	        	                    </section><!— like —>
 	            
 	                            <section class="comment">
 	                                <h1 class="d:none"> 댓글 </h1>

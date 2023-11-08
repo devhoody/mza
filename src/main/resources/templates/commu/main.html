@@ -8,6 +8,7 @@
  <link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
  <link href="/css/components/commu/location.css" rel="stylesheet" type="text/css">
  <link href="/css/components/commu/ranking.css" rel="stylesheet" type="text/css">
+ <link href="/css/components/commu/commu_search.css" rel="stylesheet" type="text/css">
  <link href="/css/components/commu/post/main.css" rel="stylesheet" type="text/css">
  <script src="/js/commu/main-dom.js"> </script> 
 
@@ -28,11 +29,12 @@
                 
                 <ul >
                     <li> 
-                        <a class="post" href="" >
+                        <a class="post" href=""
+                        	th:href="@{post/detail?(post-id=${rt.postId})}" >
                             <div 
                             class="number color-purple"
                             th:text=${rt.rownum}
-                            th:href="@{post/detail?(post-id=${rt.postId})}"
+                            
                             > 1. </div>
                             <p th:text=${rt.title} >
                                 상큼하고 부드러움이 완벽한 타르트
@@ -58,7 +60,8 @@
               <ul >
 
                   <li> 
-                      <a class="post">
+                      <a class="post"
+                      th:href="@{post/detail?(post-id=${rl.postId})}" >
                           <div class="number color-purple" 
                           	th:text=${rl.rownum}> 1. </div>
 	                          <p th:text=${rl.title}>
@@ -82,16 +85,18 @@
     <div class="community md:community">
 	    <h1> 🍚 맛집에 진심인 사람들의 이야기 공간 🍚 </h1>
 	
-	        <!-- ------------------- 지역분류 ----------------- -->
+	        <!-- ------------------ 지역분류 ----------------- -->
 	        <section class="location">
 	          <h1 class="d:none"> 지역분류 카테고리 목록  </h1>
-	
+	            <div th:text="${#authentication.principal.id}">
+					</div>
 	                <nav class="commu-location btn-commu">
 						<ul>
 							<li> <a class="location selected"> 서울(전체) </a> </li>
 							
 							<li th:each ="loc:${locCateList}"> 
 									<a 
+										th:data-currentUserId="${#authentication.principal.id}"
 										class="location"
 										th:data-id="${loc.locationPostId}" 
 										href="?loc=1"
@@ -103,6 +108,23 @@
 	                </nav>
 	
 	        </section><!-- 지역분류 끝 -->
+	
+	        <!-- ------------------ 검색 영역  ----------------- -->
+
+        <div class="search">
+          <section class="query-filter">
+	            <form>
+		            <fieldset>
+		                <legend class="d:none"> 커뮤니티 포스팅 검색</legend>
+		                <input class=" search-input input-query" 
+		                		type="text" 
+		                		placeholder="검색어를 입력하세요.">
+		                <button class="btn-search icon icon-search icon-size:5 icon-color:base-5">검색</button>
+		            </fieldset>
+	        	</form>
+      	 </section> <!--  query-filter  -->
+        </div>
+	
 	
 	        <!-- ------------------- 피드영역 ----------------- -->
 	        <section class = "commu-area md:commu-area">
@@ -148,7 +170,7 @@
 	                          	<!--  <div>
 	                                <a class="icon icon-commu-more icon-size-commu:2 " href=""> 세로 확장</a>
 	                            </div>-->
-	                            
+
 	                           <div > 
                 					<a class="" 
                 							th:classappend="${#authentication.principal.id == p.userId} ? 'd:none' : 'icon icon-size:0 icon-color:base-4 icon-commu-report'"
@@ -158,8 +180,9 @@
 	                            
 	                           <div > 
                 					<a class="" 
+                					        th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
                 							th:data-post="${p.postId}"
-                							href="/report/post"
+                							th:href="@{post/edit?(postId=${p.postId})}"
                 							type="submit" value="" > R </a>
 	                            </div>
 	                            
@@ -216,7 +239,7 @@
 	                                <h1 class="d:none"> 조회수 </h1>
 	
 	                                    <div>
-	                                        <span class="deco icon-commu-view icon-size:1 icon-color:main" href=""> 조회수</span>
+	                                        <span class="deco-commu icon-commu-view icon-size:1 icon-color:main" href=""></span>
 	                                    </div>
 	                                    
 	                                    <div>
@@ -234,7 +257,7 @@
 
 	                                    <div>
 	                                        <button class="icon commu-likes icon-size:1 icon-hover icon-pointer icon-color:main" 
-                                    				th:classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
+                                    				th:classappend ="${p.isLiked}? 'icon-commu-likes-fill': 'icon-commu-likes' "
 													th:data-currentid="${#authentication.principal.id}"
                                     				th:data-post="${p.postId}"
 	                                                type="button"> 좋아요</button>
@@ -250,7 +273,7 @@
 	                                <h1 class="d:none"> 댓글 </h1>
 	
 	                                    <div>
-	                                        <span class="deco icon-comment icon-size:1 icon-color:main" href=""> 댓글</span>
+	                                        <span class="deco-commu icon-comment icon-size:1 icon-color:main" href=""></span>
 	                                    </div>
 	
 	                                    <div>
@@ -270,23 +293,9 @@
 
     <!-- -----------------  고정버튼:검색,글쓰기 --------------- -->
     <section class="fixed-button md:fixed-button">
-        <h1 class="d:none"> 고정버튼: 검색, 글쓰기</h1>
+        <h1 class="d:none"> 고정버튼: 글쓰기</h1>
 
-        <div class="search">
-          <section class="query-filter">
-<!--            <a href="" class="icon icon-search icon-size:5 icon-color:base-5"> 검색</a>-->
-	            <form>
-		            <fieldset>
-		                <legend class="d:none"> 커뮤니티 포스팅 검색</legend>
-		                <input class=" search-input input-query" 
-		                		type="text" 
-		                		placeholder="검색어를 입력하세요.">
-		                <button class="btn-search icon icon-search icon-size:5 icon-color:base-5">검색</button>
-		            </fieldset>
-	        	</form>
-      	 </section> <!--  query-filter  -->
 
-        </div>
         <div>
             <a href="/commu/post/create " class="icon icon-commu-add-post icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
         </div>

@@ -95,13 +95,21 @@ public class CommuController {
 
 	@PostMapping("comments")
 	public Comment reg(
-			@RequestBody Comment comment) {
+			@RequestBody Comment comment,
+			Authentication authentication) {
 
-		System.out.println("Comment " + comment);
+		
+		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
+		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
+		Long id = userDetails.getId();
+		System.out.println(" user ID :::::::::" + id);
+
+		comment.setUserId(id); // 현재 로그인한 userId
+		System.out.println("[API Controller] Comment " + comment);
 
 		Comment newOne = commentService.add(comment);
 
-		System.out.println("newOne " + newOne);
+		System.out.println("[API Controller] newOne " + newOne);
 		return newOne;
 	}
 

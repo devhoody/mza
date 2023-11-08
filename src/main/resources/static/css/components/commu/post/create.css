@@ -13,6 +13,11 @@ main{
     gap: var(--gap-3);
 
 }
+
+.postcreate-form{
+	display: flex;
+	flex-direction: column;
+}
 .post-create
 	.post-title-contents
 	    {
@@ -126,8 +131,28 @@ main{
 		max-height: 90px;
 	    object-fit: cover;
 }
+/*----------------- 개별 페이지 별 버튼 필요 ------------------*/
 
-    /*------------------ 반응형 --------------------*/
+.commu-btn-update {
+  width: 180px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+border-color: var(--color-accent-2);
+
+}
+
+.commu-btn-cancle {
+  display: inline-block; /* inline 요소를 block 요소로 변경 */
+  width: 180px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+  text-align: center; /* 텍스트 중앙 정렬 */
+  line-height: 30px; /* 텍스트 수직 정렬 */
+}
+
+/*------------------ 반응형 --------------------*/
 
 @media (min-width: 700px) {
     .post-create

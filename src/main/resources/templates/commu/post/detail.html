@@ -52,14 +52,8 @@
                                     12분전   
                                 </span> 
                             </div>
-                             <div > 
-            					<button class="post-delete" 
-            							th:data-post="${p.postId}"
-            							th:data-postUser="${p.userId}"
-            							type="submit" value="" > 삭제 </button>
-                           		</div>
-
-                            <div > 
+                             
+                            	<div> 
                 					<a class="commu-edit" 
                 							th:href="@{edit?(postId=${p.postId})}"
                 							th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
@@ -108,20 +102,20 @@
                             </section><!-- picture -->
                     </section><!-- middle -->
   
-                    <section class ="bottom"> 
+              <!-- <section class ="bottom"> 
                         <h1 class="d:none"> 조회수 좋아요 댓글 </h1>
 
                             <section class="view">
                                 <h1 class="d:none"> 조회수 </h1>
 
                                     <div>
-                                        <span class="deco icon-commu-view icon-size:1 icon-color:main" href=""> 조회수</span>
+                                        <span class="deco-commu icon-commu-view icon-size:1 icon-color:main" href=""> </span>
                                     </div>
 
                                     <div>
                                         <span th:text="${p.hit}"> 367</span>
                                     </div>
-                            </section><!-- view -->
+                            </section>
 
                             <section class="like">
                                 <h1 class="d:none"> 좋아요 </h1>
@@ -142,7 +136,7 @@
                                 <h1 class="d:none"> 댓글 </h1>
 
                                     <div>
-                                        <span class="deco icon-comment icon-size:1 icon-color:main" href=""> 댓글</span>
+                                        <span class="deco-commu icon-comment icon-size:1 icon-color:main" href=""> </span>
                                     </div>
 
                                     <div>
@@ -150,7 +144,7 @@
                                     </div>
                             </section>
                             
-                    </section>
+                    </section> -->
                 </div>
 
     </section>
@@ -174,7 +168,7 @@
                     	class="comment-list-box md:comment-list-box"
                     	th:each="c:${commentList}"
                     	>
-                    	
+                    	<div th:text="${c.userId}"></div>
                         <h2 class="d:none"> 댓글 </h2>
         
                         <section class ="top"> 
@@ -212,19 +206,21 @@
                                 <div > 
 									 <!--	 [수정조회] commu/post/edit  http://localhost:8000/commu/post/edit?postId=5-->
 
-                					<button class="commu-edit" 
-                						th:href=""
+                					<a class="commu-edit" 
+                						th:href="@{edit?(commentId=${c.commentId})}"
                 							th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
                 							th:data-post="${c.postId}"
-                							type="submit" value="" > </button>
+                							value="" > </a>
 	                            </div>
 
                                  
                                  <div > 
-            					<button class="comment-delete" 
-            							th:data-comment="${c.commentId}"
+	                           		
+                           		<button class="commu-delete commu-delete"
+            					th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'" 
             							th:data-post="${c.postId}"
-            							type="submit" value="" > 삭제 </button>
+            							th:data-postUser="${c.userId}"
+            							type="submit" value="" > </button>
                            		</div>
                             </section>
                             
@@ -238,10 +234,10 @@
                         <section class="bottom">
                             <h1 class="d:none"> 좋아요 & 대댓글버튼 </h1>
         
-                            <div class="likes-numbers">
+                         <!--   <div class="likes-numbers">
                                 <a class="icon icon-commu-likes icon-size:1 icon-color:main" href=""> 좋아요</a> 
                                 <span th:text="${c.cmtLikeCount}"> 98</span>
-                            </div>
+                            </div>-->
         
                            <!-- <div>
                                 <a class="btn-main btn-main-comment btn-main-comment-recomment"> 대댓글 </a>
@@ -279,7 +275,8 @@
 	                      </div>
 	      
 	                      <button class="btn-post input-button btn-main btn-main-comment" 
-	                              value="등록" > 등록 
+	                      			type="submit"
+	                              value="등록" > 
 	                       </button>	
 	      
 	              </form>   

@@ -48,6 +48,21 @@
     mask-position : center;
 }
 
+.deco-commu::before{/* 커뮤 포스팅용 추가*/
+    content:'';
+    display: inline-block;
+    width: var(--icon-size-2);
+    height: var(--icon-size-2);
+
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: inherit;
+    mask-size: inherit;
+    background-color:  var(--color-base-6);
+
+}
+
 .deco-after::after{
     content:'';
     display: inline-block;
@@ -372,6 +387,27 @@
   -webkit-mask-image: url(/static/css/image/icon/add-photo-image.svg);
   mask-image: url(/image/icon/add-photo-image.svg);
 }
+
+.icon-commu-delete::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-delete.svg);
+    mask-image:  url(css/image/commu/icon/commu-delete.svg);
+}
+.icon-commu-add-post::before{
+    -webkit-mask-image: url(/css/image/commu/icon/add-post.svg);
+    mask-image:  url(css/image/commu/icon/add-post.svg);
+}
+
+.icon-commu-report::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-report.svg);
+    mask-image:  url(css/image/commu/icon/commu-report.svg);
+}
+
+.icon-commu-edit::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-edit.svg);
+    mask-image:  url(css/image/commu/icon/commu-edit.svg);
+}
+
+
 
 /* ------------------ 회원등급  ------------------ */
 

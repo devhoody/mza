@@ -152,10 +152,30 @@
 }
 
 /*------------- 커뮤- 댓글 등록, 대댓글 -------------*/
-.btn-main-comment {
-  width: 50px;
+.btn-main-create {
+  /* min-width: 190px;
+    height: 40; */
+  padding: 12px 75px;
+  background-color: var(--color-accent-1);
+  border-radius: var(--radius-1);
+
+}
+
+.btn-main-cancle {
+  display: inline-block; /* inline 요소를 block 요소로 변경 */
+  width: 150px;
   height: 30px;
-  background-color: var(--color-accent-3);
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+  text-align: center; /* 텍스트 중앙 정렬 */
+  line-height: 30px; /* 텍스트 수직 정렬 */
+  text-decoration: none; /* 링크에 기본적으로 적용되는 밑줄 제거 */
+
+}
+.btn-main-update {
+  width: 150px;
+  height: 30px;
+  background-color: var(--color-accent-2);
   border-radius: var(--radius-1);
 }
 
