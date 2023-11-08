@@ -1,4 +1,3 @@
-
 @import url('https://webfontworld.github.io/sandbox/SBAggro.css');
 
 .header{
@@ -11,6 +10,7 @@
     border-bottom: 1.5px solid var(--color-base-3);
 	margin-bottom : 50px;
 }
+
 .header
     .content-box{
     /* font-family: 'SBAggro'; */
@@ -18,6 +18,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height : 60px;
+}
+    
+.header
+    .content-box
+    	.back-arrow{    
+    		align-items: flex-start;
+}
+    
+.header 
+	.content-box 
+		.tab-title {
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    height: 100%; /* Optional: Adjust the height as needed */
+		    margin: auto;
 }
     
 .header
@@ -36,6 +53,14 @@
         line-height: 4;
         }
 
+.header
+    .web
+        .log{
+        display: flex;
+        align-items: center;
+
+    }
+
 @media (min-width: 700px) {
 
     .header 
@@ -46,7 +71,7 @@
     .header
         .web
             a:hover{
-                color: var(--color-base-5);
+                color: var(—color-base-5);
 
             }
 
@@ -57,7 +82,7 @@
         a::after{
             content: '';
             width: 102%;
-            border-bottom: 3px solid var(--color-base-4);
+            border-bottom: 3px solid var(—color-base-4);
             position: absolute;
             bottom: 0;
             left: 0;
@@ -65,4 +90,3 @@
         
 
 }
-

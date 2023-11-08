@@ -131,7 +131,7 @@ public class CommuController {
 
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
-		model.addAttribute("count", count);
+		//model.addAttribute("count", count);
 		return "commu/post/detail";
 	}
 
