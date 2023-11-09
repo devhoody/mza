@@ -16,20 +16,33 @@
     <body>
     <main layout:fragment="main">
     <!-- 검색창 -->
-    <div class="skin_div">
+<!--    <div class="skin_div">-->
+<!--        <div class="srchbar_div">-->
+<!--            <form>-->
+<!--                <input type="text" placeholder="검색창"-->
+<!--                       minlength="1">-->
+<!--                <button type="submit" class="icon icon-hover icon-search"-->
+<!--                        style="width:32px; height:32px;">-->
+<!--                </button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+        <div class="skin_div">
         <div class="srchbar_div">
-            <form>
-                <input type="text" placeholder="검색창"
+            <form action="/search/result">
+                <input type="text" placeholder="검색창" name="query"
                        minlength="1">
-                <button type="submit" class="icon icon-hover icon-search"
-                        style="width:32px; height:32px;">
+                <button type="submit"
+                        class=" icon icon-search icon-hover search">
                 </button>
             </form>
         </div>
-    </div>
+        </div>
     <!-- 검색 목록  얘는 rland 목록 끝나면 복붙해야겠다. -->
     <div class="skin_list">
-        <nav class="list" th:each="l:${list}" th:data-id="${l.restId}">
+        <nav th:each="l:${list}" th:data-id="${l.restId}" >
+            <a class="list" th:href="@{/celeb/detail(restId=${l.restId})}">
+
             <h1 class="list_title" th:text="${l.restName}">상호명</h1>
 
             <img src="/css/img/1-1.png" class="img-size"
@@ -54,11 +67,13 @@
                 </ul>
             </div>
             <div class="menu1">
-                <p th:text="${l.menuName}">돈까스<span>12000원</span></p>
+                <p th:text="${l.name}">돈까스<span>12000원</span></p>
             </div>
 <!--            <div class="menu2">-->
 <!--                <p>제육볶음</p>-->
 <!--            </div>-->
+            </a>
+
         </nav>
     </div>
     </main>

@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{inc/layout.html}">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/css/components/index/index.css" rel="stylesheet" type="text/css">
-	<link href="https://webfontworld.github.io/sandbox/SBAggro.css" rel="stylesheet">
-	<script src="/js/function/mainscroll1.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="/css/components/index/index.css" rel="stylesheet" type="text/css">
+		<link href="https://webfontworld.github.io/sandbox/SBAggro.css"
+			rel="stylesheet">
+		<script src="/js/function/mainscroll1.js"></script>
 
-	<title>Document</title>
-</head>
+		<title>Document</title>
+	</head>
 
-<body>
-	<main layout:fragment="main" class="body">
+	<body>
+		<main layout:fragment="main" class="body">
 
-<!--		<form id="reviewForm" class="review-form">
+			<!--		<form id="reviewForm" class="review-form">
 			<div class="content">
 				<input class="img-onload" type="file" id="photo" name="photo" accept="image/*">
 				                        <div id="imagePreview" style="width: 100px; height: 100px; overflow: hidden;">
@@ -30,79 +32,86 @@
 			</div>
 		</form>-->
 
-		<!--카테고리 목록으로-->
-		<section class="category-link">
-			<h1 class="d:none">카테고리</h1>
-			<div class="menu-link">
-				<div class="link-first">
-					<a class="link-card card1" href="/notice/list">
-						<img class="" src="/css/image/icon/main-commu.svg">
-						<span class="card-text">공지사항</span>
-					</a>
-					<a class="link-card card2" href="/celeb/list">
-						<img class="" src="/css/image/icon/celeb.svg">
-						<span class="card-text">유명인</span>
-					</a>
+			<!--카테고리 목록으로-->
+			<section class="category-link">
+				<h1 class="d:none">카테고리</h1>
+				<div class="menu-link">
+					<div class="link-first">
+						<a class="link-card card1" href="/notice/list">
+							<img class src="/css/image/icon/main-commu.svg">
+							<span class="card-text">공지사항</span>
+						</a>
+						<a class="link-card card2" href="/celeb/list">
+							<img class src="/css/image/icon/celeb.svg">
+							<span class="card-text">유명인</span>
+						</a>
+					</div>
+					<div class="link-second">
+						<a class="link-card card2" href="/commu/main">
+							<img class src="/css/image/icon/main-commu.svg">
+							<span class="card-text">커뮤니티</span>
+						</a>
+						<a class="link-card card1" href="/user/mypage">
+							<img class src="/css/image/icon/ranking.svg">
+							<span class="card-text">마이페이지</span>
+						</a>
+					</div>
 				</div>
-				<div class="link-second">
-					<a class="link-card card2" href="/commu/main">
-						<img class="" src="/css/image/icon/main-commu.svg">
-						<span class="card-text">커뮤니티</span>
-					</a>
-					<a class="link-card card1" href="/user/mypage">
-						<img class="" src="/css/image/icon/ranking.svg">
-						<span class="card-text">마이페이지</span>
-					</a>
-				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- 랭킹 + 버튼  -->
-		<div class="main_btn_div">
-			<section class="rank">
-				<h1 class="title"><a href="/rank">오늘의 랭킹</a></h1>
-				<div class="rank-container" th:each="rank:${ratingView}">
-					<div class="rank-box">
-						<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
-							<img class="rank-img" src="/css/img/gold.png"
-								th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
-						</a>
-						<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
-						</a>
-						<img class="rest-img" src="/css/img/1-1.png" th:src="@{/css/image/{img} (img=${rank.img})}">
-						<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
-							<span class="rank-name" th:text="${rank.restName}"></span>
-						</a>
+			<!-- 랭킹 + 버튼  -->
+			<div class="main_btn_div">
+				<section class="rank">
+					<h1 class="title"><a href="/rank">오늘의 랭킹</a></h1>
+					<div class="rank-container" th:each="rank:${ratingView}">
+						<div class="rank-box">
+							<a href="menu/restDetail/rest_detail"
+								th:href="@{celeb/detail (restId=${rank.restId})}">
+								<img class="rank-img" src="/css/img/gold.png"
+									th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
+							</a>
+							<a href="menu/restDetail/rest_detail"
+								th:href="@{celeb/detail (restId=${rank.restId})}">
+							</a>
+							<img class="rest-img" src="/css/img/1-1.png"
+								th:src="@{/css/image/{img} (img=${rank.img})}">
+							<a href="menu/restDetail/rest_detail"
+								th:href="@{celeb/detail (restId=${rank.restId})}">
+								<span class="rank-name" th:text="${rank.restName}"></span>
+							</a>
+						</div>
 					</div>
-				</div>
-			</section>
-			<section class="rank mxd:d:none">
-				<h1 class="title"><a href="/rank">금주의 랭킹</a></h1>
-				<div class="rank-container" th:each="rank:${ratingView}">
-					<div class="rank-box">
-						<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
-							<img class="rank-img" src="/css/img/gold.png"
-								th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
-						</a>
-						<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
-						</a>
-						<img class="rest-img" src="/css/img/1-1.png" th:src="@{/css/image/{img} (img=${rank.img})}">
-						<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
-							<span class="rank-name" th:text="${rank.restName}"></span>
-						</a>
-					</div>
-				</div>
-			</section>
-<!--				<div class="rank-box">-->
-<!--					<img class="rank-img" src="/css/img/silver.png">-->
-<!--					<img class="rest-img" src="/css/img/1-1.png">-->
-<!--					<span>${rest_name}</span>-->
-<!--				</div>-->
-<!--				<div class="rank-box">-->
-<!--					<img class="rank-img" src="/css/img/bronze.png">-->
-<!--					<img class="rest-img" src="/css/img/1-1.png">-->
-<!--				</div>-->
-		<!--		<section class="btn-menu">
+				</section>
+				<section class="rank mxd:d:none">
+					<h1 class="title"><a href="/rank">금주의 랭킹</a></h1>
+					<div class="rank-container" th:each="rank:${ratingView}">
+						<div class="rank-box">
+							<a href="menu/restDetail/rest_detail"
+								th:href="@{celeb/detail (restId=${rank.restId})}">
+								<img class="rank-img" src="/css/img/gold.png"
+									th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
+							</a>
+							<a href="menu/restDetail/rest_detail"
+								th:href="@{celeb/detail (restId=${rank.restId})}">
+							</a>
+							<img class="rest-img" src="/css/img/1-1.png"
+								th:src="@{/css/image/{img} (img=${rank.img})}">
+							<a href="menu/restDetail/rest_detail"
+								th:href="@{celeb/detail (restId=${rank.restId})}">
+								<span class="rank-name" th:text="${rank.restName}"></span>
+							</a>
+						</div>
+					</section>
+					<!--				<div class="rank-box">-->
+					<!--					<img class="rank-img" src="/css/img/silver.png">-->
+					<!--					<img class="rest-img" src="/css/img/1-1.png">-->
+					<!--					<span>${rest_name}</span>-->
+					<!--				</div>-->
+					<!--				<div class="rank-box">-->
+					<!--					<img class="rank-img" src="/css/img/bronze.png">-->
+					<!--					<img class="rest-img" src="/css/img/1-1.png">-->
+					<!--				</div>-->
+					<!--		<section class="btn-menu">
 		<h1 class="title">맛집 찾기</h1>
 		<div class="btn-container">
 			<div class="rest-map">
@@ -120,47 +129,48 @@
 			</form>
 		</div>
 		</section>-->
-		</div>
-
-		<!-- 검색창 -->
-
-		<div class="srchbar_div">
-			<form action="/search/result">
-				<input type="text" placeholder="검색창" name="query" minlength="1">
-				<button type="submit" class=" icon icon-search icon-hover search">
-				</button>
-			</form>
-		</div>
-
-		<!-- 횡스크롤 -->
-		<div class="skin">
-			<section class="scrollMenu">
-				<h1 class="title">맛집 추천</h1>
-				<div class="container">
-					<article class="card" th:each="rc:${recom}">
-						<h1 th:text="${rc.restName}"></h1>
-						<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rc.id})}">
-							<img src="" th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt="">
-						</a>
-					</article>
 				</div>
-			</section>
-			<section class="scrollMenu">
-				<h1 class="title">최신 후기</h1>
-				<div class="container">
-					<article class="reviewCard" th:each="rv:${review}">
-						<h1 class="rest-name" th:text="${rv.restName}">상호명</h1>
-						<div class="text-box">
-							<p th:text="${rv.content}">a</p>
-						</div>
-						<div class="alias">
-							<span th:text="${rv.alias}">작성자 닉네임</span>
-						</div>
-					</article>
-				</div>
-			</section>
-		</div>
-	</main>
-</body>
 
-</html>
+				<!-- 검색창 -->
+
+				<div class="srchbar_div">
+					<form action="/search/result">
+						<input type="text" placeholder="검색창" name="query" minlength="1">
+						<button type="submit" class=" icon icon-search icon-hover search">
+						</button>
+					</form>
+				</div>
+
+				<!-- 횡스크롤 -->
+				<div class="skin">
+					<section class="scrollMenu">
+						<h1 class="title">맛집 추천</h1>
+						<div class="container">
+							<article class="card" th:each="rc:${recom}">
+								<h1 th:text="${rc.restName}"></h1>
+								<a href="menu/restDetail/rest_detail"
+									th:href="@{celeb/detail (restId=${rc.id})}">
+									<img src th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt>
+								</a>
+							</article>
+						</div>
+					</section>
+					<section class="scrollMenu">
+						<h1 class="title">최신 후기</h1>
+						<div class="container">
+							<article class="reviewCard" th:each="rv:${review}">
+								<h1 class="rest-name" th:text="${rv.restName}">상호명</h1>
+								<div class="text-box">
+									<p th:text="${rv.content}">a</p>
+								</div>
+								<div class="alias">
+									<span th:text="${rv.alias}">작성자 닉네임</span>
+								</div>
+							</article>
+						</div>
+					</section>
+				</div>
+			</main>
+		</body>
+
+	</html>

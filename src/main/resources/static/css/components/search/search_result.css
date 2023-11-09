@@ -33,7 +33,7 @@
   width: 130px;
   height: 110px;
   border-radius: 12px;
-  background-color: gray;
+  background-color: grey;
 }
 .list .heart {
   grid-column: 5;
@@ -71,10 +71,11 @@
   height: 30px;
 }
 /* /////////////////////////////////////////////////////// */
+/* -----------------------검색창-------------------  */
 .skin_div{
   display : flex;
+  /*flex-direction: column;*/
   justify-content: center;
-  margin-top : 30px;
 }
 .srchbar_div {
   display: flex;

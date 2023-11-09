@@ -20,8 +20,16 @@ public class RestDetailViewServiceImp implements RestDetailViewService {
         return list;
     }
 
+//    @Override
+//    public RestDetailView getRestDetailViewByid(Long restId, Long celebId) {
+//        return repository.findById(restId, celebId);
+//    }
     @Override
     public RestDetailView getRestDetailViewByid(Long restId) {
         return repository.findById(restId);
+    }
+    @Override
+    public List<RestDetailView> getRestMenuById(Long restId) {
+        return repository.findMenuById(restId);
     }
 }
