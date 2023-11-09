@@ -3,13 +3,7 @@ package com.matzalal.web.service;
 import java.util.Date;
 import java.util.List;
 
-import com.matzalal.web.entity.FavView;
-import com.matzalal.web.entity.Grade;
-import com.matzalal.web.entity.LocCategory;
-import com.matzalal.web.entity.PostUserLikeCommentView;
-import com.matzalal.web.entity.ReportReason;
-import com.matzalal.web.entity.User;
-import com.matzalal.web.entity.UserView;
+import com.matzalal.web.entity.*;
 
 public interface UserService {
     List<User> getList();
@@ -72,5 +66,8 @@ public interface UserService {
 
     // 회원 활동정지 기간 조회하기
     Date getSancTime(String email);
+
+    // 회원 로케이션 조회
+    LocationUser getlocById(Integer locId);
 
 }

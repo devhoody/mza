@@ -262,4 +262,9 @@ public class UserServiceImp implements UserService {
         return userSancTime;
     }
 
+    @Override
+    public LocationUser getlocById(Integer locId) {
+        return locationUserRepository.findById(locId);
+    }
+
 }
