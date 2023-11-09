@@ -95,13 +95,15 @@
 .main_btn_div .title {
     display: flex;
     width: 242px;
+    font-family: 'SBAggro';
     font-size: 20px;
+    justify-content: center;
 }
 
 .main_btn_div .rank {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 320px;
     align-items: center;
     gap : 20px;
 }
@@ -128,6 +130,13 @@
     width: 50px;
     height: 50px;
 }
+
+.rank-container .rank-name{
+	font-family: 'SBAggro';
+	font-size: var(--font-size-5);
+}
+
+
 /* -------------------------버튼------------------------ */
 .btn-menu {
     display: flex;
@@ -202,7 +211,7 @@
 .srchbar_div {
     display: flex;
     flex-direction: row;
-    border: 3px solid black;
+    border: 2px solid var(--color-base-4);
     border-radius: 30px;
     width: 530px;
     height: 50px;
@@ -225,6 +234,12 @@
     height: 100%;
     text-align: center;
 }
+
+/*.srchbar_div input::placeholder {
+	font-size: 10px;
+}
+*/	
+	
 .srchbar_div input:focus {
     outline: none;
 }
@@ -234,13 +249,13 @@
     height: 32px;
     background-size: 32px;
     margin-right: 10px;
-
 }
 
-/*.srchbar_div .icon-search::before {*/
-/*    width: 32px;*/
-/*    height: 32px;*/
-/*}*/
+.srchbar_div .icon-search::before {
+	background-color: var(--color-base-5);
+}
+
+
 /* ==================== 카테고리 목록======================== */
 .category-link{
     display:none;
@@ -257,6 +272,8 @@
 }
 .scrollMenu .title {
     font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0;
 }
 .scrollMenu .container {
     display: flex;
@@ -277,8 +294,10 @@
 }
 .container .card h1 {
     font-size: 13px;
+	font-weight: 500;    
     grid-row: 2;
     text-align: center;
+    margin-top: 10px;
 }
 .container .card img {
     width: 155px;
@@ -305,9 +324,9 @@
     font-size: 15px;
     font-weight: bold;
     text-align: left;
-    margin: 0;
+    margin: 10px;
     /* margin-left: 10px; */
-    padding-left: 10px;
+    padding: 10px 0 0 10px;
 }
 .container .reviewCard .text-box {
     grid-row: 3;
@@ -315,6 +334,7 @@
     justify-content: center;
     font-size: 14px;
     width: 245px;
+    border-bottom: none;
 }
 .reviewCard .text-box p {
     width: 200px;
@@ -333,7 +353,8 @@
     font-size: 13px;
     font-weight: bold;
     text-align: right;
-    padding-right: 10px;
+    padding: 0 30px 20px 0;
+
 }
 
 /* ----------------------- 반응형 ----------------------------- */
@@ -398,25 +419,56 @@
     }
     .menu-link{
         display : flex;
-        flex-direction: row;
-        gap : 20px;
-    }
-    .menu-link .link a{
-        display : flex;
-        padding : 30px;
-        /*border : 1px solid black;*/
+        flex-direction: column;
+        gap: 20px;
 
-        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    }
+    .menu-link .link-first{
+        display : flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .menu-link .link-second{
+        display : flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .menu-link .link-card{
+        display : flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 170px;
+        height: 160px;
+        border-radius: 10px;     
+        position: relative;   
+
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 0px,
         rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
         rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     }
-    .menu-link .link a:hover {
-        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    .menu-link .link-card:hover {
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 0px,
         rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
         rgba(255, 255, 255, 0.08) 0px 1px 0px inset,
         rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
         rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
     }
+    
+    .menu-link .card1{
+		background-color: #FBFBFB;
+	}
+	.menu-link .card2{
+		background-color: #FFFAF5;
+	}
+    
+    .menu-link .link-card .card-text{
+		position: absolute;
+		font-family: 'SBAggro';
+		font-size: 20px;
+	}
 
     /* --------------------------맛집 추천------------------- */
     .skin {

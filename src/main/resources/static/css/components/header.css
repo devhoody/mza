@@ -78,7 +78,7 @@
             
     .header
         .web
-        li.active
+        li:hover
         a::after{
             content: '';
             width: 102%;
