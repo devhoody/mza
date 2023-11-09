@@ -1,23 +1,15 @@
 package com.matzalal.web.controller.admin;
 
-import java.util.Date;
-import java.util.List;
-
+import com.matzalal.web.entity.Notice;
+import com.matzalal.web.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.matzalal.web.entity.Notice;
-import com.matzalal.web.entity.User;
-import com.matzalal.web.service.NoticeService;
+import java.util.Date;
+import java.util.List;
 
 @Controller("adminNoticeController")
 @RequestMapping("/admin/notice")

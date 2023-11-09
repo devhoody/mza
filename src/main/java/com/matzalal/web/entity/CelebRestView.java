@@ -14,6 +14,7 @@ public class CelebRestView {
     private String restName;
     private String bannerImg;
 //    private Integer celebRestId;
+    private Long menuId;
     private Long celebId;
     private String celebName;
 

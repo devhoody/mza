@@ -18,12 +18,19 @@
        order by created_date desc
     
   </select>
-  
-  <select id="count" resultType="int">
-   select 
-   count(post_id) count
-   from post
-  </select>
+
+    <select id="Allcount" resultType="int">
+        select
+         count(post_id)
+        from post_u_li_co_view p
+    </select>
+
+    <select id="count" resultType="int">
+        select
+        p.comment_count
+        from post_u_li_co_view p
+        where post_id =#{postId}
+    </select>
   
   <select id="findByLocation" resultType="PostView">
   select 

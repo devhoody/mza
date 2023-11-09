@@ -58,8 +58,8 @@
 		on q.user_id = u.user_id
 		<where>
 			<if test="questionId != null">q.question_id = #{questionId}</if>
-			<if test="query != null">or q.title like '%#{query}%'</if>
-			<if test="query != null">or q.content like '%#{query}%'</if>
+			<if test="query != null">or q.title like '%${query}%'</if>
+			<if test="query != null">or q.content like '%${query}%'</if>
 		</where>
 		order by q.question_id desc
    		limit #{offset}, #{size}
@@ -152,4 +152,9 @@
   		 	#{questionId}
   		</foreach>
   	</delete>
+  	
+<!--   	<select id="findById" resultType="Qna">
+        select * from question where question_id = #{questionId}
+    </select> -->
+  	
 </mapper>

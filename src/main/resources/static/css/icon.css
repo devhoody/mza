@@ -375,17 +375,17 @@
 }
 
 .icon-expanding-arrow::before {
-  -webkit-mask-image: url(/static/css/image/icon/expanding-arrow.svg);
-  mask-image: url(/static/css/image/icon/expanding-arrow.svg);
+    -webkit-mask-image: url(/static/css/image/icon/expanding-arrow.svg);
+    mask-image: url(/static/css/image/icon/expanding-arrow.svg);
 }
 
 .icon-add-photo::before {
-  -webkit-mask-image: url(/static/css/image/icon/add-photo.svg);
-  mask-image: url(/static/css/image/icon/add-photo.svg);
+    -webkit-mask-image: url(/static/css/image/icon/add-photo.svg);
+    mask-image: url(/static/css/image/icon/add-photo.svg);
 }
 .icon-add-photo-image::before {
-  -webkit-mask-image: url(/static/css/image/icon/add-photo-image.svg);
-  mask-image: url(/image/icon/add-photo-image.svg);
+    -webkit-mask-image: url(/static/css/image/icon/add-photo-image.svg);
+    mask-image: url(/image/icon/add-photo-image.svg);
 }
 
 .icon-commu-delete::before{

@@ -6,7 +6,7 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap-3);
+  gap: var(--gap-5);
 }
 
 /*---------------------- 반응형 ----------------------*/

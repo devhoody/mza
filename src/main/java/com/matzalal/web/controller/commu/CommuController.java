@@ -127,7 +127,7 @@ public class CommuController {
 
 	// ---------------------- 포스팅 상세조회 -> 포스팅, 댓글 출력 ----------------------
 
-	@GetMapping("post/detail")
+	@RequestMapping("post/detail")
 	public String postdetail(
 			@RequestParam(name = "post-id") Long postId,
 			Model model) {
@@ -137,6 +137,7 @@ public class CommuController {
 		int count = postService.commentCount(postId);
 		// post view 만들어둔 것에서 댓글 총 개수 뽑아오기
 
+
 		System.out.println("상세조회 postId: " + postId);
 		System.out.println("상세조회 post: " + post);
 		System.out.println("상세조회 commentList: " + commentList);
@@ -144,7 +145,7 @@ public class CommuController {
 
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
-		// model.addAttribute("count", count);
+		model.addAttribute("count", count);
 		return "commu/post/detail";
 	}
 
@@ -207,7 +208,7 @@ public class CommuController {
 		System.out.println("수정완료");
 		System.out.println(comment.getCommentId());
 
-		return "redirect:/commu/";
+		return "redirect:/commu/main";
 	}
 
 }

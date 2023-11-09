@@ -59,27 +59,27 @@
 					<!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
 				</div>
 			</div>  <!-- post-title-contents -->
-			<div class="upload-photo md:upload-photo">
-				<!--                        <input type="image" value="" disabled="disabled">-->
-				<!--                        <a class="icon icon-add-photo icon-size:2 icon-color:main" href=""> 카메라버튼</a>-->
-				<label class="d:none">사진추가</label>
+<!--			<div class="upload-photo md:upload-photo">-->
+<!--				&lt;!&ndash;                        <input type="image" value="" disabled="disabled">&ndash;&gt;-->
+<!--				&lt;!&ndash;                        <a class="icon icon-add-photo icon-size:2 icon-color:main" href=""> 카메라버튼</a>&ndash;&gt;-->
+<!--				<label class="d:none">사진추가</label>-->
 
-				<input
-						class="d:none icon icon-add-photo-image icon-size:2 icon-color:main"
-						type="file"
-						name="img1"
-				>
-				<img th:src="@{'/css/image/user/' + ${postDtl.img1}}">
+<!--				<input-->
+<!--						class="d:none icon icon-add-photo-image icon-size:2 icon-color:main"-->
+<!--						type="file"-->
+<!--						name="img1"-->
+<!--				>-->
+<!--				<img th:src="@{'/css/image/user/' + ${postDtl.img1}}">-->
 
-			</div> <!-- upload-photo  -->
+<!--			</div> &lt;!&ndash; upload-photo  &ndash;&gt;-->
 
 
 			<div class="posting-creating-btn md:posting-creating-btn">
 				<!--                <input type="submit" value="등록" class="btn-main btn-main-create md:btn-main-create"> 등록 -->
 				<input type="submit" value="등록"
-					   class="commu-btn-update md:commu-btn-update">  </input>
+					   class="cursor-pointer:pointer commu-btn-update md:commu-btn-update">  </input>
 				<a href="/commu/main" value="취소"
-				   class="commu-btn-cancle md:commu-btn-cancle"> 취소 </a>
+				   class="cursor-pointer:pointer commu-btn-cancle md:commu-btn-cancle"> 취소 </a>
 			</div>
 
 		</form>

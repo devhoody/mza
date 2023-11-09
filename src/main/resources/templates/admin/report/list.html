@@ -59,9 +59,9 @@
             <section class="report-list">
 	            <section th:each="r : ${reportList}" class="report-block md:report-block">
 	                <h1 class="report-title d:none">신고 목록</h1>
-	                <div class="checkbox-block">
+	                <!--<div class="checkbox-block">
 	                    <input type="checkbox" class="checkBox" name="checkBox">
-	                </div>
+	                </div>-->
 	
 	                <!-- 회원 신고, 게시글 신고, 댓글 신고 인지에 따라 바뀌는 걸로. -->
 	                <div class="report-type-block" th:switch="${r.reportGbn}">

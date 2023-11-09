@@ -11,6 +11,6 @@ public interface RestDetailViewRepository {
     List<RestDetailView> findRestDetailView(Long restId);
 
 //    RestDetailView findById(Long restId, Long celebId);
-    RestDetailView findById(Long restId);
+    RestDetailView findById(Long restId, Long menuId);
     List<RestDetailView> findMenuById(Long restId);
 }

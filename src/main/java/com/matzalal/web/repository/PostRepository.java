@@ -38,6 +38,8 @@ public interface PostRepository {
 //	[포스팅 상세] 포스팅 댓글 총 개수 . 
 	int count(Long postId);
 
+	int Allcount();
+
 //	[포스팅 수정] 포스팅 상세조회 
 	Post findByIdForEdit(Long postId);
 	

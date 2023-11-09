@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>faqDetail</title>
     <link href="/css/components/faq/detail.css" rel="stylesheet" type="text/css">
 </head>
@@ -45,7 +46,7 @@
             </section>
 
                 <div class="backtolist-box d:flex mt:4-2">
-                    <a class="btn btn-faq-list mv:auto md:btn-bigger" onclick="location.href='/notice/list'">faq 목록</a>
+                    <a class="btn btn-faq-list mv:auto md:btn-bigger" onclick="location.href='/faq/list'">FAQ 목록</a>
                 </div>
 
     </main>

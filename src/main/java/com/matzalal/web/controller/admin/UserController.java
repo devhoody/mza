@@ -1,7 +1,9 @@
 package com.matzalal.web.controller.admin;
 
-import java.util.List;
-
+import com.matzalal.web.entity.Grade;
+import com.matzalal.web.entity.LocCategory;
+import com.matzalal.web.entity.User;
+import com.matzalal.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.matzalal.web.entity.Grade;
-import com.matzalal.web.entity.LocCategory;
-import com.matzalal.web.entity.User;
-import com.matzalal.web.service.UserService;
+import java.util.List;
 
 @Controller("AdminUserController")
 @RequestMapping("/admin/user")

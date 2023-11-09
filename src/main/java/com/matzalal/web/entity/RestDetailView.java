@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class RestDetailView {
 
@@ -32,6 +32,6 @@ public class RestDetailView {
     private Long celebId;
     private String name;
     private Long adminId;
-    private Long userId;
+   // private Long userId;
 
 }

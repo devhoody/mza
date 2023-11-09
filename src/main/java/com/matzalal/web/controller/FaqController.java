@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.matzalal.web.entity.Faq;
-import com.matzalal.web.entity.Question;
 import com.matzalal.web.service.FaqService;
 
 @Controller
@@ -20,15 +19,20 @@ public class FaqController {
 	private FaqService service;
 
 	@RequestMapping("list")
-	public String list(Model model) {
-		List<Faq> list = service.getListByPage(1,null); //1페이지, 검색어x
+	public String list(@RequestParam(defaultValue = "1") int page, Model model) {
+		int size = 10; // 페이지 당 아이템 수
+		int offset = (page - 1) * size; // 시작 인덱스
+		List<Faq> list = service.getListByPage(offset, page, size, null, null);
 		int count = service.countFaq();
+		int pageCount = count / size;
+		
 		model.addAttribute("list", list);
 		model.addAttribute("count", count);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("pageCount", pageCount);
 		
-		System.out.println(list);
+		System.out.println("list: "+ list);
 		System.out.println("FAQ 총 "+count+"건");
-		
 		return "faq/list";
 	}
 	

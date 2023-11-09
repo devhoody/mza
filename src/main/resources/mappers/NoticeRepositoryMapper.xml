@@ -21,6 +21,7 @@
 		<where>
 			<if test="noticeId != null">notice_id=#{noticeId}</if>
 		    <if test="query != null">or title like '%${query}%'</if>
+		    <if test="query != null">or content like '%${query}%'</if>
 		</where>
 		order by notice_id desc 
 		limit #{offset}, #{size}

@@ -41,7 +41,7 @@
     <!-- 검색 목록  얘는 rland 목록 끝나면 복붙해야겠다. -->
     <div class="skin_list">
         <nav th:each="l:${list}" th:data-id="${l.restId}" >
-            <a class="list" th:href="@{/celeb/detail(restId=${l.restId})}">
+            <a class="list" th:href="@{/celeb/detail(restId=${l.restId},menuId=${l.menuId})}">
 
             <h1 class="list_title" th:text="${l.restName}">상호명</h1>
 
@@ -54,12 +54,12 @@
                     <li class="icon icon-size:3 icon-heart">likes</li>
                 </ul>
             </div>
-            <div class="geomarker">
+<!--            <div class="geomarker">
                 <ul class="ul">
                     <li class="icon icon-size:3 icon-geomarker">geomarker</li>
                     <span>1~2km</span>
                 </ul>
-            </div>
+            </div>-->
             <div class="star">
                 <ul class="ul">
                     <li class="icon icon-size:3 icon-star">avg rate</li>

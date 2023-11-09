@@ -3,27 +3,48 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{inc/layout.html}">
-
+	
 <head>
-<<<<<<< HEAD
     <title>Document</title>
     <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
     <link href="/css/components/qna/question/list.css" rel="stylesheet" type="text/css">
-=======
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuestionEdit</title>
-    <link href="/css/components/qna/question/edit.css" rel="stylesheet" type="text/css">
-<!--	<script src="/js/qna/question.js"></script>-->
->>>>>>> origin/mj1109
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+ 	<script src="/js/qna/question-dom.js"> </script> 
 </head>
-<!-- form, div - block
-label, input, textarea - inline -->
+
 <body>
-<<<<<<< HEAD
-	<main layout:fragment="main">
-		<!--//검색-->
+	<main layout:fragment="main" class="question-list-main">
+	<!--tab 부분-->
+	    <div class="jump-tab">
+            <button onclick="location.href='/notice/list'" class="btn btn-user-tab md:findbtn" style="color: #818181;">NOTICE</button>
+            <button onclick="location.href='/faq/list'" class="btn btn-user-tab md:findbtn" style="color: #818181;">FAQ</button>
+            <button onclick="location.href='list'" class="btn btn-user-tab btn-user-tab-line md:findbtn">QNA</button>         
+        </div>
+	<!--검색 commu_main.css 에서 가져온 부분-->
+	<!--- 고정버튼:검색,글쓰기 - -->
+    <section class="fixed-button md:fixed-button">
+        <h1 class="d:none"> 고정버튼: 검색, 글쓰기</h1>
+
+        <div class="search">
+          <section class="query-filter">
+			<!--<a href="" class="icon icon-search icon-size:5 icon-color:base-5"> 검색</a>-->
+	            <form>
+		            <fieldset>
+		                <legend class="d:none">검색</legend>
+		                <input class=" search-input input-query" 
+		                		type="text" 
+		                		placeholder="검색어를 입력하세요.">
+		                <button class="btn-search icon icon-search icon-size:2 icon-color:base-5">검색</button>
+		            </fieldset>
+	        	</form>
+      	 </section> <!--  query-filter  -->
+        </div>
+    </section>
+    
+<!--=========================question-template=========================-->
+	<div class="question-template">
 	    <div class="qna-qty">총 <span th:text="${count}"></span><span>건</span></div>
+		
 		<div class="qna-list-box" th:each="q:${list}" th:onclick="|location.href='@{/qna/question/detail(question-id=${q.questionId})}'|">  <!-- 여기 div class로 구역 잡기 -->
 	        <section class="qna-list-box-left">
 	            <h1 class="d:none">QnA 목록</h1>
@@ -34,13 +55,17 @@ label, input, textarea - inline -->
 	            </div>
 	        </section>
 	            
-	            <span class="gotodetail deco icon-right-arrow icon-size:0"></span> 
-	            <section class="qna-list-box-right"></section>
+	        <section class="qna-list-box-right">
 	            <div class="list-right-side">
 	                <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
 	            </div>
-        	</div>
+	        </section>
+       </div>
         
+         <div class="question-reg-button">
+            <a href="/qna/question/reg" class="icon icon-commu-add-post icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
+        </div>
+  
 			<!-- 페이지 이동 -->
             <div class="pagination">
                 <a class="" th:if="${currentPage > 1}" th:href="@{/qna/question/list(page=${currentPage-1})}">&laquo;</a>
@@ -51,66 +76,7 @@ label, input, textarea - inline -->
                 </a>
                 <a th:if="${currentPage < pageCount+1}" th:href="@{/qna/question/list(page=${currentPage+1})}">&raquo;</a>
             </div>
+        </div>
 	</main>
 </body>	
 </html>
-=======
-    <main layout:fragment="main" class="qna-edit-main">
-        <section class="qna-edit-section">
-            <h1 class="d:none">문의하기 글 수정 폼</h1>
-
-            <form class="qna-edit-form" action="edit" th:method="put" th:object="${question}">
-				
-                <div class="title-box">
-                    <input class="qna-title" type="text" name="title" th:value="*{title}" rows="1" required>
-                </div>
-                <div class="contents-box">
-                    <div class="content-box">
-                        <textarea class="qna-content" name="content" th:text="*{content}" rows="13" required></textarea>
-
-                        <div class="img-box">
-							<i class="icon icon-add-photo-image"></i>
-                            <input class="img-content" type="file" name="imageFile" >
-                            <img th:src="@{'/css/image/cs-center/qna' + ${question.img}}" >
-                        </div>
-
-<!--                        <div class="open-close-box">
-                            <span class="icon"><i class="icon icon-open icon-color:black"></i></span>
-                            <input type="radio" name="open" value="true"> 공개
-                            <span class="icon"><i class="icon icon-close icon-size:4 icon-color:black"></i></span>
-                            <input type="radio" name="open" value="false"> 비공개
-						</div>-->
-						 <fieldset>
-						  <div class="open-close-box">
-				                <label><input type="radio" name="open" value="0" >공개</label>
-				                <label><input type="radio" name="open" value="1">비공개</label>
-				          </div>
-	                     </fieldset>
-<!--						<div class="open-close-box">
-     							<input class="input-query" type="text" placeholder="공개 여부">
-								<button class="icon icon-open">공개 여부</button>
-						</div>-->
-						</div>
-                    </div>
-
-                <!-- type submit 으로 해야 하나..? -->
-                <div class="cancle-edit-box">
-                    <input onclick="location.href='/qna/question/list'" class="btn-cancel" type="button" value="취소">
-                    <input onclick="location.href='/qna/question/list'" class="btn-edit" type="submit" name="cmd" value="수정">
-                </div>
-
-                <!-- <div class="qna-edit-btn-box d:flex mt:4-2">
-                <a class="btn btn-editister mv:auto md:btn-bigger">등록</a>
-            	</div> -->
-            	
-                <input type="hidden" name="questionId" th:value="*{questionId}" class="id">
-
-            </form>
-
-        </section>
-
-    </main>
-</body>
-
-</html>
->>>>>>> origin/mj1109

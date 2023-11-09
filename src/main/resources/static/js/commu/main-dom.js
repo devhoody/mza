@@ -65,58 +65,61 @@ window.addEventListener("load", function(){
 	}
 
 // ------------- 좋아요 클릭 -> EventListener 페이지에 존재하는 요소로 받기! -------------------
-	for (let i =0 ; i<bottom.length; i++){
-		bottom[i].addEventListener("click", async function(e) {
-			let btn = document.querySelector(".commu-likes")
-			console.log("클릭체크")
-			let el = e.target;
-			e.preventDefault();
 
-			// 클릭된 요소가 "icon-commu-likes" 클래스를 가진 경우에만 처리
-			if (el.classList.contains("icon-commu-likes")) {
-				console.log("게시물 ID: " + el.dataset.post);
-				console.log("좋아요");
+	bottom.addEventListener("click", async function (e) {
+		let el = e.target;
+		e.preventDefault();
+		console.log("el.dataset="+el.dataset);
+		console.log("el.dataset.post="+el.dataset.post);
 
-				// 좋아요 처리를 위한 API 호출 등의 로직 추가
-				let url = `/api/commu/likes`;
-
-				let resp = await fetch(url, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						postId: el.dataset.post
-					})
-				});
-				if(resp.ok){
-					console.log(btn)
-					console.log("등록 성공")
-//					btn.classList.add("icon-commu-likes-fill")
-//					btn.classList.remove("icon-commu-likes")
-
-				}
+		// 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+		// likes -> likes-fill
+		if (!el.classList.contains("icon-commu-likes"))
+			return;
+		console.log("postId: " + el.dataset.post);
+		console.log("like");
 
 
-			}
-			if (el.classList.contains("icon-commu-likes-fill")) {
+		let url = `/api/commu/likes`
 
-				console.log("접속한 사람 : " + el.dataset.currentid);
-				console.log("postId: " + el.dataset.post);
+		let response = await fetch(url, {
+			method:'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				postId: el.dataset.post
+			})
+		})
 
-				let delurl = `/api/commu/likes/posts/${el.dataset.post}`;
+		window.location.href = `/commu/main`;
 
-				let response = await fetch(delurl, {
-					method: 'DELETE',
-				});
 
-				if(response.ok){
-					console.log("삭제성공")
-				}
+	});
+	bottom.addEventListener("click", async function (e) {
+		let el = e.target;
 
-			}
+		e.preventDefault();
+		console.log("좋아요 취소 " + el);
+
+		// 부모 요소인 content 내에서 좋아요 버튼이 클릭되었는지 확인
+		if (!el.classList.contains("icon-commu-likes-fill"))
+			return;
+
+		console.log("접속한 사람 : " + el.dataset.currentid);
+		console.log("postId: " + el.dataset.post);
+		console.log("likefill");
+
+		let url = `/api/commu/likes/posts/${el.dataset.post}`;
+
+		let response = await fetch(url, {
+			method: 'DELETE',
 		});
-	}
+
+		window.location.href = `/commu/main`;
+
+
+	});
 
 
 // ------------- 지역카테고리 선택시 -> query전달 함수 -> data json으로 전달 -------------
@@ -148,8 +151,7 @@ window.addEventListener("load", function(){
 
 		let response = await fetch(url);
 		let json = await response.json();
-		console.log("카테고리클릭시 내용들!!!!!" + json);
-		bind(json, currentUserId);
+		bind(json);
 
 
 	};
@@ -167,8 +169,8 @@ window.addEventListener("load", function(){
 //            let iconReport = p.userId==el.dataset.userId ? "icon-commu-likes": "icon-commu-likes-fill";
 //            let iconEdit = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
 //            let iconDelete = p.isLiked ? "icon-commu-likes": "icon-commu-likes-fill";
-			console.log("좋아하냐??" + p.isLike);
-			let iconLike = p.isLike ? "icon-commu-likes": "icon-commu-likes-fill";
+
+			let iconLike = p.isLiked ? "icon-commu-likes-fill" :"icon-commu-likes";
 			let template = `
 	            
 			<div class = "post-card container md:container" >
@@ -195,15 +197,12 @@ window.addEventListener("load", function(){
 	
 	                            <div>
 	                                <span>    
-	                                   ${p.createdDate}
+	                                   ${p.createdDate}   
 	                                </span> 
 	                            </div>
+
 	                            
-	                            <!-- <div> 
-                					<button class="commu-delete" 
-                							data-post="${p.postId}"
-                							type="submit" value="" >  </button>
-	                            </div> -->
+	                             
 	                        </section><!-- date_info -->
 	                    </section><!-- top -->
 	
@@ -261,7 +260,6 @@ window.addEventListener("load", function(){
 	
 	                                    <div>
 	                                        <button class=" ${iconLike} icon icon-size:1 icon-hover icon-pointer icon-color:main" 
-                                                    classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
                                     				data-post="${p.postId}"
 	                                                type="button"></button>
 	                                    </div>

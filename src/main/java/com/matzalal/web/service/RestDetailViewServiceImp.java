@@ -24,12 +24,19 @@ public class RestDetailViewServiceImp implements RestDetailViewService {
 //    public RestDetailView getRestDetailViewByid(Long restId, Long celebId) {
 //        return repository.findById(restId, celebId);
 //    }
-    @Override
-    public RestDetailView getRestDetailViewByid(Long restId) {
-        return repository.findById(restId);
-    }
+//    @Override
+//    public RestDetailView getRestDetailViewByid(Long restId) {
+//    	System.out.println("디테일 페이지 뷰 가져오는중");
+//        return repository.findById(restId);
+//    }
     @Override
     public List<RestDetailView> getRestMenuById(Long restId) {
         return repository.findMenuById(restId);
     }
+
+	@Override
+	public RestDetailView getRestDetailViewByid(Long restId, Long menuId) {
+		System.out.println("디테일 페이지 뷰 가져오는중");
+        return repository.findById(restId, menuId);
+	}
 }

@@ -9,6 +9,6 @@ public interface RestDetailViewService {
     List<RestDetailView> getRestDetailView(Long restId);
 
 //    RestDetailView getRestDetailViewByid(Long restId, Long celebId);
-    RestDetailView getRestDetailViewByid(Long restId);
+    RestDetailView getRestDetailViewByid(Long restId, Long menuId);
     List<RestDetailView> getRestMenuById(Long restId);
 }

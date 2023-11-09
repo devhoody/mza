@@ -1,49 +1,43 @@
 .faq-list-main{
 	width: 100%;
-    /* display: inline-block; */
-    /* flex-direction: row; */
     align-items: center;
-    /* margin: 0 30px;
-    margin-top: 50px; */
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
-	/* position: relative; */
-    gap : var(--gap-6);
+	font-weight: 500;
 }
 
 .jump-tab {
     width : 100%;
     display: flex;
     justify-content: center;
-    /*margin-top : 10px;*/
 }
 
 .faq-list-box {
     width: 100%;
-    /* display: inline-block; */
-    /* flex-direction: row; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* margin: 0 30px;
-    margin-top: 50px; */
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* position: relative; */
+    border-top: 1px solid var(--color-base-2);
+	padding-left: 10px;
+	padding-top: 10px;
 }
 
-.faq-qty {
-    font-size: 10px;
-    align-items: start;
-
-    /* align-items: start; */
-    /* text-align: start;
-    display: inline-block; */
+.faq-list-box:last-child {
+	border-bottom: 1px solid var(--color-base-2);
 }
 
-.faq-list-box-left {
-        width: 280px;
+.faq-template {
+	width: 580px;
+}
+
+.faq-template 
+	.faq-qty {
+	    font-size: 12px;
+		margin-bottom: 5px;
+}
+
+.faq-list-box
+	.faq-list-box-left {
+        width: 400px;
         height: 50px;
     }
 
@@ -51,153 +45,73 @@
     .list-left-side
         h1 {
             font-size: 15px;
+		  	font-weight: 500;
             display: inline-flex;
-
 }
 
 .faq-list-box-left
     .reg-date {
-        /* display: flex; */
-        font-size: 10px;
-        color:#818181;
-    }
-
+        font-size: 12px;
+        color: var(--color-base-5);
+        padding-top: 5px;
+        padding-left: 500px;
+}
 
 .faq-list-box-right {
     position: absolute;
-    /* display: inline-flex; */
     top:50%; right: 10px;
-
 }
 
-/* .deco{
-    display: inline-flex;
-} */
-
-/* .number {
-    font-size: 15px;
-    padding-right: 5px;
-} */
-
-
-
-/* .list-box .content-box {
-    width: 330px;
-    height: 50px;
-
-    /* display: flex; */
-    /* align-items: flex-start;
-    justify-content: flex-start;
-
-    border-top: 1px solid var(--color-base-3);
-    /* border-bottom: 1px solid var(--color-base-3); */
-
-    /* background-color: #FFFAF5;
-    padding: 15px; */
-/* } */
-
-.content-box:nth-child(2n) {
+.faq-list-box:nth-child(2n) {
     background-color: var(--color-main-1);
 }
 
-
-.upline {
-    display: inline;
-}
-
-.content-box h1 {
-    font-size: 15px;
-    display: inline;
-    /* justify-content: flex-end; */
-    /* margin-bottom: 15px; */
-}
-
-
-    /* display: inline-flex; */
-    /* justify-content: flex-end;
-            align-items: flex-end;
-            margin: auto 0 0 auto; */
-/* 
-    margin-bottom: 20px;
-    margin-left: 170px;
-    background-color: var(--color-base-6); */
-
-
 .gotodetail {
-    -webkit-mask-image : url(/image/icon/right-arrow.svg);
-    mask-image : url(/image/icon/right-arrow.svg);
-    background-color: var(--color-base-5);
-
-    /* -webkit-mask-position: left 200px;
-    mask-position: left 200px; */
-    /* mask-size: 10px; */
+  -webkit-mask-image: url(/image/cs-center-icon/right-arrow.svg);
+  mask-image: url(/image/cs-center-icon/right-arrow.svg);
+  background-color: var(--color-base-5);
+  cursor: pointer;
 }
 
-
-.list-box .content-box .reg-date {
-    width: 100%;
-    height: 10px;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-
-    font-size: 10px;
-    color: #818181;
-    /* margin-top: 15px; */
+/* ---------------- 페이징 ---------------- */
+.pagination a {
+    font-size: var(--font-size-5);
+    float: left;
+    padding: 4px 10px;
 }
-
-
-
-
-
-/* .icon {
-    margin-top: 20px;
-    } */
-
-
 
 /* ---------------- 검색 ---------------- */
-.search{
-    position: sticky;
-    top: 10px;
-}
-.search 
-	.query-filter
-		fieldset{
-		display: flex;
-		width: 300px;
-	    justify-content: space-between;
-	    
-	    border-bottom: 1px solid;
-	    border-color: var(--color-base-3);
-        background-color: #ffffff;
-        opacity: 0.5;
-	    margin-top: 20px;
-	}
-	
-
-.search 
-	.query-filter
-		fieldset
-			input{
-				width: 300px ;				
+.fixed-button{
+	width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
 }
 
+.search {
+    width : 100%;
+    display: flex;
+    justify-content: right;
+}
 
+.search .query-filter fieldset {
+    display: flex;
+    width: 200px;
+    justify-content: flex-end;
+    border-bottom: 1px solid var(--color-base-3);
+    background-color: var(--color-base-2);
+    opacity: 0.5;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-right: 20px;
+}
 
-
-
-
-
-
-/* -------- inactive ------- html코드 어떻게 짜지??---*/
-
-
-
-/* ------------------ 정렬 ------------------ */
-
-
+.search .query-filter fieldset input {
+    width: 100%; /* 수정된 부분 */
+    background-color: var(--color-base-2);
+	margin-left: 20px;
+	margin-right: 5px;
+}
 
 /* ---------------------- 700부터~ 적용됨 ---------------------- */
 

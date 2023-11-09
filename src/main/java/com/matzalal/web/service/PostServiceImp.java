@@ -118,6 +118,11 @@ public class PostServiceImp implements PostService {
 	}
 
 	@Override
+	public int countAllPost() {
+		return postRepository.Allcount();
+	}
+
+	@Override
 	public boolean deletePost(List<Long> postList) {
 		System.out.println("다수 게시글 삭제중");
 		postRepository.deletePosts(postList);

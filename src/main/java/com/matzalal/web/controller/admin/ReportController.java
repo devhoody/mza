@@ -1,7 +1,8 @@
 package com.matzalal.web.controller.admin;
 
-import java.util.List;
-
+import com.matzalal.web.entity.Report;
+import com.matzalal.web.entity.ReportReason;
+import com.matzalal.web.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,14 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.matzalal.web.entity.Notice;
-import com.matzalal.web.entity.Report;
-import com.matzalal.web.entity.ReportReason;
-import com.matzalal.web.entity.ReportUser;
-import com.matzalal.web.service.ReportCommentService;
-import com.matzalal.web.service.ReportPostService;
-import com.matzalal.web.service.ReportService;
-import com.matzalal.web.service.ReportUserService;
+import java.util.List;
 
 @Controller("adminReportController")
 @RequestMapping("/admin/report")

@@ -206,24 +206,20 @@
                             <!--	[수정조회] commu/comment/edit
                                     http://localhost:8000/commu/comment/edit?&commentId=76-->
                             <a class="commu-edit"
-                               th:href="@{/commu/comment/edit(commentId=${c.commentId})}"
-                               th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
+                               th:href="@{/commu/comment/edit(commentId=${c.commentId})}"                							th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
                                th:data-post="${c.postId}"
                                value="" > </a>
                         </div>
 
 
-                        <div>
-                            <form>
-                                <input type="hidden" name="post-id" th:value="${c.postId}">
-                                <input type="hidden" name="user-id" th:value="${c.userId}">
-                                <button class="commu-delete cursor-pointer:pointer"
-                                        th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
-                                        th:data-post="${c.postId}"
-                                        th:data-postUser="${c.userId}"
-                                        type="submit" value="">
-                                </button>
-                            </form>
+                        <div >
+                            <button class="commu-delete comment-delete"
+                                    th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
+                                    th:data-post="${c.postId}"
+                                    th:data-comment="${c.commentId}"
+                                    th:data-postUser="${c.userId}"
+                                    type="submit" value="">
+                            </button>
                         </div>
                     </section>
 
@@ -257,33 +253,35 @@
     </section>  <!-- 댓글영역 끝 -->
 
     <!-- ---------------- 댓글입력 ----------------  -->
-    <div th:each="p:${post}">
+    <div >
         <form class="commentbox md:commentbox"
               id="comment-form"
               method="post"
-              th:data-userId="${p.userId}"
-              th:data-postId="${p.postId}"
+              th:data-userId="${post.userId}"
+              th:data-postId="${post.postId}"
         >
             <!--	           	action="/post/detail"-->
             <!--            	th:text="${username}"-->
 
             <legend class="d:none"> 댓글 입력창 </legend>
             <div class="textarea-wrap">
-                  <textarea
-                          class="comment-content"
-                          name ="content"
-                          placeholder="댓글을 작성해주세요. "
-                          rows="1"></textarea>
+	                              <textarea
+                                          class="comment-content"
+                                          name ="content"
+                                          placeholder="댓글을 작성해주세요. "
+                                          rows="1"></textarea>
                 <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
             </div>
 
             <button class="btn-post input-button btn-main btn-main-comment"
+                    th:data-userId="${post.userId}"
+                    th:data-postId="${post.postId}"
                     type="submit"
                     value="등록" > 등록
             </button>
 
         </form>
-    </div>
+        <div>
 </main>
 </body>
 </html>

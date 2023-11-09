@@ -8,19 +8,16 @@
     <title>Document</title>
     <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
     <link href="/css/components/notice/list.css" rel="stylesheet" type="text/css">
+ 	<script src="/js/notice/notice-dom.js"> </script> 
 </head>
 
 <body>
-<<<<<<< HEAD
-	<main layout:fragment="main">
-		<!--//검색-->
-=======
 	<main layout:fragment="main" class="notice-list-main">
 	<!--tab 부분-->
         <div class="jump-tab">
             <button onclick="location.href='list'" class="btn btn-user-tab btn-user-tab-line md:findbtn">NOTICE</button>
-            <button onclick="location.href='/faq/list'" class="btn btn-user-tab md:findbtn">FAQ</button>
-            <button onclick="location.href='/qna/question/list'" class="btn btn-user-tab md:findbtn">QNA</button>         
+            <button onclick="location.href='/faq/list'" class="btn btn-user-tab md:findbtn" style="color: #818181;">FAQ</button>
+            <button onclick="location.href='/qna/question/list'" class="btn btn-user-tab md:findbtn" style="color: #818181;">QNA</button>         
         </div>
 	<!--검색 commu_main.css 에서 가져온 부분-->
 	<!--- 고정버튼:검색,글쓰기 - -->
@@ -36,50 +33,37 @@
 		                <input class="search-input input-query" 
 		                		type="text" 
 		                		placeholder="검색어를 입력하세요.">
-		                <button class="btn-search icon icon-search icon-size:5 icon-color:base-5">검색</button>
+		                <button class="btn-search icon icon-search icon-size:2 icon-color:base-5">검색</button>
 		            </fieldset>
 	        	</form>
       	 </section> <!--  query-filter  -->
         </div>
-<!--        <div>
-            <a href="/notice/list " class="icon icon-add icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
-        </div>-->
     </section>
 		
-<!--=========================원래 내꺼=========================-->
+<!--=========================notice-template=========================-->
 	<div class="notice-template">
->>>>>>> origin/mj1109
 	    <div class="notice-qty">총 <span th:text="${count}"></span><span>건</span></div>
 	    
-		<div class="notice-list-box" th:each="n:${list}" th:onclick="|location.href='@{/notice/detail(notice-id=${n.noticeId})}'|">     <!-- 여기 div class로 구역 잡기 -->
-		<!--th:href="@{/detail?(noticeId=${n.noticeId})}"-->
+		<!--디테일 조회 링크-->
+		<div class="notice-list-box" th:each="n:${list}" id="link"
+			th:onclick="|location.href='@{/notice/detail(notice-id=${n.noticeId})}'|">  <!-- 여기 div class로 구역 잡기 -->
 	        <section class="notice-list-box-left">
 	            <h1 class="d:none">공지사항 목록</h1>
 	            <div class="list-left-side"><span class="notice-number" th:text="${n.noticeId}" 
 	            	href="?n=1" th:href="@{?n={n} (n=${n.noticeId})}"></span><span>.</span>
 	                <h1 th:text="${n.title}">공지사항 리스트 제목</h1>
-	                <div class="reg-date" th:text="${#dates.format(n.createdDate, 'yyyy.MM.dd')}">2023.08.04</div>
+	                <div class="reg-date" th:text="${#dates.format(n.createdDate, 'yyyy.MM.dd.')}">2023.08.04</div>
 	            </div>
 	        </section>
 	            
-<<<<<<< HEAD
-	            <span class="gotodetail deco icon-right-arrow icon-size:0"></span> 
-	            <section class="notice-list-box-right"></section>
-	            <div class="list-right-side">
-	                <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
-	            </div>
-        	</div>
-=======
 	        <section class="notice-list-box-right">
-	          <span class="gotodetail deco icon-right-arrow icon-size:0"></span> 
 	          <div class="list-right-side">
-	          <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
+	          	<span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
 	          </div>
 	        </section>
     	</div>
->>>>>>> origin/mj1109
         
-			<!-- 페이지 이동 -->
+		<!-- 페이지 이동 -->
             <div class="pagination">
                 <a class="" th:if="${currentPage > 1}" th:href="@{/notice/list(page=${currentPage-1})}">&laquo;</a>
                 <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
@@ -89,6 +73,7 @@
                 </a>
                 <a th:if="${currentPage < pageCount+1}" th:href="@{/notice/list(page=${currentPage+1})}">&raquo;</a>
             </div>
+	</div>
 	</main>
 </body>	
 </html>

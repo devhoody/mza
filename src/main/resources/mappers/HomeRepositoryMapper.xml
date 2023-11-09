@@ -24,12 +24,14 @@
 	       	select row_number() over(order by rv.rating desc) as `rank`
                   , r.rest_id                                  as rest_id
                   , r.rest_name                                as rest_name
+                  , m.menu_id                                  as menu_id
                   , count(rv.rest_id)                          as rest_amount
-                  , round(avg(rv.rating)w, 1)                   as rating
+                  , round(avg(rv.rating), 1)                   as rating
                   , rv.img                                     as img
                   , rv.created_date                            as created_date
             from review rv
             left join restaurant r on r.review_id = rv.review_id
+            left join menu m on r.rest_id = m.rest_id
             WHERE rv.created_date >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
 	        AND rv.created_date <= CURDATE()
             GROUP BY r.rest_id
@@ -39,10 +41,19 @@
     </select>
 
     <select id="findRankAll" parameterType="RatingView">
-        select row_number() over(order by r.rest_id asc) `rank`, r.rest_id, r.rest_name, count(rv.rest_id) rest_amount, round(avg(rv.rating), 1) rating, rv.img
+        select 
+			  row_number() over(order by rv.rating desc) `rank`
+            , r.rest_id
+            , r.rest_name
+            , m.menu_id
+            , count(rv.rest_id) rest_amount
+            , round(avg(rv.rating), 1) rating
+            , rv.img
         from review rv
         left join restaurant r on rv.rest_id = r.rest_id
+        left join menu m on r.rest_id = m.rest_id
         GROUP BY r.rest_id
+        order by rv.rating desc
     </select>
 
     <select id="getList" parameterType="Rest">
