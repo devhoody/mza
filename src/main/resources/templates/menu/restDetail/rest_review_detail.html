@@ -32,9 +32,27 @@
     <h1 class="d:none">경계선</h1>
     <div class="review-btn">
         <p class="total" >후기(<span th:text="${total.total}"></span>건)</p>
-        <a class="write-review">리뷰 쓰기</a>
+<!--        <a class="write-review">리뷰 쓰기</a>-->
     </div>
-
+<!-- ------------------------------------------ 리뷰 쓰기 ---------------------------------->
+    <section class="postReview">
+        <h1 class="d:none"></h1>
+        <div>
+            <form id="reviewForm" class="review-form">
+                <div class="content_">
+                    <input class="img-onload" type="file" id="photo" name="photo" accept="image/*" >
+                    <!--                        <div id="imagePreview" style="width: 100px; height: 100px; overflow: hidden;">-->
+                    <!--                            <img id="previewImage" src="" alt="이미지 미리보기">-->
+                    <!--                        </div>-->
+                    <input class="rating-input" type="text" name="rating" placeholder="1~5까지 점수 입력">
+                    <textarea class="txt-area" name="content" maxlength="130"  placeholder="130글자 내외로 작성해 주세요."></textarea>
+                    <div class="command">
+                        <button class="btn  font-size:-1">확인</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
     <!--------------------- 후기 탭 ---------------------->
     <section class="review-area">
         <h1 class="d:none">후기</h1>

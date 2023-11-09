@@ -16,25 +16,11 @@
 	<body >
 	<main layout:fragment="main" class="body">
 
-		<form id="reviewForm" class="review-form">
-			<div class="content">
-				<input class="img-onload" type="file" id="photo" name="photo" accept="image/*" >
-				<!--                        <div id="imagePreview" style="width: 100px; height: 100px; overflow: hidden;">-->
-				<!--                            <img id="previewImage" src="" alt="이미지 미리보기">-->
-				<!--                        </div>-->
-				<input class="rating-input" type="text" name="rating" placeholder="1~5까지 점수 입력">
-				<textarea class="txt-area" name="content" maxlength="130"  placeholder="130글자 내외로 작성해 주세요."></textarea>
-				<div class="command">
-					<button class="btn  font-size:-1">확인</button>
-				</div>
-			</div>
-		</form>
-
-	<!-- 랭킹 + 버튼  -->
+	<!-- --------------------------------------- 랭킹 + 버튼 ----------------------------------------------------------------------- -->
 	<div class="main_btn_div">
 		<section class="rank">
 			<h1 class="title"><a href="/rank">오늘의 랭킹</a></h1>
-			<div class="rank-container" th:each="rank:${ratingView}">
+			<div class="rank-container" th:each="rank:${ranking}">
 				<div class="rank-box" >
 					<a  href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rank.restId})}">
 					<img class="rank-img" src="/css/img/gold.png" th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
@@ -116,7 +102,7 @@
 			<div class="container" >
 				<article class="card" th:each="rc:${recom}">
 					<h1 th:text="${rc.restName}"></h1>
-					<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rc.id})}">
+					<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rc.restId})}">
 						<img src="" th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt="">
 					</a>
 				</article>

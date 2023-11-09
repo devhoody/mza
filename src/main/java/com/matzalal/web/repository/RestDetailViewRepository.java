@@ -10,5 +10,7 @@ import java.util.List;
 public interface RestDetailViewRepository {
     List<RestDetailView> findRestDetailView(Long restId);
 
+//    RestDetailView findById(Long restId, Long celebId);
     RestDetailView findById(Long restId);
+    List<RestDetailView> findMenuById(Long restId);
 }

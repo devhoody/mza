@@ -2,6 +2,8 @@ package com.matzalal.web.controller.api;
 
 import com.matzalal.web.entity.Celeb;
 import com.matzalal.web.entity.CelebRestView;
+import com.matzalal.web.entity.Comment;
+import com.matzalal.web.entity.Review;
 import com.matzalal.web.service.CelebListService;
 import com.matzalal.web.service.CelebRestService;
 import org.springframework.beans.factory.annotation.Autowired;

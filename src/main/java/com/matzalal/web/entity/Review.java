@@ -19,11 +19,21 @@ public class Review {
 //    private String img;
 //    private Date createdDate;
 
-    private Long restId;
-    private String restName;
+//    private Long restId;
+//    private String restName;
+//    private Long reviewId;
+//    private Long userId;
+//    private String alias;
+//    private String content;
+
+
     private Long reviewId;
     private Long userId;
     private String alias;
+    private Long restId;
+    private String restName;
+    private Integer rating;
     private String content;
-
+    private String img;
+    private Date createdDate;
 }

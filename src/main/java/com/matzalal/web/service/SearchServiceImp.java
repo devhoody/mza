@@ -1,5 +1,6 @@
 package com.matzalal.web.service;
 
+import com.matzalal.web.entity.Rest;
 import com.matzalal.web.entity.RestView;
 import com.matzalal.web.repository.SearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ public class SearchServiceImp implements SearchService{
     @Autowired
     private SearchRepository repository;
     @Override
-    public List<RestView> getViewList(String query) {
-        List<RestView> list =repository.findListByWord(query);
+    public List<Rest> getViewList(String query) {
+        List<Rest> list =repository.findListByWord(query);
         return list;
     }
 }

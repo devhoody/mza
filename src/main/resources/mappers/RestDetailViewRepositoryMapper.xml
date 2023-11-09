@@ -29,8 +29,13 @@
         left join location_rest lr on r.location_rest_id = lr.location_rest_id
         left join celeb_restaurant cr on r.celeb_rest_id = cr.celeb_rest_id
         left join celeb c on cr.celeb_id = c.celeb_id
-        where r.rest_id=#{restId}
+        where r.rest_id=#{restId} and c.celeb_id=#{celebId}
     </select>
 
-
+    <select id="findMenuById" resultType="RestDetailView">
+        select r.rest_id, m.menu_id, m.name, m.price
+        from restaurant r
+        left join menu m on r.rest_id=m.rest_id
+        where r.rest_id=#{restId}
+    </select>
 </mapper>
