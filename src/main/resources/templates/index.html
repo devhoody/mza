@@ -59,8 +59,8 @@
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail (restId=${rank.restId})}">
 							</a>
-							<img class="rest-img" src="/css/img/1-1.png"
-								th:src="@{/css/image/{img} (img=${rank.img})}">
+							<img class="rest-img" src="/css/image/${rank.img}"
+								 th:if="${rank.img != null}" th:src="@{/css/image/${rank.img}}">
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<span class="rank-name" th:text="${rank.restName}"></span>
@@ -80,8 +80,8 @@
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail (restId=${rank.restId})}">
 							</a>
-							<img class="rest-img" src="/css/img/1-1.png"
-								th:src="@{/css/image/{img} (img=${rank.img})}">
+							<img class="rest-img" src="/css/image/${rank.img}"
+								 th:if="${rank.img != null}" th:src="@{/css/image/${rank.img}}">
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<span class="rank-name" th:text="${rank.restName}"></span>
