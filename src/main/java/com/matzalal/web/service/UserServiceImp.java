@@ -255,4 +255,10 @@ public class UserServiceImp implements UserService {
         Date userSancTime = repository.userSanctionTime(email);
         return userSancTime;
     }
+
+    @Override
+    public LocationUser getlocById(Integer locId) {
+        return locationUserRepository.findById(locId);
+    }
+
 }

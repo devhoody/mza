@@ -20,14 +20,17 @@
                     <form method="post" enctype="multipart/form-data">
                         <label>
                                 <input type="file" th:data-id="${#authentication.principal.id}" class="profile-img d:none" name="f" multiple>
-                                <img alt="프로필 이미지선택" th:src="@{'/image/user/profile/' + ${userView.profileImg}}">
+                                <img alt="프로필 이미지선택" th:src="@{'/css/image/user/' + ${userView.profileImg}}">
             <!--                        <img id="profile-img" src="/css/image/user/noh-profile.png" th:src="@{'/css/image/user/' + ${userView.profileImg}}" alt="프로필이미지">-->
                         </label>
                     </form>
 
                 </li>
                 <li><img src="/css/image/icon/badge1.svg" th:src="@{'/css/image/icon/' + ${userView.gradeImg}}"></li>
-                <li><span th:text="${userView.alias}" class="nickname">바지사장</span></li>
+                <li>
+                    <span th:text="${userView.alias}" class="nickname">바지사장</span>
+                    <p th:text="${loc.area}">ddd</p>
+                </li>
                 <li><span sec:authentication="principal.username" >pantsCEO@matzalal.com</span></li>
                 <li><span>가입일자 : </span><span sec:authentication="principal.createdDate">2023.08.30</span></li>
             </ul>

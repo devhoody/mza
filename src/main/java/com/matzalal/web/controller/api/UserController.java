@@ -65,15 +65,15 @@ public class UserController {
 
 		System.out.println("나와아아아아앙아아아아아아아아아아!!!!!!");
 		System.out.println(user);
-		// webapp경로
-		String strPath = request.getServletContext().getRealPath("/image/user/profile");
+//		// webapp경로
+		String strPath = request.getServletContext().getRealPath("/css/image/user");
 		System.out.println(strPath);
 		// 경로 설정
 		File path = new File(strPath);
 		if (!path.exists())
 			path.mkdirs();
 
-		File file = new File(strPath + File.separator + img.getOriginalFilename());
+		File file = new File( strPath + File.separator+ img.getOriginalFilename());
 		img.transferTo(file);
 
 		user.setProfileImg(img.getOriginalFilename());

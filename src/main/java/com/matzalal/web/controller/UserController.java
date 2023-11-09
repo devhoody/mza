@@ -2,10 +2,7 @@ package com.matzalal.web.controller;
 
 import com.matzalal.web.config.auth.MatzalalUserDetails;
 import com.matzalal.web.entity.*;
-import com.matzalal.web.service.PostService;
-import com.matzalal.web.service.CommentService;
-import com.matzalal.web.service.FavService;
-import com.matzalal.web.service.UserService;
+import com.matzalal.web.service.*;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -43,6 +40,10 @@ public class UserController {
 
         UserView userView = userService.getUserViewById(id);
         model.addAttribute("userView", userView);
+
+        Integer locId = userView.getLocationId();
+        LocationUser locUser = userService.getlocById(locId);
+        model.addAttribute("loc", locUser);
 
         return "user/mypage";
     }
