@@ -38,10 +38,7 @@ public class CommuController {
 	@RequestMapping("main")
 	public String main(
 			Model model,
-			Authentication authentication
-	// HttpServletRequest request,
-	// HttpServletResponse response
-	) {
+			Authentication authentication) {
 
 		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
 		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
@@ -131,7 +128,7 @@ public class CommuController {
 
 		model.addAttribute("post", post);
 		model.addAttribute("commentList", commentList);
-		//model.addAttribute("count", count);
+		// model.addAttribute("count", count);
 		return "commu/post/detail";
 	}
 
@@ -153,7 +150,8 @@ public class CommuController {
 
 		return "commu/post/edit";
 	}
-	// 조회 http://localhost:8000/commu/post/edit?postId=5
+	// [수정조회] commu/post/edit
+	// http://localhost:8000/commu/post/edit?postId=5
 
 	@PutMapping("/postupdate")
 	public String update(
@@ -167,21 +165,6 @@ public class CommuController {
 		return "redirect:/commu/main";
 	}
 
-	// ---------- 댓글 클릭 시 -> 댓글 조회 ----------- ( 미완성, 댓글 수정먼저 진행중 )
-
-	@RequestMapping("comment/detail")
-	public String commentdetail(
-			@RequestParam(name = "comment-id") Long commentId,
-			Model model) {
-		CommentView comment = commentService.getDtlById(commentId);
-
-		System.out.println("상세조회 comment: " + comment);
-
-		model.addAttribute("comment", comment);
-
-		return "commu/comment/edit";
-	}
-
 	// ---------- 댓글 오른쪽 확장창 클릭 시 -> 댓글 수정 -----------
 
 	@GetMapping("comment/edit")
@@ -192,10 +175,6 @@ public class CommuController {
 		Comment commentDtl = commentService.getByIdForEdit(commentId);
 		System.out.println("수정 commentDtl: " + commentDtl);
 		model.addAttribute("commentDtl", commentDtl);
-
-		// CommentView comment = commentService.getDtlById(commentId);
-		// System.out.println("수정 comment: "+ comment);
-		// model.addAttribute("comment", comment);
 
 		return "commu/comment/edit";
 	} // 조회 http://localhost:8000/commu/comment/edit?commentId=5

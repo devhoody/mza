@@ -76,12 +76,11 @@
                         
                 </div>
                         <!-- 이미지 업로드 -->
-	                    <div class="upload-photo md:upload-photo"> 
+	                    <div class="icon-commu-img-upload upload-photo md:upload-photo"> 
 	                        <label for = "img">
-		                      	<input class="" type="file" name="img" id ="img" multiple>
+		                      	<input class="icon-commu-img-upload" type="file" name="img" id ="img" multiple>
 							</label>
 						  <div class="preview">
-						    <p>No files currently selected for upload</p>
 						  </div>
 	                    </div>		
 <!--		                        <img -->
@@ -94,8 +93,10 @@
 
             <div class="posting-creating-btn md:posting-creating-btn">
 <!--                <input type="submit" value="등록" class="btn-main btn-main-create md:btn-main-create"> 등록 -->
-                <input type="submit" value="등록" class="commu-btn-update md:btn-main-create">  </input>
-                <a href="/commu/main" value="취소" class="commu-btn-cancle md:btn-main-create btn-main-create-cancel"> 취소 </a>	
+                <input type="submit" value="등록" 
+                		class="commu-btn-update  md:commu-btn-update">  </input>
+                <a href="/commu/main" value="취소" 
+                		class="commu-btn-cancle md:commu-btn-cancle"> 취소 </a>	
             </div>
             
 		</form>

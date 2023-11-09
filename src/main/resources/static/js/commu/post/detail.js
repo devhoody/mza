@@ -4,6 +4,9 @@ window.addEventListener("load", function(){
     let content = document.querySelector(".commentgroup"); // 
  	let deleteComment = document.querySelectorAll(".comment-delete");
  	let deletePost = document.querySelectorAll(".post-delete");
+	let currentUserId = document.querySelector("#userid");
+      console.log("currentUserId" + currentUserId);
+      console.log("currentUserId: " + currentUserId.content);0
       console.log("deleteComment"+deleteComment);
       console.log("deletePost"+deletePost);
 // ------------ 포스팅 삭제  -------------
@@ -74,7 +77,7 @@ deleteComment.forEach((commuDelete) => {
 	    	
 	        let url = `/api/commus/comments`; //POST
 	        
-			let response = fetch(url, {
+			let response = await fetch(url, {
 	            method: 'POST',
 	            headers: {
 	            	'Content-Type': 'application/json',
@@ -92,24 +95,26 @@ deleteComment.forEach((commuDelete) => {
         	}
 
 	        let data = await response.json();
-	
-	        if (data.success) {
-	            alert("댓글이 성공적으로 등록되었습니다.");
-					window.location.href = `/commu/post/detail?&post-id=${el.dataset.post}`;
-	        } else {
-	            alert("댓글 등록에 실패했습니다.");
-	        }
+	        bind(data); 		
+
     } 
 		
 
 // ------------- 데이터 요청 후 응답기다리는...! -------------
 
-	function bind(postList){
-		console.log(" --function bind 시작 부분-- ")
+	function bind(commentList){
+		console.log(" --function bind 시작 부분-- ");
+		console.log(" -commentList- " + commentList);
+		
+	
 		
         content.innerHTML = ""; // section을 위한 DOM 객체를 직접 생성해서 append 한다.
 
         for (let c of commentList){
+		console.log(" 현재로그인한 유저:  " + currentUserId.content);
+		console.log(" 댓글쓴 userid :  " + c.userId);
+//			let iconEdit =  currentUserId.content = c.userId 
+			
             let template = `
             
               <section class="comment-list-box md:comment-list-box">
@@ -122,7 +127,7 @@ deleteComment.forEach((commuDelete) => {
                                 <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
         
                                 <div class="badge">
- 								<img src="/css/image/icon/badge${c.gradeId}.svg" style="height:20px;" alt="등급2" />                                     
+ 								<img src="/css/image/icon/badge${c.gradeId}.svg"                                      
                                     style="height:20px;" alt="등급2" /> 
                                 </div>
                                         
@@ -145,25 +150,7 @@ deleteComment.forEach((commuDelete) => {
                                     <a class="icon  icon-commu-more icon-size-commu:2 icon-color:base-5" href=""> 세로 확장</a>
                                 </div>
                                  -->
-                                <div > 
-									 <!--	 [수정조회] commu/post/edit  http://localhost:8000/commu/post/edit?postId=5-->
-
-                					<a class="commu-edit" 
-                						th:href="@{edit?(commentId=${c.commentId})}"
-                							th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
-                							th:data-post="${c.postId}"
-                							value="" > </a>
-	                            </div>
-
-                                 
-                                 <div > 
-	                           		
-                           		<button class="commu-delete commu-delete"
-            					th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'" 
-            							th:data-post="${c.postId}"
-            							th:data-postUser="${c.userId}"
-            							type="submit" value="" > </button>
-                           		</div>
+               
                             </section>
                             
                         </section> <!-- top 끝 -->
@@ -178,7 +165,7 @@ deleteComment.forEach((commuDelete) => {
 
 	        content.insertAdjacentHTML("beforeend", template); // 때려부수지 않고 새로 짓는거
 	        }
-	    }
+//	    }
 		
 		
 		
