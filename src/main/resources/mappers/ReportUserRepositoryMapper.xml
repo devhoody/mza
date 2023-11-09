@@ -5,8 +5,8 @@
 <mapper namespace="com.matzalal.web.repository.ReportUserRepository">
 	
 	<insert id="save" parameterType="ReportUser">
-  		insert into user_report(content, report_user_id, user_id, report_reason_id, admin_id)
-		values (#{content}, #{reportUserId}, #{userId}, #{reportReasonId}, #{adminId})
+  		insert into user_report(content, report_user_id, user_id, report_reason_id)
+		values (#{content}, #{reportUserId}, #{userId}, #{reportReasonId})
   	</insert>
 	
     <select id="last" resultType="ReportUser">

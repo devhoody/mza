@@ -48,9 +48,8 @@ public class ReportCommentController {
 		ReportComment reportComment = ReportComment.builder()
 				.content(content)
 				.reportUserId(id)
-				.commentId(10L)
+				.commentId(5L)
 				.reportReasonId(reportReasonId)
-				.adminId(2L)
 				.build();
 		
 		System.out.println("reportComment:" + reportComment);
