@@ -131,19 +131,5 @@ public class CommuController {
 		commentService.deleteCmt(commentId);
 	}
 
-	// ---------------------- 댓글 목록 제공 API ----------------------
-	// @GetMapping
-	// public List<PostView> postList(
-	// @RequestParam(name="q", required = false ) String query,
-	// @RequestParam(name="loc", required = false) Long locationPostId
-	// ){
-	//
-	// System.out.println(query);
-	// List<PostView> postList = postService.getViewList(query, locationPostId);
-	//
-	// System.out.println("el.dataset.id: "+ locationPostId);
-	// System.out.println(postList);
-	// return postList;
-	// };
 
 }

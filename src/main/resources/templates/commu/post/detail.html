@@ -3,7 +3,11 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorate="~{inc/layout.html}">
    
-<head>
+<head>	
+	<meta id="userid" name="userid" th:content="${#authentication.principal.id}">  
+	<!-- meta(전역)로 token을 전역으로 받고 -->
+	<!-- js에서 token 심어야!!! -->
+		
 	<link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
 	<link href="/css/components/commu/post/detail.css" rel="stylesheet" type="text/css">
 	<link href="/css/components/commu/comment/comment.css" rel="stylesheet" type="text/css">
@@ -102,7 +106,7 @@
                             </section><!-- picture -->
                     </section><!-- middle -->
   
-              <!-- <section class ="bottom"> 
+               <section class ="bottom"> 
                         <h1 class="d:none"> 조회수 좋아요 댓글 </h1>
 
                             <section class="view">
@@ -144,7 +148,7 @@
                                     </div>
                             </section>
                             
-                    </section> -->
+                    </section> 
                 </div>
 
     </section>
@@ -168,7 +172,7 @@
                     	class="comment-list-box md:comment-list-box"
                     	th:each="c:${commentList}"
                     	>
-                    	<div th:text="${c.userId}"></div>
+                    	<div  class="d:none" th:text="${c.userId}"></div>
                         <h2 class="d:none"> 댓글 </h2>
         
                         <section class ="top"> 
@@ -179,7 +183,7 @@
         
                                 <div class="badge">
                                     <img src="/image/icon/grade2.svg" 
-                                    
+                                     th:src="@{'/css/image/icon/badge' + ${c.gradeId} + '.svg'}"
                                     style="height:20px;" alt="등급2" /> 
                                 </div>
                                         
@@ -198,29 +202,24 @@
                                         12분전   
                                     </span> 
                                 </div>
-       							 <!--
-                                <div>
-                                    <a class="icon  icon-commu-more icon-size-commu:2 icon-color:base-5" href=""> 세로 확장</a>
-                                </div>
-                                 -->
-                                <div > 
-									 <!--	 [수정조회] commu/post/edit  http://localhost:8000/commu/post/edit?postId=5-->
 
+                                <div> 
+									 <!--	[수정조회] commu/comment/edit  
+									 		http://localhost:8000/commu/comment/edit?&commentId=76-->
                 					<a class="commu-edit" 
-                						th:href="@{edit?(commentId=${c.commentId})}"
-                							th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
-                							th:data-post="${c.postId}"
-                							value="" > </a>
+										th:href="@{/commu/comment/edit(commentId=${c.commentId})}"                							th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
+                						th:data-post="${c.postId}"
+                						value="" > </a>
 	                            </div>
 
                                  
                                  <div > 
-	                           		
-                           		<button class="commu-delete commu-delete"
-            					th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'" 
-            							th:data-post="${c.postId}"
-            							th:data-postUser="${c.userId}"
-            							type="submit" value="" > </button>
+	                           		<button class="commu-delete"
+	            					th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'" 
+	            							th:data-post="${c.postId}"
+	            							th:data-postUser="${c.userId}"
+	            							type="submit" value=""> 
+        							</button>
                            		</div>
                             </section>
                             
@@ -231,21 +230,21 @@
                             <p th:text="${c.content}"> 댓글내용이 어쩌구저쩌구 </p>
                         </section> <!-- middle 끝 -->
         
-                        <section class="bottom">
+                   <!--     <section class="bottom">
                             <h1 class="d:none"> 좋아요 & 대댓글버튼 </h1>
         
-                         <!--   <div class="likes-numbers">
+                            <div class="likes-numbers">
                                 <a class="icon icon-commu-likes icon-size:1 icon-color:main" href=""> 좋아요</a> 
                                 <span th:text="${c.cmtLikeCount}"> 98</span>
-                            </div>-->
+                            </div>
         
-                           <!-- <div>
+                            <div>
                                 <a class="btn-main btn-main-comment btn-main-comment-recomment"> 대댓글 </a>
                             </div>
-                            -->
-                        </section> <!-- bottom 끝 -->
-        
-                    </section><!-- 댓글 comment-list-box: thymeleaf 반복 -->
+                            
+                        </section>   -->
+      
+                    </section> <!-- 댓글 comment-list-box: thymeleaf 반복 -->
                      
                  </section>   <!-- commentgroup -->
                      
@@ -269,14 +268,14 @@
 	                              <textarea
 	                                      class="comment-content"
 	                                      name ="content"
-	                                      placeholder="댓글을 작성해주세요."
+	                                      placeholder="댓글을 작성해주세요. "
 	                                      rows="1"></textarea>
 	                                      <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
 	                      </div>
 	      
 	                      <button class="btn-post input-button btn-main btn-main-comment" 
 	                      			type="submit"
-	                              value="등록" > 
+	                              value="등록" > 등록 
 	                       </button>	
 	      
 	              </form>   

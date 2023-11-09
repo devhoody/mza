@@ -257,6 +257,26 @@
   background-color: var(--color-base-0);
   transition: 0.5s;
 }
+/*----------------- 커뮤 추가 11.08. ------------------*/
+
+.commu-btn-update {
+  width: 180px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+border-color: var(--color-accent-2);
+
+}
+
+.commu-btn-cancle {
+  display: inline-block; /* inline 요소를 block 요소로 변경 */
+  width: 180px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+  text-align: center; /* 텍스트 중앙 정렬 */
+  line-height: 30px; /* 텍스트 수직 정렬 */
+}
 
 @media (min-width: 700px) {
   .md\:btn-md {
@@ -272,5 +292,18 @@
   .md\:btn-main {
     border-radius: 0;
   }
+/*----------------- 커뮤 추가 11.08. ------------------*/
+  
+  	.md\:commu-btn-update {
+		  width: 340px;
+		  height: 30px;
+		}
+
+	.md\:commu-btn-cancle {
+		  width: 340px;
+		  height: 30px;
+
+    }
+  
 }
 

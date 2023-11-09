@@ -88,8 +88,11 @@
 	        <!-- ------------------ 지역분류 ----------------- -->
 	        <section class="location">
 	          <h1 class="d:none"> 지역분류 카테고리 목록  </h1>
-	            <div th:text="${#authentication.principal.id}">
+	           
+	            <div class="d:none" 
+	            th:text="${#authentication.principal.id}">
 					</div>
+					
 	                <nav class="commu-location btn-commu">
 						<ul>
 							<li> <a class="location selected"> 서울(전체) </a> </li>
@@ -171,11 +174,12 @@
 	                                <a class="icon icon-commu-more icon-size-commu:2 " href=""> 세로 확장</a>
 	                            </div>-->
 
-	                           <div > 
+	                           	<div > 
                 					<a class="" 
                 							th:classappend="${#authentication.principal.id == p.userId} ? 'd:none' : 'icon icon-size:0 icon-color:base-4 icon-commu-report'"
-                							href="/report/post"
-                							type="submit" value="" > </a>
+                							href="/report/post/reg"
+                							type="submit" value="" > 
+        							</a>
 	                            </div>
 	                            
 	                           <div > 
