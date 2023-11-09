@@ -136,6 +136,15 @@
   border-radius: var(--radius-1);
 }
 
+.btn-main-create-admin {
+  width: 110px;
+  height: 40;
+/*  padding: 12px 75px;*/
+  background-color: var(--color-accent-1);
+
+  border-radius: var(--radius-1);
+}
+
 .btn-main-create-cancel,
 .btn-main-create-edit {
   background-color: var(--color-accent-2);

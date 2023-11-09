@@ -46,7 +46,7 @@ public class FaqController {
 	@GetMapping("reg")
 	public String reg() {
 		System.out.println("faq 등록 페이지 조회");
-		return "admin/faq/edit";
+		return "admin/faq/reg";
 	}
 	
 	// faq 등록
