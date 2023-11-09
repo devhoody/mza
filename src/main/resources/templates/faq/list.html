@@ -5,16 +5,6 @@
     layout:decorate="~{inc/layout.html}">
 
     <head>
-<<<<<<< HEAD
-        <title>Document</title>
-        <link href="/css/components/faq/list.css" rel="stylesheet"
-            type="text/css">
-    </head>
-
-<body>
-	<main layout:fragment="main">
-		<!--//검색-->
-=======
         <title>faqList</title>
         <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
         <link href="/css/components/button.css" rel="stylesheet" type="text/css">
@@ -45,7 +35,7 @@
 		                <input class=" search-input input-query" 
 		                		type="text" 
 		                		placeholder="검색어를 입력하세요.">
-		                <button class="btn-search icon icon-search icon-size:5 icon-color:base-5">검색</button>
+		                <button class="btn-search icon icon-search icon-size:3 icon-color:base-5">검색</button>
 		            </fieldset>
 	        	</form>
       	 </section> <!--  query-filter  -->
@@ -57,7 +47,6 @@
 		
 <!--=========================원래 내꺼=========================-->
 	<div class="faq-template">
->>>>>>> origin/mj1109
 	    <div class="faq-qty">총 <span th:text="${count}"></span><span>건</span></div>
 	    
 	    <!--디테일 조회 링크-->
@@ -77,9 +66,6 @@
 	            <div class="list-right-side">
 	                <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
 	            </div>
-<<<<<<< HEAD
-        </div>
-=======
 	        </section>
         	</div>
     	<!-- 페이지 이동 -->
@@ -93,8 +79,6 @@
                 <a th:if="${currentPage < pageCount+1}" th:href="@{/faq/list(page=${currentPage+1})}">&raquo;</a>
             </div>
 		</div>
->>>>>>> origin/mj1109
 	</main>
-	
 </body>	
 </html>

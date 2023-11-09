@@ -36,11 +36,10 @@
                     <span class="prev-post deco-after icon-upside md:deco-after">이전 글</span>
                     <!--<span class="prev-title" th:text="*{title}" a href="">이전 글이 없습니다.-->
 					<span class="prev-title" th:text="*{title}" 
-						th:onclick="|location.href='@{/notice/detail(prev-notice-id=${notice.prevNoticeId})}'|" th:if="${noticeId > 1}">
+						th:onclick="|location.href='@{/notice/detail(prev-notice-id=${notice.prevNoticeId})}'|" 
+						th:if="${noticeId > 1}">
 					<!--<a th:href="@{'/notice/detail?notice-id=' + (noticeId-1)}">이전 글 제목과 링크</a>-->
 					</span>
-					
-					
 					<span class="prev-title inactive" th:unless="${noticeId <= 1}">이전 글이 없습니다.</span>
                     </span>
                 </div>

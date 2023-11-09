@@ -68,6 +68,7 @@ public class HomeController {
 		// 모델에 리스트 추가
 		model.addAttribute("list", list);
 		model.addAttribute("recom", randomRecommend);
+		System.out.println("추천리스트 출력 : "+randomRecommend);
 
 
 		// 최신 리뷰 출력

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -43,7 +44,7 @@ public class QuestionController {
 
 		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
 	    System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
-	    //Long id = userDetails.getId();
+	    Long id = userDetails.getId();
 	    
 		System.out.println("open:" + open);
 		System.out.println("qna본문:" + content);
@@ -52,7 +53,7 @@ public class QuestionController {
 				.content(content)
 				.open(open)
 				.img(img)
-				.userId(3L)
+				.userId(id)
 				.build();
 		
 		System.out.println("question:" + question);
@@ -104,15 +105,12 @@ public class QuestionController {
 		return "qna/question/detail";
 	}
 	
-
-	
 	// =========================수정 페이지========================= //
-	
 	@GetMapping("edit")
 	public String getEdit(
 			@RequestParam(name="question-id") Long questionId, 
 			Model model
-//			, Authentication authentication
+			//, Authentication authentication
 		) {
 		System.out.println(questionId);
 
@@ -132,22 +130,21 @@ public class QuestionController {
 		return "redirect:./list";
 	}
 	
+	// =========================삭제========================= //
+
+    @DeleteMapping("delete")
+    public String delete(
+    		@RequestParam(name="question-id") Long questionId
+    ){
+        System.out.println("삭제시도"+questionId);
+        service.delete(questionId);
+        System.out.println(questionId+"삭제완료!");
+		return "redirect:./list";
+    }
 
 	
 	
 	
-//	@RequestMapping("detail")
-//	public String detail(Model model, 
-//			//HttpServletRequest request
-//			@CookieValue String test
-//			) {
-//		System.out.println(test);
-//		
-//		Qna qna = service.getById(2);
-//		model.addAttribute("qna", qna);
-//		
-//		return "qna/detail";
-//	}
 	
 	
 	

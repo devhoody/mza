@@ -18,20 +18,6 @@
 	<body>
 		<main layout:fragment="main" class="body">
 
-			<!--		<form id="reviewForm" class="review-form">
-			<div class="content">
-				<input class="img-onload" type="file" id="photo" name="photo" accept="image/*">
-				                        <div id="imagePreview" style="width: 100px; height: 100px; overflow: hidden;">
-				                            <img id="previewImage" src="" alt="이미지 미리보기">
-				                        </div>
-				<input class="rating-input" type="text" name="rating" placeholder="1~5까지 점수 입력">
-				<textarea class="txt-area" name="content" maxlength="130" placeholder="130글자 내외로 작성해 주세요."></textarea>
-				<div class="command">
-					<button class="btn  font-size:-1">확인</button>
-				</div>
-			</div>
-		</form>-->
-
 			<!--카테고리 목록으로-->
 			<section class="category-link">
 				<h1 class="d:none">카테고리</h1>
@@ -103,34 +89,7 @@
 						</div>
 					</div>
 				</section>
-					<!--				<div class="rank-box">-->
-					<!--					<img class="rank-img" src="/css/img/silver.png">-->
-					<!--					<img class="rest-img" src="/css/img/1-1.png">-->
-					<!--					<span>${rest_name}</span>-->
-					<!--				</div>-->
-					<!--				<div class="rank-box">-->
-					<!--					<img class="rank-img" src="/css/img/bronze.png">-->
-					<!--					<img class="rest-img" src="/css/img/1-1.png">-->
-					<!--				</div>-->
-					<!--		<section class="btn-menu">
-		<h1 class="title">맛집 찾기</h1>
-		<div class="btn-container">
-			<div class="rest-map">
-				<a href>근처 맛집 지도</a>
 			</div>
-			<form action="/search/result">
-			<div class="find-rest">
-				<a>
-					<button class="hidden" type="submit" name="query" value="">
-					맛집 전체 보기
-					</button>
-				</a>
-		
-			</div>
-			</form>
-		</div>
-		</section>-->
-				</div>
 
 				<!-- 검색창 -->
 
@@ -150,7 +109,7 @@
 							<article class="card" th:each="rc:${recom}">
 								<h1 th:text="${rc.restName}"></h1>
 								<a href="menu/restDetail/rest_detail"
-									th:href="@{celeb/detail (restId=${rc.restId})}">
+									th:href="@{celeb/detail (restId=${rc.restId}, menuId=${rc.menuId})}">
 									<img src th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt>
 								</a>
 							</article>
