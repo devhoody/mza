@@ -26,18 +26,18 @@
 <section class="top" >
     <h1 style="display : none;">상단</h1>
     <div>
-        <img class="rest_img" src="" th:src="@{/css/image/{img}(img=${restDetail.bannerImg})}">
+        <img class="rest_img bg-size:cover" src="/css/image/rest/default-rest.jpeg">
     </div>
     <div class="head-container" >
         <a class="rest_name" th:text="${restDetail.restName}">상호명</a>
-        <a class="icon icon-heart heart">찜 아이콘</a>
+
     </div>
     <section class="info" >
         <h1 style="display : none;">가게 정보</h1>
         <div class="simple-info">
-            <a class="icon icon-geomarker icon-size:3">위치</a>
             <a class="icon icon-star icon-size:3 star" >별점  <span th:text="${restDetail.rating}"></span></a>
             <a class="a1" ><span th:text="${restDetail.name}"></span>'s Pick</a>
+            <a class="icon icon-heart heart">찜 아이콘</a>
 <!--            <a class="a2">풍자's Pick</a>-->
         </div>
 
@@ -45,9 +45,9 @@
             <p class="addr" >주소<span th:text="${restDetail.addr}"></span></p>
             <p class="phone-no" >전화번호 <span th:text="${restDetail.phone}"></span></p>
             <p class="time">
-               영업시간
-            <span th:text="${restDetail.dayOpen}"></span>~<span th:text="${restDetail.dayClose}"></span><br>
-            <span th:text="${restDetail.endOpen}"></span>~<span th:text="${restDetail.endClose}"></span>
+
+                평일 : <span>10:00</span>~<span>23:00</span>
+                주말 : <span>11:00</span>~<span>22:00</span>
             </p>
 <!--            -->
         </div>
@@ -62,8 +62,10 @@
             <article class="menu_img">
                 <h1 class="d:none">메뉴</h1>
                 <div class="scroll-img" >
-                            <p th:each="ml:${menuList}"><span th:text="${ml.name}"></span></p>
-<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">-->
+                    <p th:each="ml:${menuList}">
+<!--                        <p th:text="${ml.name}"></p>-->
+                    </p>
+<!--                        <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">-->
                 </div>
             </article>
         </section>
@@ -78,10 +80,15 @@
 <!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img2})}">-->
 <!--                </div>-->
                 <div class="menu_img">
-                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img1})}">
-                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img2})}">
-                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">
+                    <img class="food-img" src="/css/image/rest/taegwang1.jpeg">
+                    <img class="food-img" src="/css/image/rest/taegwang2.png">
+                    <img class="food-img" src="/css/image/rest/taegwang3.jpeg">
                 </div>
+<!--                <div class="menu_img">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img1})}">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img2})}">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">-->
+<!--                </div>-->
             </div>
         </section>
         <!-- -----------------------------경계선----------------------------- -->

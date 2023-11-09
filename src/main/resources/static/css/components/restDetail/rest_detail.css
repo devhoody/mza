@@ -63,34 +63,21 @@ main{
 }
 /* --------------------가게의 간단한 정보를 나타냄---------------- */
 .simple-info {
-    display: grid;
-    grid-template-columns: 130px 1fr 90px 1fr;
-    grid-template-rows: 43px 1fr 32px;
-    width: 400px;
+    display: flex;
+    width: 700px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 20px;
 }
 
-.simple-info .star {
-    grid-row: 1;
-    grid-column: 3;
-}
-.simple-info .a1 {
-    grid-row: 3;
-    grid-column: 1;
-}
-.simple-info .a2 {
-    grid-row: 3;
-    grid-column: 3;
-}
 
 /* ------------------가게의 간단한 정보를 나타냄------------------- */
 .info .rest_info {
-    display: grid;
-    grid-template-rows: 20px 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
     align-content: center;
-
+    font-size: var(--font-size-5);
     width: 400px;
-    grid-column: 1;
-    grid-row: 2;
 }
 .rest_info span:first-child::before {
     content: " : ";
@@ -386,9 +373,9 @@ main{
     }
 
     .simple-info .a1,
-    .simple-info .a2 {
-        width: 100%;
-    }
+        .simple-info .a2 {
+            width: 100%;
+        }
 
     /* ------------------가게의 간단한 정보를 나타냄------------------- */
     .info .rest_info {
@@ -415,10 +402,19 @@ main{
         /* 메뉴 이미지 횡스크롤 */
         gap: 20px;
         width: 100%;
+        background-size: cover;
+    }
+
+    .rest_info_img .scroll-img .menu_img{
+        /* 메뉴 이미지 횡스크롤 */
+        gap: 20px;
+        width: 100%;
+        background-size: cover;
     }
     .scroll-img .food-img {
         width: 85px;
         height: 75px;
+        background-size: cover;
     }
 
     /* -------------------------- 후기 경계선---------------------------- */

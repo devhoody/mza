@@ -110,7 +110,7 @@ main{
 		
 .post-create
     .upload-photo{
-        width: 385px;
+        /*width: 385px;*/
         background-color: var(--color-base-1);
         padding: var(--gap-2) ;
         border-radius: var(--gap-3);
@@ -165,7 +165,7 @@ border-color: var(--color-accent-2);
     
     .post-create
         .md\:upload-photo{ 
-             width: 685px;
+             /*width: 685px;*/
              /* padding: 40px 40px;
              padding-right: 20px; */
          }

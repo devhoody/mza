@@ -23,29 +23,31 @@
                 총 <span class="fcolor:logo1" th:text="${userView.favCount}">5</span>개
             </div>
             <div class="list md:list content">
-                <section class="fav-card md:fav-card" th:each="f : ${list}">
-                    <h1 th:text="${f.restName}">수저가</h1>
-                    <!--2 -->
-                    <div class="image-block">
-                        <img src="/css/image/icon/food1.svg" th:src="@{'/css/image/icon/'+${f.bannerImg}}">
-                    </div>
-                    <!-- 3-->
-                    <div class="content-block">
-                        <p th:text="${f.content}">차돌박이 + 밥 무한리필 최고</p>
-                    </div>
-                    <!--4 -->
-                    <div class="like-block" >
-                        <form action="fav" th:method="DELETE">
-                            <button type="submit" name="rest-id" th:value="${f.restId}" class="heart icon icon-size:2 icon-redheart icon-color:red ">좋아요</button>
-                            <input type="hidden" name="user-id" th:value="${f.userId}">
-                        </form>
-<!--                        <a data-id="3" th:data-name="${f.userId}"  th:data-id="${f.restId}" href="" id="heart" class="heart icon icon-size:2 icon-redheart icon-color:red ">좋아요</a>-->
-                    </div>
-                    <!-- 5-->
-                    <div class="star-review-block">
-                        <a href="" class="icon icon-size:3 icon-color:yellow icon-star:fill">별</a>
-                        <span>3.5 (<span th:text="${f.reviewCount}">15</span> review)</span>
-                    </div>
+                <section th:onclick="|location.href='@{/celeb/detail(restId=${f.restId})}'|" class="cursor-pointer:pointer fav-card md:fav-card" th:each="f : ${list}">
+                        <h1 th:text="${f.restName}">수저가</h1>
+                            <!--2 -->
+                        <div class="image-block">
+<!--                            <a th:href="@{/celeb/detail(restId=${f.restId})}">-->
+                            <img src="/css/image/icon/food1.svg" th:src="@{'/css/image/icon/'+${f.bannerImg}}">
+<!--                            </a>-->
+                        </div>
+                        <!-- 3-->
+                        <div class="content-block">
+                            <p th:text="${f.content}">차돌박이 + 밥 무한리필 최고</p>
+                        </div>
+                        <!--4 -->
+                        <div class="like-block" >
+                            <form action="fav" th:method="DELETE">
+                                <button type="submit" name="rest-id" th:value="${f.restId}" class="heart icon icon-size:2 icon-redheart icon-color:red ">좋아요</button>
+                                <input type="hidden" name="user-id" th:value="${f.userId}">
+                            </form>
+    <!--                        <a data-id="3" th:data-name="${f.userId}"  th:data-id="${f.restId}" href="" id="heart" class="heart icon icon-size:2 icon-redheart icon-color:red ">좋아요</a>-->
+                        </div>
+                        <!-- 5-->
+                        <div class="star-review-block">
+                            <a href="" class="icon icon-size:3 icon-color:yellow icon-star:fill">별</a>
+                            <span>3.5 (<span th:text="${f.reviewCount}">15</span> review)</span>
+                        </div>
                 </section>
             </div>
         </section>

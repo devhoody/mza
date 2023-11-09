@@ -38,7 +38,7 @@
                                     <section class="member_info">
                                         <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
                                         <div class="badge">
-                                            <img src="/css/image/icon/badge2.svg"
+                                            <img th:src="@{'/css/image/icon/' +  ${userView.gradeImg}} "
                                                 style="height:20px;" alt="등급2" />
                                         </div>
                                         <div class="nickname">
@@ -76,12 +76,6 @@
                                             <img src="/css/image/icon/food1.svg"
                                                 alt="Responsive Image"
                                                 th:src="@{'/css/image/' + ${p.img1}}">
-                                            <img src="/css/image/icon/food1.svg"
-                                                alt="Responsive Image"
-                                                th:src="@{'/css/image/' + ${p.img2}}">
-                                            <img src="/css/image/icon/food1.svg"
-                                                alt="Responsive Image"
-                                                th:src="@{'/css/image/' + ${p.img3}}">
                                         </picture>
                                     </section>
                                 </section>

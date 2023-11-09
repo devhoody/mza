@@ -110,9 +110,9 @@
 	</select>
   
   <delete id="delete">
-  delete 
-  from post 
-  where post_id = #{postId}
+      delete
+      from post
+      where post_id = #{postId}
   </delete>
   
   <!--  commu main 출력 -->
@@ -141,12 +141,12 @@
 		limit #{offset}, #{pageSize}
     </select>
     
-  <delete id="deletePosts">  
-  	 	delete from post
-  		where post_id in 
-  		<foreach collection="postList" item="postId" open="(" separator="," close=")">
-  		 	#{postId}
-  		</foreach>
-  	</delete>
+<delete id="deletePosts">
+    delete from post
+    where post_id in
+    <foreach collection="postList" item="postId" open="(" separator="," close=")">
+        #{postId}
+    </foreach>
+</delete>
   
 </mapper>

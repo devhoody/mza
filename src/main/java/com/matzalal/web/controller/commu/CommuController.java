@@ -1,17 +1,14 @@
 package com.matzalal.web.controller.commu;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.matzalal.web.config.auth.MatzalalUserDetails;
 import com.matzalal.web.entity.Comment;
@@ -22,6 +19,7 @@ import com.matzalal.web.entity.Post;
 import com.matzalal.web.entity.PostView;
 import com.matzalal.web.service.CommentService;
 import com.matzalal.web.service.PostService;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller("CommuController")
 @RequestMapping("/commu")
@@ -80,12 +78,11 @@ public class CommuController {
 	@PostMapping("post/create")
 	public String postCreate(
 			Authentication authentication,
-
-			@RequestParam(name = "user_id", required = true) Long userId,
-			@RequestParam(name = "area_id", required = false) Long areaId,
+			HttpServletRequest request,
+			@RequestParam(name = "areaId", required = false) Long areaId,
 			@RequestParam(required = true) String title,
 			@RequestParam(required = true) String content,
-			@RequestParam(name = "img1", required = false) String img1
+			@RequestParam(name = "img", required = false) MultipartFile img1
 
 	) throws IOException {
 
@@ -93,25 +90,44 @@ public class CommuController {
 		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
 		Long id = userDetails.getId();
 
-		System.out.println("post");
+		System.out.println(areaId);
+		System.out.println(img1);
+
+//		System.out.println(post);
+//		postService.add(post);
+
+		// 이미지 저장
+		// webapp경로
+
+		String name = img1.getOriginalFilename();
+
+		String strPath = request.getServletContext().getRealPath("/css/image/user");
+		System.out.println(strPath);
+
+		File path = new File(strPath);
+		if (!path.exists())
+			path.mkdirs();
+
+		File file = new File( strPath + File.separator+ img1.getOriginalFilename());
+		img1.transferTo(file);
 
 		Post post = Post.builder()
-				.userId(id)
-				.areaId(areaId)
-				.title(title)
-				.content(content)
-				.img1(img1)
-				.build();
-		System.out.println(post);
+			.userId(id)
+			.areaId(areaId)
+			.title(title)
+			.content(content)
+			.img1(name)
+			.build();
 
+		System.out.println("저장될 post: " + post);
 		postService.add(post);
 
-		return "redirect:/commu/main"; //
+		return "redirect:/commu/main";
 	}
 
 	// ---------------------- 포스팅 상세조회 -> 포스팅, 댓글 출력 ----------------------
 
-	@RequestMapping("post/detail")
+	@GetMapping("post/detail")
 	public String postdetail(
 			@RequestParam(name = "post-id") Long postId,
 			Model model) {
@@ -186,10 +202,12 @@ public class CommuController {
 		commentService.edit(comment);
 		System.out.println(" edit 후  comment: " + comment);
 
+		System.out.println(comment.getPostId());
+
 		System.out.println("수정완료");
 		System.out.println(comment.getCommentId());
 
-		return "redirect:/commu/main";
+		return "redirect:/commu/";
 	}
 
 }

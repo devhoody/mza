@@ -78,7 +78,6 @@ public class UserController {
         UserView userView = userService.getUserViewById(id);
         model.addAttribute("userView", userView);
 
-
         model.addAttribute("list", list);
 
         return "user/fav";

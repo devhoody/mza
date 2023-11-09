@@ -38,11 +38,20 @@ public class CommuController {
 	// ---------------------- 포스팅 목록 제공 API ----------------------
 	@GetMapping
 	public List<PostView> postList(
+			Authentication authentication,
 			@RequestParam(name = "q", required = false) String query,
 			@RequestParam(name = "loc", required = false) Long locationPostId) {
 
+		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
+		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
+		Long id = userDetails.getId();
+
+		List<PostView> list = postService.getPostList(id);
+
+
 		System.out.println(query);
 		List<PostView> postList = postService.getViewList(query, locationPostId);
+		postList.get(0).getUserId();
 
 		System.out.println("el.dataset.id: " + locationPostId);
 		System.out.println(postList);
@@ -54,7 +63,7 @@ public class CommuController {
 	@PostMapping("posts")
 	public Post reg(
 			Post post,
-			MultipartFile[] imgFiles,
+			MultipartFile img,
 			HttpServletRequest request,
 			Authentication authentication) throws IllegalStateException, IOException {
 
@@ -62,7 +71,9 @@ public class CommuController {
 		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
 		Long id = userDetails.getId();
 
-		post.setUserId(id); // 현재 로그인한 userId
+		System.out.println(post);
+
+		 // 현재 로그인한 userId
 
 		String strPath = request.getServletContext().getRealPath("/image/commu/post/");
 		// 서블릿이 알고 있는 홈디렉토리(=webapp) 에서 해당 폴더 위치 ! 배포할떄도
@@ -72,17 +83,11 @@ public class CommuController {
 		if (!path.exists()) // path가 없으면
 			path.mkdirs(); // 여러 디렉토리들을 만들어줌.
 
-		for (MultipartFile imgFile : imgFiles) {
-			File file = new File(strPath + File.separator + imgFile.getOriginalFilename());
-			System.out.println(strPath + File.separator + imgFile.getOriginalFilename());
-			imgFile.transferTo(file); // 변환? ㅎㅎ파일이 transfer돼서 경로에 저장.
+		File file = new File( strPath + File.separator+ img.getOriginalFilename());
+		img.transferTo(file);
 
-			System.out.println(post);
-			post.setImg1(imgFiles[0].getOriginalFilename());
-			post.setImg2(imgFiles[1].getOriginalFilename());
-			post.setImg3(imgFiles[2].getOriginalFilename());
-			// post.setImg(imgFile.getOriginalFilename()); // 여기서 파일 이름을 가져옴.
-		}
+		post.setImg1(img.getOriginalFilename());
+		post.setUserId(id);
 
 		Post newOne = postService.add(post);
 		System.out.println(newOne);

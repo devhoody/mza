@@ -63,7 +63,7 @@
 			<div class="main_btn_div">
 				<section class="rank">
 					<h1 class="title"><a href="/rank">오늘의 랭킹</a></h1>
-					<div class="rank-container" th:each="rank:${ratingView}">
+					<div class="rank-container" th:each="rank:${ranking}">
 						<div class="rank-box">
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail (restId=${rank.restId})}">
@@ -84,7 +84,7 @@
 				</section>
 				<section class="rank mxd:d:none">
 					<h1 class="title"><a href="/rank">금주의 랭킹</a></h1>
-					<div class="rank-container" th:each="rank:${ratingView}">
+					<div class="rank-container" th:each="rank:${ranking}">
 						<div class="rank-box">
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail (restId=${rank.restId})}">
@@ -101,7 +101,8 @@
 								<span class="rank-name" th:text="${rank.restName}"></span>
 							</a>
 						</div>
-					</section>
+					</div>
+				</section>
 					<!--				<div class="rank-box">-->
 					<!--					<img class="rank-img" src="/css/img/silver.png">-->
 					<!--					<img class="rest-img" src="/css/img/1-1.png">-->
@@ -146,11 +147,17 @@
 					<section class="scrollMenu">
 						<h1 class="title">맛집 추천</h1>
 						<div class="container">
+<!--							<article class="card" th:each="rc:${recom}">-->
+<!--								<h1 th:text="${rc.restName}"></h1>-->
+<!--								<a href="menu/restDetail/rest_detail"-->
+<!--									th:href="@{celeb/detail (restId=${rc.id})}">-->
+<!--									<img src th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt>-->
+<!--								</a>-->
+<!--							</article>-->
 							<article class="card" th:each="rc:${recom}">
 								<h1 th:text="${rc.restName}"></h1>
-								<a href="menu/restDetail/rest_detail"
-									th:href="@{celeb/detail (restId=${rc.id})}">
-									<img src th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt>
+								<a href="menu/restDetail/rest_detail" th:href="@{celeb/detail (restId=${rc.restId})}">
+									<img src="" th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt="">
 								</a>
 							</article>
 						</div>

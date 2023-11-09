@@ -46,9 +46,13 @@ window.addEventListener("load", function(){
         let result = await response.json();
 
         console.log(result);
+        if(result === true) {
+            alert("지역이 변경되었습니다.");
 
-        alert("지역이 변경되었습니다.");
-        console.log(locBtn.value);
+            window.location="/user/mypage";
+
+        }
+
     }
 
     // 비밀번호 입력시
@@ -113,6 +117,11 @@ window.addEventListener("load", function(){
         let result = await response.json();
 
         console.log("변경결과: " + result);
+        if(result === true){
+            alert("입력하신 비밀번호로 변경이 완료되었습니다.");
+            window.location="/user/edit"
+        } else
+            alert("다시 한번 입력해주세요.");
 
     }
 
@@ -166,8 +175,8 @@ window.addEventListener("load", function(){
             || inputAlias.value.length<2
             || patternResult // 닉네임 정규식
             || jamoPatternResult // 자음모음 정규식
-      ){
-            alert("정규식위반!!");
+        ){
+            alert("정해진 형식대로 입력해주시기 바랍니다.");
             return;
         }
 
@@ -197,16 +206,11 @@ window.addEventListener("load", function(){
         let result = await response.json();
 
         console.log("변경 결과(true면 변경 완료) :" + result);
-        alert(alias + "로 변경되었습니다.");
-        //
-        // let request = new XMLHttpRequest();
-        // request.open("PUT", `/api/users?nickname=${alias}`, true);
-        // request.send();
-        // request.onload = function(){
-        //     alert(request.responseText);
-        // }
 
-        // 1. 닉네임 있으면 있다고 알림표시 (classList)
+        if(result === true ){
+            alert("[" + alias + "] (으)로 변경되었습니다.");
+            window.location="/user/mypage";
+        }
 
     }
 
