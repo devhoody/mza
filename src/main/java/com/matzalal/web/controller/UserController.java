@@ -151,14 +151,21 @@ public class UserController {
         return "user/user_delete";
     }
 
-    @DeleteMapping("delete")
+    @PutMapping("delete")
     public String delete(
-            @RequestParam Long id
-
+            Authentication authentication
     ){
-
+        MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
+        System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
+        Long id = userDetails.getId();
         System.out.println(id);
-        userService.delete(id);
+
+        User user = User.builder()
+                .id(id)
+                .gradeId(5L)
+                .build();
+
+        userService.edit(user);
 
         System.out.println("삭제완료!");
 

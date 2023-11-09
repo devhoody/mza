@@ -45,7 +45,7 @@
                 <h1 class="ment-title"><span th:text="*{name}" class="nickname-impact">바지사장</span> 회원님, 탈퇴하시겠습니까?</h1>
                 <p class="ment-content">탈퇴시 회원님의 정보 및 서비스 이용 기록이 삭제됩니다</p>
             </section>
-            <form action="delete" th:method="DELETE">
+            <form action="delete" th:method="put">
                 <div>
                     <input type="hidden" name="id" th:value="${userView.id}">
                     <input class="btn btn-main" type="submit" name="cmd" value="탈퇴하기">

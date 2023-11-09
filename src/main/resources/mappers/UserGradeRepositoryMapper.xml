@@ -9,4 +9,13 @@
         values (#{userId})
     </insert>
 
+    <!--회원 수정 시 등급 권한 설정 업데이트-->
+    <update id="modify">
+        UPDATE user_grades
+        SET
+        user_id = #{id},
+        grades_id = #{gradeId}
+        WHERE user_id = #{id}
+    </update>
+
 </mapper>
