@@ -38,7 +38,7 @@ public class FaqController {
 	
 	@RequestMapping("detail")
 	public String detail(Model model, 
-			@RequestParam(name="question-id") Long faqId
+			@RequestParam(name="faq-id") Long faqId
 			//@RequestParam(name="prev-question-id") Long prevquestionId,
 			//@RequestParam(name="next-question-id") Long nextquestionId
 			){

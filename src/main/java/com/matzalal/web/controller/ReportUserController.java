@@ -50,7 +50,6 @@ public class ReportUserController {
 				.reportUserId(id)
 				.userId(18L)
 				.reportReasonId(reportReasonId)
-				.adminId(2L)
 				.build();
 		
 		System.out.println("reportUser:" + reportUser);

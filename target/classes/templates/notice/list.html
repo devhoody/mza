@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<main layout:fragment="main">
+	<main layout:fragment="main" class="notice-list-main">
 	<!--tab 부분-->
         <div class="jump-tab">
             <button onclick="location.href='list'" class="btn btn-user-tab btn-user-tab-line md:findbtn">NOTICE</button>
@@ -29,7 +29,7 @@
 			<!--<a href="" class="icon icon-search icon-size:5 icon-color:base-5"> 검색</a>-->
 	            <form>
 		            <fieldset>
-		                <legend class="d:none"> 노티스 검색</legend>
+		                <legend class="d:none">검색</legend>
 		                <input class="search-input input-query" 
 		                		type="text" 
 		                		placeholder="검색어를 입력하세요.">
@@ -59,12 +59,12 @@
 	            </div>
 	        </section>
 	            
-	            <section class="notice-list-box-right">
-	            <span class="gotodetail deco icon-right-arrow icon-size:0"></span> 
-	            <div class="list-right-side">
-	                <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
-	            </div>
-	            </section>
+	        <section class="notice-list-box-right">
+	          <span class="gotodetail deco icon-right-arrow icon-size:0"></span> 
+	          <div class="list-right-side">
+	          <span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
+	          </div>
+	        </section>
     	</div>
         
 		<!-- 페이지 이동 -->

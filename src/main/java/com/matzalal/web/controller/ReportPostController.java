@@ -33,7 +33,6 @@ public class ReportPostController {
 	@PostMapping("reg")
 	public String reg(
 			String content,
-			Long adminId,
 			Long reportUserId,
 			Long postId,
 			@RequestParam(name="reason") Long reportReasonId,
@@ -47,9 +46,8 @@ public class ReportPostController {
 		System.out.println("content:" + content);
 		ReportPost reportPost = ReportPost.builder()
 				.content(content)
-				.adminId(2L)
 				.reportUserId(id)
-				.postId(12L)
+				.postId(18L)
 				.reportReasonId(reportReasonId)
 				.build();
 		
