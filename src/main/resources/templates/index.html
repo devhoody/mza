@@ -63,10 +63,10 @@
 			<div class="main_btn_div">
 				<section class="rank">
 					<h1 class="title"><a href="/rank">오늘의 랭킹</a></h1>
-					<div class="rank-container" th:each="rank:${ratingView}">
+					<div class="rank-container" th:each="rank:${rankingList}">
 						<div class="rank-box">
 							<a href="menu/restDetail/rest_detail"
-								th:href="@{celeb/detail (restId=${rank.restId})}">
+								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<img class="rank-img" src="/css/img/gold.png"
 									th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
 							</a>
@@ -76,7 +76,7 @@
 							<img class="rest-img" src="/css/img/1-1.png"
 								th:src="@{/css/image/{img} (img=${rank.img})}">
 							<a href="menu/restDetail/rest_detail"
-								th:href="@{celeb/detail (restId=${rank.restId})}">
+								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<span class="rank-name" th:text="${rank.restName}"></span>
 							</a>
 						</div>
@@ -84,10 +84,10 @@
 				</section>
 				<section class="rank mxd:d:none">
 					<h1 class="title"><a href="/rank">금주의 랭킹</a></h1>
-					<div class="rank-container" th:each="rank:${ratingView}">
+					<div class="rank-container" th:each="rank:${rankingList}">
 						<div class="rank-box">
 							<a href="menu/restDetail/rest_detail"
-								th:href="@{celeb/detail (restId=${rank.restId})}">
+								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<img class="rank-img" src="/css/img/gold.png"
 									th:src="@{/css/image/{img} (img='rank'+${rank.rank}+'.png')}">
 							</a>
@@ -97,11 +97,12 @@
 							<img class="rest-img" src="/css/img/1-1.png"
 								th:src="@{/css/image/{img} (img=${rank.img})}">
 							<a href="menu/restDetail/rest_detail"
-								th:href="@{celeb/detail (restId=${rank.restId})}">
+								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<span class="rank-name" th:text="${rank.restName}"></span>
 							</a>
 						</div>
-					</section>
+					</div>
+				</section>
 					<!--				<div class="rank-box">-->
 					<!--					<img class="rank-img" src="/css/img/silver.png">-->
 					<!--					<img class="rest-img" src="/css/img/1-1.png">-->
@@ -149,7 +150,7 @@
 							<article class="card" th:each="rc:${recom}">
 								<h1 th:text="${rc.restName}"></h1>
 								<a href="menu/restDetail/rest_detail"
-									th:href="@{celeb/detail (restId=${rc.id})}">
+									th:href="@{celeb/detail (restId=${rc.restId})}">
 									<img src th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt>
 								</a>
 							</article>

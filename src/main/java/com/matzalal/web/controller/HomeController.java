@@ -63,7 +63,7 @@ public class HomeController {
 		}
 
 		// 리스트 개수 및 랜덤값
-		System.out.println(list.size());
+		System.out.println("맛집 목록의 개수 : "+list.size());
 
 		// 모델에 리스트 추가
 		model.addAttribute("list", list);
@@ -76,10 +76,12 @@ public class HomeController {
 
 		// 랭킹순 3개 맛집 조회(일주일기준)
 		List<RatingView> ranking = service.getRankingList();
-		model.addAttribute("ranking", ranking);
+		model.addAttribute("rankingList", ranking);
+		System.out.println("랭킹 리스트 출력 : "+ranking);
 
 		return "index";
 	}
+	
 	@RequestMapping("rank")
 	public String rank(Model model) {
 

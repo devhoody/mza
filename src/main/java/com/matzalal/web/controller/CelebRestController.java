@@ -44,15 +44,15 @@ public class CelebRestController {
 //    -------------------------------맛집 조회--------------------------------------------------------
     @RequestMapping("detail")
     public String detail(@RequestParam(value = "restId") Long restId,
-//                         @RequestParam(value = "celebId") Long celebId,
+                         @RequestParam(value = "menuId") Long menuId,
                          Model model
                          ) {
-        RestDetailView restDetailList = service.getRestDetailViewByid(restId);
+        RestDetailView restDetailList = service.getRestDetailViewByid(restId, menuId);
 //        RestDetailView restDetailList = service.getRestDetailViewByid(restId, celebId);
         List<RestDetailView> menuList = service.getRestMenuById(restId);
         List<ReviewView> reviewView = reviewViewService.getReviewThreeByRestId(restId);
 
-
+        System.out.println(restId);
         System.out.println(restDetailList);
         System.out.println(reviewView);
 //        model.addAttribute("restId", restId);
