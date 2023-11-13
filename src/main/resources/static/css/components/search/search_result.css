@@ -33,7 +33,6 @@
   width: 130px;
   height: 110px;
   border-radius: 12px;
-  background-color: grey;
 }
 .list .heart {
   grid-column: 5;

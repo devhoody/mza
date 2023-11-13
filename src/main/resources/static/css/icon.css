@@ -154,6 +154,11 @@
 .icon-color\:base-0::before {
   background-color: var(--color-base-0);
 }
+
+.icon-color\:base-1::before {
+    background-color: var(--color-base-2);
+
+}
 /* ======================================================== */
 
 /* .icon-color\:main::before {

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>faq 관리</title>
+    <title>FAQ 관리</title>
     	<link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
         <link href="/css/components/button.css" rel="stylesheet" type="text/css">
         <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
@@ -27,13 +27,13 @@
                 <!-- 등록, 수정, 삭제 버튼 -->
                 <div class="manage-button">
                     <a href="/admin/faq/reg" class="store-create-button">
-                        <input type="button" value="등록" class="btn-main btn-main-create-admin btn-main-small">
+                        <input type="button" value="등록" class="cursor-pointer:pointer btn-main btn-main-create-admin btn-main-small">
                     </a>
                     <a href="/admin/faq/edit" class="store-edit-button">
-                        <input type="button" value="수정" class="btn-main btn-main-create-edit btn-main-small">
+                        <input type="button" value="수정" class="cursor-pointer:pointer btn-main btn-main-create-edit btn-main-small">
                     </a>
                     <a class="store-delete-button">
-                        <input type="button" value="삭제" class="btn-main btn-main-create-admin btn-main-create-delete btn-main-small">
+                        <input type="button" value="삭제" class="cursor-pointer:pointer btn-main btn-main-create-admin btn-main-create-delete btn-main-small">
                     </a>
                 </div>
                     
@@ -52,7 +52,7 @@
             <!-- faq 목록 -->
             <section class="faq-list">
 	            <section th:each="f : ${faqList}" class="faq-block md:faq-block">
-	                <h1 th:text="${f.title}" class="faq-title">FAQ 제목</h1>
+	                <h1 th:text="${f.title}" class="cursor-pointer:pointer faq-title">FAQ 제목</h1>
 	
 	                <div class="checkbox-block">
 	                    <input type="checkbox" class="checkBox" name="checkBox" th:value="${f.faqId}">

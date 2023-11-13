@@ -28,7 +28,7 @@
                 <div class="manage-button">
                     <a class="store-delete-button" name="deleteBox">
                         <input type="button" value="삭제"
-                      	  class="btn-main btn-main-create-delete btn-main-small">
+                      	  class="cursor-pointer:pointer btn-main btn-main-create-delete btn-main-small">
                     </a>
                 </div>
 
@@ -66,8 +66,8 @@
         
             <!-- 댓글 목록 -->
             <section class="comment-list">
-	            <section th:each="c : ${commentList}" class="comment-block md:comment-block">
-	                <h1 th:text="${c.content}" class="comment-content">댓글 내용~~~</h1>
+	            <section th:each="c : ${commentList}" class="cursor-pointer:pointer comment-block md:comment-block">
+	                <h1 th:text="${c.content}" class="cursor-pointer:pointer comment-content">댓글 내용~~~</h1>
 	                <div class="checkbox-block">
 	                    <input type="checkbox" class="checkBox" name="checkBox" th:value="${c.commentId}">
 	                </div>

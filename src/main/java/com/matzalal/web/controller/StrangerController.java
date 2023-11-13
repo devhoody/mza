@@ -113,6 +113,13 @@ public class StrangerController {
         return "stranger/findpw";
     }
 
+    @RequestMapping("user-policy")
+    public String userPolicy() {
+        return "stranger/user-policy";
+    }
+
+
+
 
 }
 

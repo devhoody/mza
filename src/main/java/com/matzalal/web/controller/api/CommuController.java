@@ -75,7 +75,7 @@ public class CommuController {
 
 		 // 현재 로그인한 userId
 
-		String strPath = request.getServletContext().getRealPath("/image/commu/post/");
+		String strPath = request.getServletContext().getRealPath("/css/image/commu/post/");
 		// 서블릿이 알고 있는 홈디렉토리(=webapp) 에서 해당 폴더 위치 ! 배포할떄도
 		System.out.println(strPath);
 

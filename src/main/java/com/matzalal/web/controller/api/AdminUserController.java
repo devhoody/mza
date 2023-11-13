@@ -74,7 +74,7 @@ public class AdminUserController {
 			String nEmail, String nPhone, String nAlias
 			) throws IllegalStateException, IOException {
 		
-		String strPath = request.getServletContext().getRealPath("/image/user");
+		String strPath = request.getServletContext().getRealPath("/css/image/user");
 		System.out.println(strPath);
 		
 		// 경로가 없으면 새로 생성해주기

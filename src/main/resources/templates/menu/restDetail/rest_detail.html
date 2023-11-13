@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>맛집</title>
     <link href="/css/components/restDetail/rest_detail.css" rel="stylesheet"
           type="text/css">
 
@@ -26,7 +26,7 @@
 <section class="top" >
     <h1 style="display : none;">상단</h1>
     <div>
-        <img class="rest_img bg-size:cover" src="/css/image/rest/default-rest.jpeg">
+        <img class="rest_img bg-size:cover" src="/css/image/rest/default-rest.jpeg" th:src="@{/css/image/rest/bannerImg/{img} (img=${restDetail.bannerImg})}">
     </div>
     <div class="head-container" >
         <a class="rest_name" th:text="${restDetail.restName}">상호명</a>
@@ -57,7 +57,8 @@
         </div>
 
         <div class="map-layer">
-            <span class="d:none">지도</span>
+            <a th:href="'https://map.naver.com/p/search/' + ${restDetail.restName}"><span class="font-size:6">지도</span>
+            </a>
 
         </div>
         <!------------------------------ 메뉴 탭 ----------------------------------->
@@ -125,7 +126,7 @@
         <section class="review-area" >
             <h1 class="d:none">후기</h1>
             <div class="review-card" th:each="rvv:${reviewView}">
-                <img class="review-img" src=""  th:if="${rvv.img != null}" th:src="/css/image/${rvv.img}">
+                <img class="review-img" src=""  th:if="${rvv.img != null}" th:src="@{/css/image/${rvv.img}}">
                 <div class="review-box">
                     <p class="content" th:text="${rvv.content}">
                         리뷰 내용

@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>유명인</title>
 
         <link href="/css/components/menu/celeb.css" rel="stylesheet" type="text/css">
     <script src="/js/user/celeb.js" defer></script>
@@ -33,7 +33,7 @@
                         <article class="celeb_rest" th:each="cr:${celebRestList}" >
                             <h1 class="d:none" >또순이네</h1>
                             <a class="rest_name" th:text="${cr.restName}" th:href="@{/celeb/detail(restId=${cr.restId},menuId=${cr.menuId})}">또순이네</a>
-                            <a th:href="@{/celeb/detail(restId=${cr.restId},menuId=${cr.menuId})}"><img src="/img/1-1.png" th:src="@{/css/image/{img} (img=${cr.bannerImg})}" ></a>
+                            <a th:href="@{/celeb/detail(restId=${cr.restId},menuId=${cr.menuId})}"><img src="/img/1-1.png" th:src="@{/css/image/rest/bannerImg/{img} (img=${cr.bannerImg})}" ></a>
                         </article>
                <!--         <article class="celeb_rest">
                             <h1 class="d:none">또순이네</h1>

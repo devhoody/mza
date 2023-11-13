@@ -10,7 +10,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>나의 찜목록</title>
 
     <link href="/css/components/user/fav.css" rel="stylesheet" type="text/css">
 <!--    <script src="/js/user/myfav.js"></script>-->
@@ -28,7 +28,7 @@
                             <!--2 -->
                         <div class="image-block">
 <!--                            <a th:href="@{/celeb/detail(restId=${f.restId})}">-->
-                            <img src="/css/image/icon/food1.svg" th:src="@{'/css/image/icon/'+${f.bannerImg}}">
+                            <img src="/css/image/icon/food1.svg" th:src="@{/css/image/rest/bannerImg/{img} (img=${f.bannerImg})}">
 <!--                            </a>-->
                         </div>
                         <!-- 3-->

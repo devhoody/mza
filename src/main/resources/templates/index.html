@@ -12,7 +12,7 @@
 			rel="stylesheet">
 		<script src="/js/function/mainscroll1.js"></script>
 
-		<title>Document</title>
+		<title>맛잘알</title>
 	</head>
 
 	<body>
@@ -59,8 +59,7 @@
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail (restId=${rank.restId})}">
 							</a>
-							<img class="rest-img" src="/css/image/${rank.img}"
-								 th:if="${rank.img != null}" th:src="@{/css/image/${rank.img}}">
+
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<span class="rank-name" th:text="${rank.restName}"></span>
@@ -80,8 +79,8 @@
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail (restId=${rank.restId})}">
 							</a>
-							<img class="rest-img" src="/css/image/${rank.img}"
-								 th:if="${rank.img != null}" th:src="@{/css/image/${rank.img}}">
+<!--							<img class="rest-img" src="/css/image/${rank.img}"-->
+<!--								 th:if="${rank.img != null}" th:src="@{/css/image/${rank.img}}">-->
 							<a href="menu/restDetail/rest_detail"
 								th:href="@{celeb/detail(restId=${rank.restId}, menuId=${rank.menuId})}">
 								<span class="rank-name" th:text="${rank.restName}"></span>
@@ -110,7 +109,7 @@
 								<h1 th:text="${rc.restName}"></h1>
 								<a href="menu/restDetail/rest_detail"
 									th:href="@{celeb/detail (restId=${rc.restId}, menuId=${rc.menuId})}">
-									<img src th:src="@{/css/image/{img} (img=${rc.bannerImg})}" alt>
+									<img src th:src="@{/css/image/rest/bannerImg/{img} (img=${rc.bannerImg})}" alt>
 								</a>
 							</article>
 						</div>

@@ -54,6 +54,7 @@
         left join menu m on r.rest_id = m.rest_id
         GROUP BY r.rest_id
         order by rv.rating desc
+        limit 3
     </select>
 
     <select id="getList" parameterType="Rest">

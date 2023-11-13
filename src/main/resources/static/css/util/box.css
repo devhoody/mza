@@ -24,6 +24,7 @@ margin
 .d\:inherit       { display: inherit !important; }
 .d\:initial       { display: initial !important; }
 
+.flex-direction\:column { flex-direction: column !important;}
 /*==== sizing =========================================================*/
 
 .box-sizing\:border-box  { box-sizing: border-box;}
@@ -47,6 +48,7 @@ margin
 .w\:auto {width: auto !important;} 
 .w\:inherit {width: inherit !important;} 
 .w\:initial {width: initial !important;}
+.w\:15 {width: 15px !important;}
 .w\:32 {width: 32px !important;}
 .w\:50 {width: 50px !important;}
 .w\:200 {width: 200px !important;}
@@ -67,6 +69,7 @@ margin
 .h\:auto {height: auto !important;}
 .h\:inherit {height: inherit !important;}
 .h\:initial {height: initial !important;}
+.h\:15 {height: 15px !important;}
 .h\:32 {height: 32px !important;}
 .h\:200 {height: 200px !important;}
 

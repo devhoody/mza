@@ -5,21 +5,22 @@
     layout:decorate="~{inc/layout.html}">
 
     <head>
-        <title>faqList</title>
+        <title>FAQ</title>
         <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
         <link href="/css/components/button.css" rel="stylesheet" type="text/css">
         <link href="/css/components/icon.css" rel="stylesheet" type="text/css">
         <link href="/css/components/faq/list.css" rel="stylesheet" type="text/css">
-        <script src="/js/faq/faq-dom.js"> </script> 
+        <script src="/js/faq/faq-dom.js"> </script>
+
     </head>
 
 <body>
 	<main layout:fragment="main" class="faq-list-main">
 	<!--tab 부분-->
         <div class="jump-tab">
-            <button onclick="location.href='/notice/list'" class="btn btn-user-tab md:findbtn" style="color: #818181;">NOTICE</button>
-            <button onclick="location.href='list'" class="btn btn-user-tab btn-user-tab-line md:findbtn">FAQ</button>
-            <button onclick="location.href='/qna/question/list'" class="btn btn-user-tab md:findbtn" style="color: #818181;">QNA</button>         
+            <button onclick="location.href='/notice/list'" class="cursor-pointer:pointer btn btn-user-tab md:findbtn" style="color: #818181;">NOTICE</button>
+            <button onclick="location.href='list'" class="cursor-pointer:pointer btn btn-user-tab btn-user-tab-line md:findbtn">FAQ</button>
+            <button onclick="location.href='/qna/question/list'" class="cursor-pointer:pointer btn btn-user-tab md:findbtn" style="color: #818181;">QNA</button>
         </div>
 	<!--검색 commu_main.css 에서 가져온 부분-->
 	<!--- 고정버튼:검색,글쓰기 - -->
@@ -35,7 +36,7 @@
 		                <input class=" search-input input-query" 
 		                		type="text" 
 		                		placeholder="검색어를 입력하세요.">
-		                <button class="btn-search icon icon-search icon-size:2 icon-color:base-5">검색</button>
+		                <button class="cursor-pointer:pointer btn-search icon icon-search icon-size:2 icon-color:base-5">검색</button>
 		            </fieldset>
 	        	</form>
       	 </section> <!--  query-filter  -->
@@ -55,7 +56,7 @@
 					<!--<span class="faq-number" th:text="${f.faqId}" 
 	            	href="?f=1" th:href="@{?f={f} (n=${f.faqId})}"></span>-->
 	            	<span>Q.</span>
-	                <h1 th:text="${f.title}"></h1>
+	                <h1 class="cursor-pointer:pointer" th:text="${f.title}"></h1>
 	                <div class="reg-date" th:text="${#dates.format(f.createdDate, 'yyyy.MM.dd')}">2023.08.04</div>
 	            </div>
 	        </section>

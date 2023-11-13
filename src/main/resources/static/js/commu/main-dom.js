@@ -226,16 +226,14 @@ window.addEventListener("load", function(){
 	                                <p> ${p.content} </p>
 	                            </section> <!-- content -->
 	
-	                            <section class="picture md:picture">
-	                                <h1 class="d:none"> 사진</h1>
-	                                <picture>
-	                                    <img 
-	                                    src="/image/ranking1.JPG"
-	                                    th:src="@{/css/image/commu/post/{img} (img=${p.img1})}" 
-	                                    		alt="Responsive Image1">
-	                                    		
-	                                </picture>  
-	                            </section><!-- picture -->
+								<section class="picture md:picture">
+                                   <h1 class="d:none"> 사진</h1>
+                                   <picture>
+                                       <img 
+                                       src="/css/image/commu/post/${p.img1}"
+                                        alt="Responsive Image1">
+                                   </picture>  
+                               </section><!-- picture -->
 	                    </section><!-- middle -->
 	                    
 					</a> <!-- detail 조회 링크 -->

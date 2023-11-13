@@ -6,20 +6,21 @@
 
 
     <select id="findReviewThreeByRestId" resultType="ReviewView">
-        select rv.*
-        	 , u.user_id as user_id
-             , u.alias as alias
-             , g.grades_id as grade_id
-             , g.grade as grade
-             , g.img  as img
-         from review_view rv
-        left join user u on rv.user_id = u.user_id
-        left join grades g on u.grade_id = g.grades_id
-        group by rest_id
-        limit 3
+            select distinct
+                    rv.*
+                 , u.user_id as user_id
+                 , u.alias as alias
+                 , g.grades_id as grade_id
+                 , g.grade as grade
+                 , g.img  as img
+             from review_view rv
+            left join user u on rv.user_id = u.user_id
+            left join grades g on u.grade_id = g.grades_id
+            where rest_id = #{restId}
+            limit 3
     </select>
     <select id="findReviewAllByRestId" resultType="ReviewView">
-        select rv.*, u.user_id, u.alias, g.grades_id, g.grade, g.img from review_view rv
+        select distinct rv.*, u.user_id, u.alias, g.grades_id, g.grade, g.img from review_view rv
         left join user u on rv.user_id = u.user_id
         left  join grades g on u.grade_id = g.grades_id
         where rest_id = #{restId};

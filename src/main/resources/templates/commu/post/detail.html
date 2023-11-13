@@ -7,6 +7,7 @@
     <meta id="userid" name="userid" th:content="${#authentication.principal.id}">
     <!-- meta(전역)로 token을 전역으로 받고 -->
     <!-- js에서 token 심어야!!! -->
+    <title>커뮤니티</title>
 
     <link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
     <link href="/css/components/commu/post/detail.css" rel="stylesheet" type="text/css">
@@ -38,7 +39,7 @@
 
                         <div class="badge">
                             <img src="/image/icon/grade2.svg"
-                                 th:src="@{'/css/image/icon/badge' + ${p.gradeId} + '.svg'}"
+                                 th:src="@{'/css/image/icon/badge' + ${p.gradeId -1} + '.svg'}"
                                  style="height:20px;" alt="등급2" />
                         </div>
 
@@ -58,7 +59,7 @@
                         </div>
 
                         <div>
-                            <a class="commu-edit"
+                            <a class="cursor-pointer:pointer commu-edit"
                                th:href="@{edit(postId=${p.postId})}"
                                th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
                                th:data-post="${p.postId}"
@@ -66,7 +67,7 @@
                         </div>
 
                         <div >
-                            <button class="post-delete commu-delete"
+                            <button class="cursor-pointer:pointer post-delete commu-delete"
                                     th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
                                     th:data-post="${p.postId}"
                                     th:data-postUser="${p.userId}"
@@ -98,7 +99,7 @@
                         <picture>
                             <img
                                     src="/image/ranking1.JPG"
-                                    th:src="@{/image/commu/post/{img} (img=${p.img1})}"
+                                    th:src="@{/css/image/commu/post/{img} (img=${p.img1})}"
                                     alt="Responsive Image1">
 
                         </picture>
@@ -182,7 +183,7 @@
 
                         <div class="badge">
                             <img src="/image/icon/grade2.svg"
-                                 th:src="@{'/css/image/icon/badge' + ${c.gradeId} + '.svg'}"
+                                 th:src="@{'/css/image/icon/badge' + ${c.gradeId -1} + '.svg'}"
                                  style="height:20px;" alt="등급2" />
                         </div>
 
@@ -205,7 +206,7 @@
                         <div>
                             <!--	[수정조회] commu/comment/edit
                                     http://localhost:8000/commu/comment/edit?&commentId=76-->
-                            <a class="commu-edit"
+                            <a class="cursor-pointer:pointer commu-edit"
                                th:href="@{/commu/comment/edit(commentId=${c.commentId})}"                							th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
                                th:data-post="${c.postId}"
                                value="" > </a>
@@ -213,7 +214,7 @@
 
 
                         <div >
-                            <button class="commu-delete comment-delete"
+                            <button class="cursor-pointer:pointer commu-delete comment-delete"
                                     th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
                                     th:data-post="${c.postId}"
                                     th:data-comment="${c.commentId}"
@@ -273,7 +274,7 @@
                 <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
             </div>
 
-            <button class="btn-post input-button btn-main btn-main-comment"
+            <button class="cursor-pointer:pointer btn-post input-button btn-main btn-main-comment"
                     th:data-userId="${post.userId}"
                     th:data-postId="${post.postId}"
                     type="submit"

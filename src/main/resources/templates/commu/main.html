@@ -11,6 +11,7 @@
 	<link href="/css/components/commu/commu_search.css" rel="stylesheet" type="text/css">
 	<link href="/css/components/commu/post/main.css" rel="stylesheet" type="text/css">
 	<script src="/js/commu/main-dom.js"> </script>
+	<title>커뮤니티</title>
 
 </head>
 
@@ -40,7 +41,7 @@
 								상큼하고 부드러움이 완벽한 타르트
 							</p>
 							<div class="img">
-								<img src="/image/ranking1.JPG">
+								<img th:src="@{/css/image/commu/post/{img} (img=${rt.getImg()})}">
 							</div>
 						</a>
 					</li>
@@ -68,7 +69,7 @@
 								상큼하고 부드러움이 완벽한 타르트
 							</p>
 							<div class="img">
-								<img src="/image/ranking1.JPG">
+								<img th:src="@{/css/image/commu/post/{img} (img=${rl.getImg()})}">
 							</div>
 						</a>
 					</li>
@@ -176,7 +177,7 @@
                           </div>-->
 
 							<div >
-								<a class=""
+								<a class="cursor-pointer:pointer"
 								   th:classappend="${#authentication.principal.id == p.userId} ? 'd:none' : 'icon icon-size:0 icon-color:base-4 icon-commu-report'"
 								   href="/report/post/reg"
 								   type="submit" value="" >
@@ -184,7 +185,7 @@
 							</div>
 
 							<div>
-								<a class=""
+								<a class="cursor-pointer:pointer"
 								   th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
 								   th:data-post="${p.postId}"
 								   th:href="@{post/edit(postId=${p.postId})}"
@@ -193,7 +194,7 @@
 							</div>
 
 							<div>
-								<button class="commu-delete"
+								<button class="cursor-pointer:pointer commu-delete"
 										th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
 										th:data-post="${p.postId}"
 										type="submit" value="" > D </button>
@@ -225,13 +226,11 @@
 
 							<section class="picture md:picture">
 								<h1 class="d:none"> 사진</h1>
-								<picture>
+								<picture th:if="${p.img1 != null}">
 									<img
-											src="/image/ranking1.JPG"
-											th:src="@{/image/commu/post/{img} (img=${p.img1})}"
-											alt="Responsive Image1">
-
-
+										src="/image/ranking1.JPG"
+										th:src="@{/css/image/commu/post/{img} (img=${p.img1})}"
+										alt="Responsive Image1">
 								</picture>
 							</section><!-- picture -->
 						</section><!-- middle -->

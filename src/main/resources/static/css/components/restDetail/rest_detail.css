@@ -73,8 +73,11 @@ main{
 
 /* ------------------가게의 간단한 정보를 나타냄------------------- */
 .info .rest_info {
+    grid-column: 1;
+    grid-row:2;
     display: flex;
     flex-direction: column;
+    gap : 40px;
     align-content: center;
     font-size: var(--font-size-5);
     width: 400px;
@@ -271,6 +274,14 @@ main{
   align-items: center;
 } */
 
+.review-card .img-container{
+    border : 1px solid grey;
+    grid-row: 1/2;
+
+    width: 125px;
+    height: 135px;
+}
+
 .review-card .review-img {
     border-radius: 12px;
     grid-row: 1/2;
@@ -292,6 +303,8 @@ main{
 
     /* margin-left: ; */
 }
+
+
 
 .review-box .content {
     /* grid-row: 2; */

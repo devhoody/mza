@@ -101,14 +101,14 @@ public class CommuController {
 
 		String name = img1.getOriginalFilename();
 
-		String strPath = request.getServletContext().getRealPath("/css/image/user");
-		System.out.println(strPath);
+//		String strPath = request.getServletContext().getRealPath("/css/image/user");
+//		System.out.println(strPath);
 
-		File path = new File(strPath);
+		File path = new File("/css/image/commu/post");
 		if (!path.exists())
 			path.mkdirs();
 
-		File file = new File( strPath + File.separator+ img1.getOriginalFilename());
+		File file = new File( path + File.separator+ img1.getOriginalFilename());
 		img1.transferTo(file);
 
 		Post post = Post.builder()

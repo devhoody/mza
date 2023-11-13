@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
                         <article class="celeb_rest">
                             <h1 class="d:none" >또순이네</h1>
                             <a class="rest_name" href="/celeb/detail?restId=${cr.restId}&menuId=${cr.menuId}">${cr.restName}</a>
-                            <a href="/celeb/detail?restId=${cr.restId}&menuId=${cr.menuId}"><img src="/css/image/${cr.bannerImg}"></a>
+                            <a href="/celeb/detail?restId=${cr.restId}&menuId=${cr.menuId}"><img src="/css/image/rest/bannerImg/${cr.bannerImg}"></a>
                         </article>`;
 
             celebRestList.insertAdjacentHTML("beforeend",template);

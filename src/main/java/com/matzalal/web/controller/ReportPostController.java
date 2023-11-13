@@ -55,7 +55,7 @@ public class ReportPostController {
 
 		service.add(reportPost);
 		
-		return "redirect:/";      //돌아갈 주소로 수정해주기.
+		return "redirect:/commu/main";      //돌아갈 주소로 수정해주기.
 	}
 	
 //	@RequestMapping("list")

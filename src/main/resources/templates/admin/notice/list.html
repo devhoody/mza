@@ -27,13 +27,13 @@
                 <!-- 등록, 수정, 삭제 버튼 -->
                 <div class="manage-button">
                     <a href="/admin/notice/reg" class="store-create-button">
-                        <input type="button" value="등록" class="btn-main btn-main-create-admin btn-main-small">
+                        <input type="button" value="등록" class="cursor-pointer:pointer btn-main btn-main-create-admin btn-main-small">
                     </a>
                     <a href="/admin/notice/edit" class="store-edit-button">
-                        <input type="button" value="수정" class="btn-main btn-main-create-edit btn-main-small">
+                        <input type="button" value="수정" class="cursor-pointer:pointer btn-main btn-main-create-edit btn-main-small">
                     </a>
                     <a class="store-delete-button">
-                        <input type="button" value="삭제" class="btn-main btn-main-create-delete btn-main-small">
+                        <input type="button" value="삭제" class="cursor-pointer:pointer btn-main btn-main-create-delete btn-main-small">
                     </a>
                 </div>
                     
@@ -52,7 +52,7 @@
             <section class="notice-list">
 				<h1 class="d:none">공지사항 목록</h1>
 	            <section th:each="n : ${noticeList}" class="notice-block md:notice-block">
-	                <h1 th:text="${n.title}" class="notice-title">공지사항 제목</h1>
+	                <h1 th:text="${n.title}" class="cursor-pointer:pointer notice-title">공지사항 제목</h1>
 	                <div class="checkbox-block">
 	                    <input type="checkbox" class="checkBox" name="checkBox" th:value="${n.noticeId}">
 	                </div>
