@@ -4,6 +4,7 @@ import com.matzalal.web.config.auth.MatzalalUserDetails;
 import com.matzalal.web.entity.User;
 import com.matzalal.web.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.UUID;
 
+@Slf4j
 @RestController("apiUserController")
 @RequestMapping("/api/users")
 public class UserController {
+
 
 	@Autowired
 	private UserService service;
@@ -53,6 +58,11 @@ public class UserController {
 		return true;
 	}
 
+	//UUID생성
+	public static String getUuid(){
+		return UUID.randomUUID().toString().replaceAll("-", "");
+	}
+
 	@PostMapping
 	public String update(
 			User user,
@@ -63,9 +73,7 @@ public class UserController {
 		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
 		Long id = userDetails.getId();
 
-		System.out.println("나와아아아아앙아아아아아아아아아아!!!!!!");
-		System.out.println(user);
-//		// webapp경로
+		// webapp경로
 		String strPath = request.getServletContext().getRealPath("/css/image/user");
 		System.out.println(strPath);
 		// 경로 설정
@@ -73,10 +81,20 @@ public class UserController {
 		if (!path.exists())
 			path.mkdirs();
 
-		File file = new File( strPath + File.separator+ img.getOriginalFilename());
+		// 파일명 인코딩
+		String fileName = img.getOriginalFilename();
+		String encodedFileName = new String(fileName.getBytes("8859_1"),"UTF-8");
+
+		String ext = encodedFileName.substring(encodedFileName.lastIndexOf("."));
+		String savedFileName = getUuid() + ext; // 저장되는 파일 이름
+		log.info("savedFileName= {}", savedFileName);
+
+
+		// 파일 생성 및 데이터 저장
+		File file = new File( strPath + File.separator+ savedFileName);
 		img.transferTo(file);
 
-		user.setProfileImg(img.getOriginalFilename());
+		user.setProfileImg(savedFileName);
 		user.setId(id);
 
 		service.edit(user);
