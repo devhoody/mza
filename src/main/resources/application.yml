@@ -40,4 +40,8 @@ mybatis:
 
 server:
   port: 8000
-  
+
+
+custom:
+  path:
+    upload-images: '/Users/eddy/Desktop/dev/project/matzalals/mat/src/main/webapp/css/image/user'
