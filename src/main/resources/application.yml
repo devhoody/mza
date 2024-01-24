@@ -44,4 +44,4 @@ server:
 
 custom:
   path:
-    upload-images: '/Users/eddy/Desktop/dev/project/matzalals/mat/src/main/webapp/css/image/user'
+    upload-images: '/Users/eddy/Desktop/dev/project/matzalals/mat/src/main/webapp/css/image/user/'

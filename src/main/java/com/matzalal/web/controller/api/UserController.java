@@ -6,6 +6,7 @@ import com.matzalal.web.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +21,8 @@ import java.util.UUID;
 @RequestMapping("/api/users")
 public class UserController {
 
+	@Value("${custom.path.upload-images}")
+	private String fileDir;
 
 	@Autowired
 	private UserService service;
@@ -67,19 +70,10 @@ public class UserController {
 	public String update(
 			User user,
 			MultipartFile img, // 엔티티의 img 속성명과 같으면 안된다.
-			HttpServletRequest request,
 			Authentication authentication) throws IOException {
 		MatzalalUserDetails userDetails = (MatzalalUserDetails) authentication.getPrincipal();
 		System.out.println("지금 접속한 user ID :::::::::" + userDetails.getId());
 		Long id = userDetails.getId();
-
-		// webapp경로
-		String strPath = request.getServletContext().getRealPath("/css/image/user");
-		System.out.println(strPath);
-		// 경로 설정
-		File path = new File(strPath);
-		if (!path.exists())
-			path.mkdirs();
 
 		// 파일명 인코딩
 		String fileName = img.getOriginalFilename();
@@ -91,7 +85,7 @@ public class UserController {
 
 
 		// 파일 생성 및 데이터 저장
-		File file = new File( strPath + File.separator+ savedFileName);
+		File file = new File( fileDir + File.separator+ savedFileName);
 		img.transferTo(file);
 
 		user.setProfileImg(savedFileName);
